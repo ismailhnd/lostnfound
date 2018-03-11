@@ -1,0 +1,820 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORYID" />
+          </Key>
+          <Property Name="CATEGORYID" Type="int" Nullable="false" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="225" />
+        </EntityType>
+        <EntityType Name="COLOR">
+          <Key>
+            <PropertyRef Name="COLORID" />
+          </Key>
+          <Property Name="COLORID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ITEM">
+          <Key>
+            <PropertyRef Name="ITEMID" />
+          </Key>
+          <Property Name="ITEMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CATEGORYID" Type="int" Nullable="false" />
+          <Property Name="COLORID" Type="int" />
+          <Property Name="REPORTERID" Type="int" Nullable="false" />
+          <Property Name="DATEFOUNDORLOST" Type="datetime" Nullable="false" />
+          <Property Name="LOCATION" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="IMAGE" Type="nvarchar" MaxLength="256" />
+          <Property Name="BRAND" Type="nvarchar" MaxLength="100" />
+          <Property Name="CREATEDBYID" Type="int" Nullable="false" />
+          <Property Name="ITEMTYPEID" Type="int" Nullable="false" />
+          <Property Name="LOCATIONID" Type="int" Nullable="false" />
+          <Property Name="CREATEDDATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ITEM_STATES">
+          <Key>
+            <PropertyRef Name="ITEM_STATESID" />
+          </Key>
+          <Property Name="ITEM_STATESID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ITEMID" Type="int" Nullable="false" />
+          <Property Name="STATEID" Type="int" Nullable="false" />
+          <Property Name="USERID" Type="int" Nullable="false" />
+          <Property Name="COMMENT" Type="nvarchar" MaxLength="500" />
+          <Property Name="CREATEDDATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ITEMTYPE">
+          <Key>
+            <PropertyRef Name="ITEMTYPEID" />
+          </Key>
+          <Property Name="ITEMTYPEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LOCATION">
+          <Key>
+            <PropertyRef Name="LOCATIONID" />
+          </Key>
+          <Property Name="LOCATIONID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERMISSION">
+          <Key>
+            <PropertyRef Name="PERMISSIONID" />
+          </Key>
+          <Property Name="PERMISSIONID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRIVILEGEID" Type="int" Nullable="false" />
+          <Property Name="ROLEID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRIVILEGE">
+          <Key>
+            <PropertyRef Name="PRIVILEGEID" />
+          </Key>
+          <Property Name="PRIVILEGEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="REPORTER">
+          <Key>
+            <PropertyRef Name="REPORTERID" />
+          </Key>
+          <Property Name="REPORTERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LASTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="200" />
+          <Property Name="PHONENUMBER" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AUB" Type="bit" Nullable="false" />
+          <Property Name="IDDOCUMENT" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="ROLE">
+          <Key>
+            <PropertyRef Name="ROLEID" />
+          </Key>
+          <Property Name="ROLEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STATE">
+          <Key>
+            <PropertyRef Name="STATEID" />
+          </Key>
+          <Property Name="STATEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USERID" />
+          </Key>
+          <Property Name="USERID" Type="int" Nullable="false" />
+          <Property Name="ROLEID" Type="int" Nullable="false" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LASTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="PHONENUMBER" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ITEM_REFERENCE_CATEGORY">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORYID" />
+            </Principal>
+            <Dependent Role="ITEM">
+              <PropertyRef Name="CATEGORYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_REFERENCE_COLOR">
+          <End Role="COLOR" Type="Self.COLOR" Multiplicity="0..1" />
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COLOR">
+              <PropertyRef Name="COLORID" />
+            </Principal>
+            <Dependent Role="ITEM">
+              <PropertyRef Name="COLORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_REFERENCE_ITEMTYPE">
+          <End Role="ITEMTYPE" Type="Self.ITEMTYPE" Multiplicity="1" />
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ITEMTYPE">
+              <PropertyRef Name="ITEMTYPEID" />
+            </Principal>
+            <Dependent Role="ITEM">
+              <PropertyRef Name="ITEMTYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_REFERENCE_LOCATION">
+          <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="1" />
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCATION">
+              <PropertyRef Name="LOCATIONID" />
+            </Principal>
+            <Dependent Role="ITEM">
+              <PropertyRef Name="LOCATIONID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_REFERENCE_REPORTER">
+          <End Role="REPORTER" Type="Self.REPORTER" Multiplicity="1" />
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REPORTER">
+              <PropertyRef Name="REPORTERID" />
+            </Principal>
+            <Dependent Role="ITEM">
+              <PropertyRef Name="REPORTERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_REFERENCE_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="ITEM">
+              <PropertyRef Name="CREATEDBYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_STA_REFERENCE_ITEM">
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="1" />
+          <End Role="ITEM_STATES" Type="Self.ITEM_STATES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ITEM">
+              <PropertyRef Name="ITEMID" />
+            </Principal>
+            <Dependent Role="ITEM_STATES">
+              <PropertyRef Name="ITEMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_STA_REFERENCE_STATE">
+          <End Role="STATE" Type="Self.STATE" Multiplicity="1" />
+          <End Role="ITEM_STATES" Type="Self.ITEM_STATES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATE">
+              <PropertyRef Name="STATEID" />
+            </Principal>
+            <Dependent Role="ITEM_STATES">
+              <PropertyRef Name="STATEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_STA_REFERENCE_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="ITEM_STATES" Type="Self.ITEM_STATES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="ITEM_STATES">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERMISSI_REFERENCE_PRIVILEG">
+          <End Role="PRIVILEGE" Type="Self.PRIVILEGE" Multiplicity="1" />
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRIVILEGE">
+              <PropertyRef Name="PRIVILEGEID" />
+            </Principal>
+            <Dependent Role="PERMISSION">
+              <PropertyRef Name="PRIVILEGEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERMISSI_REFERENCE_ROLE">
+          <End Role="ROLE" Type="Self.ROLE" Multiplicity="1" />
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="ROLEID" />
+            </Principal>
+            <Dependent Role="PERMISSION">
+              <PropertyRef Name="ROLEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_REFERENCE_ROLE">
+          <End Role="ROLE" Type="Self.ROLE" Multiplicity="1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="ROLEID" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="ROLEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COLOR" EntityType="Self.COLOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ITEM" EntityType="Self.ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ITEM_STATES" EntityType="Self.ITEM_STATES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ITEMTYPE" EntityType="Self.ITEMTYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOCATION" EntityType="Self.LOCATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERMISSION" EntityType="Self.PERMISSION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRIVILEGE" EntityType="Self.PRIVILEGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REPORTER" EntityType="Self.REPORTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROLE" EntityType="Self.ROLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STATE" EntityType="Self.STATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ITEM_REFERENCE_CATEGORY" Association="Self.FK_ITEM_REFERENCE_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="ITEM" EntitySet="ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_REFERENCE_COLOR" Association="Self.FK_ITEM_REFERENCE_COLOR">
+            <End Role="COLOR" EntitySet="COLOR" />
+            <End Role="ITEM" EntitySet="ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_REFERENCE_ITEMTYPE" Association="Self.FK_ITEM_REFERENCE_ITEMTYPE">
+            <End Role="ITEMTYPE" EntitySet="ITEMTYPE" />
+            <End Role="ITEM" EntitySet="ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_REFERENCE_LOCATION" Association="Self.FK_ITEM_REFERENCE_LOCATION">
+            <End Role="LOCATION" EntitySet="LOCATION" />
+            <End Role="ITEM" EntitySet="ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_REFERENCE_REPORTER" Association="Self.FK_ITEM_REFERENCE_REPORTER">
+            <End Role="REPORTER" EntitySet="REPORTER" />
+            <End Role="ITEM" EntitySet="ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_REFERENCE_USER" Association="Self.FK_ITEM_REFERENCE_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="ITEM" EntitySet="ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_STA_REFERENCE_ITEM" Association="Self.FK_ITEM_STA_REFERENCE_ITEM">
+            <End Role="ITEM" EntitySet="ITEM" />
+            <End Role="ITEM_STATES" EntitySet="ITEM_STATES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_STA_REFERENCE_STATE" Association="Self.FK_ITEM_STA_REFERENCE_STATE">
+            <End Role="STATE" EntitySet="STATE" />
+            <End Role="ITEM_STATES" EntitySet="ITEM_STATES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_STA_REFERENCE_USER" Association="Self.FK_ITEM_STA_REFERENCE_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="ITEM_STATES" EntitySet="ITEM_STATES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERMISSI_REFERENCE_PRIVILEG" Association="Self.FK_PERMISSI_REFERENCE_PRIVILEG">
+            <End Role="PRIVILEGE" EntitySet="PRIVILEGE" />
+            <End Role="PERMISSION" EntitySet="PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERMISSI_REFERENCE_ROLE" Association="Self.FK_PERMISSI_REFERENCE_ROLE">
+            <End Role="ROLE" EntitySet="ROLE" />
+            <End Role="PERMISSION" EntitySet="PERMISSION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_REFERENCE_ROLE" Association="Self.FK_USER_REFERENCE_ROLE">
+            <End Role="ROLE" EntitySet="ROLE" />
+            <End Role="USER" EntitySet="USER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORYID" />
+          </Key>
+          <Property Name="CATEGORYID" Type="Int32" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="225" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ITEMs" Relationship="Self.FK_ITEM_REFERENCE_CATEGORY" FromRole="CATEGORY" ToRole="ITEM" />
+        </EntityType>
+        <EntityType Name="COLOR">
+          <Key>
+            <PropertyRef Name="COLORID" />
+          </Key>
+          <Property Name="COLORID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ITEMs" Relationship="Self.FK_ITEM_REFERENCE_COLOR" FromRole="COLOR" ToRole="ITEM" />
+        </EntityType>
+        <EntityType Name="ITEM">
+          <Key>
+            <PropertyRef Name="ITEMID" />
+          </Key>
+          <Property Name="ITEMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORYID" Type="Int32" Nullable="false" />
+          <Property Name="COLORID" Type="Int32" />
+          <Property Name="REPORTERID" Type="Int32" Nullable="false" />
+          <Property Name="DATEFOUNDORLOST" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LOCATION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IMAGE" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BRAND" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDBYID" Type="Int32" Nullable="false" />
+          <Property Name="ITEMTYPEID" Type="Int32" Nullable="false" />
+          <Property Name="LOCATIONID" Type="Int32" Nullable="false" />
+          <Property Name="CREATEDDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CATEGORY" Relationship="Self.FK_ITEM_REFERENCE_CATEGORY" FromRole="ITEM" ToRole="CATEGORY" />
+          <NavigationProperty Name="COLOR" Relationship="Self.FK_ITEM_REFERENCE_COLOR" FromRole="ITEM" ToRole="COLOR" />
+          <NavigationProperty Name="ITEMTYPE" Relationship="Self.FK_ITEM_REFERENCE_ITEMTYPE" FromRole="ITEM" ToRole="ITEMTYPE" />
+          <NavigationProperty Name="LOCATION1" Relationship="Self.FK_ITEM_REFERENCE_LOCATION" FromRole="ITEM" ToRole="LOCATION" />
+          <NavigationProperty Name="REPORTER" Relationship="Self.FK_ITEM_REFERENCE_REPORTER" FromRole="ITEM" ToRole="REPORTER" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_ITEM_REFERENCE_USER" FromRole="ITEM" ToRole="USER" />
+          <NavigationProperty Name="ITEM_STATES" Relationship="Self.FK_ITEM_STA_REFERENCE_ITEM" FromRole="ITEM" ToRole="ITEM_STATES" />
+        </EntityType>
+        <EntityType Name="ITEM_STATES">
+          <Key>
+            <PropertyRef Name="ITEM_STATESID" />
+          </Key>
+          <Property Name="ITEM_STATESID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ITEMID" Type="Int32" Nullable="false" />
+          <Property Name="STATEID" Type="Int32" Nullable="false" />
+          <Property Name="USERID" Type="Int32" Nullable="false" />
+          <Property Name="COMMENT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CREATEDDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ITEM" Relationship="Self.FK_ITEM_STA_REFERENCE_ITEM" FromRole="ITEM_STATES" ToRole="ITEM" />
+          <NavigationProperty Name="STATE" Relationship="Self.FK_ITEM_STA_REFERENCE_STATE" FromRole="ITEM_STATES" ToRole="STATE" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_ITEM_STA_REFERENCE_USER" FromRole="ITEM_STATES" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="ITEMTYPE">
+          <Key>
+            <PropertyRef Name="ITEMTYPEID" />
+          </Key>
+          <Property Name="ITEMTYPEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ITEMs" Relationship="Self.FK_ITEM_REFERENCE_ITEMTYPE" FromRole="ITEMTYPE" ToRole="ITEM" />
+        </EntityType>
+        <EntityType Name="LOCATION">
+          <Key>
+            <PropertyRef Name="LOCATIONID" />
+          </Key>
+          <Property Name="LOCATIONID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ITEMs" Relationship="Self.FK_ITEM_REFERENCE_LOCATION" FromRole="LOCATION" ToRole="ITEM" />
+        </EntityType>
+        <EntityType Name="PERMISSION">
+          <Key>
+            <PropertyRef Name="PERMISSIONID" />
+          </Key>
+          <Property Name="PERMISSIONID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRIVILEGEID" Type="Int32" Nullable="false" />
+          <Property Name="ROLEID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PRIVILEGE" Relationship="Self.FK_PERMISSI_REFERENCE_PRIVILEG" FromRole="PERMISSION" ToRole="PRIVILEGE" />
+          <NavigationProperty Name="ROLE" Relationship="Self.FK_PERMISSI_REFERENCE_ROLE" FromRole="PERMISSION" ToRole="ROLE" />
+        </EntityType>
+        <EntityType Name="PRIVILEGE">
+          <Key>
+            <PropertyRef Name="PRIVILEGEID" />
+          </Key>
+          <Property Name="PRIVILEGEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PERMISSIONs" Relationship="Self.FK_PERMISSI_REFERENCE_PRIVILEG" FromRole="PRIVILEGE" ToRole="PERMISSION" />
+        </EntityType>
+        <EntityType Name="REPORTER">
+          <Key>
+            <PropertyRef Name="REPORTERID" />
+          </Key>
+          <Property Name="REPORTERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PHONENUMBER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AUB" Type="Boolean" Nullable="false" />
+          <Property Name="IDDOCUMENT" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ITEMs" Relationship="Self.FK_ITEM_REFERENCE_REPORTER" FromRole="REPORTER" ToRole="ITEM" />
+        </EntityType>
+        <EntityType Name="ROLE">
+          <Key>
+            <PropertyRef Name="ROLEID" />
+          </Key>
+          <Property Name="ROLEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PERMISSIONs" Relationship="Self.FK_PERMISSI_REFERENCE_ROLE" FromRole="ROLE" ToRole="PERMISSION" />
+          <NavigationProperty Name="USERs" Relationship="Self.FK_USER_REFERENCE_ROLE" FromRole="ROLE" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="STATE">
+          <Key>
+            <PropertyRef Name="STATEID" />
+          </Key>
+          <Property Name="STATEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ITEM_STATES" Relationship="Self.FK_ITEM_STA_REFERENCE_STATE" FromRole="STATE" ToRole="ITEM_STATES" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="USERID" />
+          </Key>
+          <Property Name="USERID" Type="Int32" Nullable="false" />
+          <Property Name="ROLEID" Type="Int32" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FIRSTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PHONENUMBER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ITEMs" Relationship="Self.FK_ITEM_REFERENCE_USER" FromRole="USER" ToRole="ITEM" />
+          <NavigationProperty Name="ITEM_STATES" Relationship="Self.FK_ITEM_STA_REFERENCE_USER" FromRole="USER" ToRole="ITEM_STATES" />
+          <NavigationProperty Name="ROLE" Relationship="Self.FK_USER_REFERENCE_ROLE" FromRole="USER" ToRole="ROLE" />
+        </EntityType>
+        <Association Name="FK_ITEM_REFERENCE_CATEGORY">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORYID" />
+            </Principal>
+            <Dependent Role="ITEM">
+              <PropertyRef Name="CATEGORYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_REFERENCE_COLOR">
+          <End Role="COLOR" Type="Self.COLOR" Multiplicity="0..1" />
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COLOR">
+              <PropertyRef Name="COLORID" />
+            </Principal>
+            <Dependent Role="ITEM">
+              <PropertyRef Name="COLORID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_REFERENCE_ITEMTYPE">
+          <End Role="ITEMTYPE" Type="Self.ITEMTYPE" Multiplicity="1" />
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ITEMTYPE">
+              <PropertyRef Name="ITEMTYPEID" />
+            </Principal>
+            <Dependent Role="ITEM">
+              <PropertyRef Name="ITEMTYPEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_REFERENCE_LOCATION">
+          <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="1" />
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCATION">
+              <PropertyRef Name="LOCATIONID" />
+            </Principal>
+            <Dependent Role="ITEM">
+              <PropertyRef Name="LOCATIONID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_REFERENCE_REPORTER">
+          <End Role="REPORTER" Type="Self.REPORTER" Multiplicity="1" />
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="REPORTER">
+              <PropertyRef Name="REPORTERID" />
+            </Principal>
+            <Dependent Role="ITEM">
+              <PropertyRef Name="REPORTERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_REFERENCE_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="ITEM">
+              <PropertyRef Name="CREATEDBYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_STA_REFERENCE_ITEM">
+          <End Role="ITEM" Type="Self.ITEM" Multiplicity="1" />
+          <End Role="ITEM_STATES" Type="Self.ITEM_STATES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ITEM">
+              <PropertyRef Name="ITEMID" />
+            </Principal>
+            <Dependent Role="ITEM_STATES">
+              <PropertyRef Name="ITEMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_STA_REFERENCE_STATE">
+          <End Role="STATE" Type="Self.STATE" Multiplicity="1" />
+          <End Role="ITEM_STATES" Type="Self.ITEM_STATES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATE">
+              <PropertyRef Name="STATEID" />
+            </Principal>
+            <Dependent Role="ITEM_STATES">
+              <PropertyRef Name="STATEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ITEM_STA_REFERENCE_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="ITEM_STATES" Type="Self.ITEM_STATES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="ITEM_STATES">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERMISSI_REFERENCE_PRIVILEG">
+          <End Role="PRIVILEGE" Type="Self.PRIVILEGE" Multiplicity="1" />
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRIVILEGE">
+              <PropertyRef Name="PRIVILEGEID" />
+            </Principal>
+            <Dependent Role="PERMISSION">
+              <PropertyRef Name="PRIVILEGEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERMISSI_REFERENCE_ROLE">
+          <End Role="ROLE" Type="Self.ROLE" Multiplicity="1" />
+          <End Role="PERMISSION" Type="Self.PERMISSION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="ROLEID" />
+            </Principal>
+            <Dependent Role="PERMISSION">
+              <PropertyRef Name="ROLEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_REFERENCE_ROLE">
+          <End Role="ROLE" Type="Self.ROLE" Multiplicity="1" />
+          <End Role="USER" Type="Self.USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROLE">
+              <PropertyRef Name="ROLEID" />
+            </Principal>
+            <Dependent Role="USER">
+              <PropertyRef Name="ROLEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CATEGORies" EntityType="Self.CATEGORY" />
+          <EntitySet Name="COLORs" EntityType="Self.COLOR" />
+          <EntitySet Name="ITEMs" EntityType="Self.ITEM" />
+          <EntitySet Name="ITEM_STATES" EntityType="Self.ITEM_STATES" />
+          <EntitySet Name="ITEMTYPEs" EntityType="Self.ITEMTYPE" />
+          <EntitySet Name="LOCATIONs" EntityType="Self.LOCATION" />
+          <EntitySet Name="PERMISSIONs" EntityType="Self.PERMISSION" />
+          <EntitySet Name="PRIVILEGEs" EntityType="Self.PRIVILEGE" />
+          <EntitySet Name="REPORTERs" EntityType="Self.REPORTER" />
+          <EntitySet Name="ROLEs" EntityType="Self.ROLE" />
+          <EntitySet Name="STATEs" EntityType="Self.STATE" />
+          <EntitySet Name="USERs" EntityType="Self.USER" />
+          <AssociationSet Name="FK_ITEM_REFERENCE_CATEGORY" Association="Self.FK_ITEM_REFERENCE_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORies" />
+            <End Role="ITEM" EntitySet="ITEMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_REFERENCE_COLOR" Association="Self.FK_ITEM_REFERENCE_COLOR">
+            <End Role="COLOR" EntitySet="COLORs" />
+            <End Role="ITEM" EntitySet="ITEMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_REFERENCE_ITEMTYPE" Association="Self.FK_ITEM_REFERENCE_ITEMTYPE">
+            <End Role="ITEMTYPE" EntitySet="ITEMTYPEs" />
+            <End Role="ITEM" EntitySet="ITEMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_REFERENCE_LOCATION" Association="Self.FK_ITEM_REFERENCE_LOCATION">
+            <End Role="LOCATION" EntitySet="LOCATIONs" />
+            <End Role="ITEM" EntitySet="ITEMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_REFERENCE_REPORTER" Association="Self.FK_ITEM_REFERENCE_REPORTER">
+            <End Role="REPORTER" EntitySet="REPORTERs" />
+            <End Role="ITEM" EntitySet="ITEMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_REFERENCE_USER" Association="Self.FK_ITEM_REFERENCE_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="ITEM" EntitySet="ITEMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_STA_REFERENCE_ITEM" Association="Self.FK_ITEM_STA_REFERENCE_ITEM">
+            <End Role="ITEM" EntitySet="ITEMs" />
+            <End Role="ITEM_STATES" EntitySet="ITEM_STATES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_STA_REFERENCE_STATE" Association="Self.FK_ITEM_STA_REFERENCE_STATE">
+            <End Role="STATE" EntitySet="STATEs" />
+            <End Role="ITEM_STATES" EntitySet="ITEM_STATES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ITEM_STA_REFERENCE_USER" Association="Self.FK_ITEM_STA_REFERENCE_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="ITEM_STATES" EntitySet="ITEM_STATES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERMISSI_REFERENCE_PRIVILEG" Association="Self.FK_PERMISSI_REFERENCE_PRIVILEG">
+            <End Role="PRIVILEGE" EntitySet="PRIVILEGEs" />
+            <End Role="PERMISSION" EntitySet="PERMISSIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERMISSI_REFERENCE_ROLE" Association="Self.FK_PERMISSI_REFERENCE_ROLE">
+            <End Role="ROLE" EntitySet="ROLEs" />
+            <End Role="PERMISSION" EntitySet="PERMISSIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_REFERENCE_ROLE" Association="Self.FK_USER_REFERENCE_ROLE">
+            <End Role="ROLE" EntitySet="ROLEs" />
+            <End Role="USER" EntitySet="USERs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="CATEGORies">
+            <EntityTypeMapping TypeName="Model.CATEGORY">
+              <MappingFragment StoreEntitySet="CATEGORY">
+                <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COLORs">
+            <EntityTypeMapping TypeName="Model.COLOR">
+              <MappingFragment StoreEntitySet="COLOR">
+                <ScalarProperty Name="COLORID" ColumnName="COLORID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ITEMs">
+            <EntityTypeMapping TypeName="Model.ITEM">
+              <MappingFragment StoreEntitySet="ITEM">
+                <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+                <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
+                <ScalarProperty Name="COLORID" ColumnName="COLORID" />
+                <ScalarProperty Name="REPORTERID" ColumnName="REPORTERID" />
+                <ScalarProperty Name="DATEFOUNDORLOST" ColumnName="DATEFOUNDORLOST" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+                <ScalarProperty Name="BRAND" ColumnName="BRAND" />
+                <ScalarProperty Name="CREATEDBYID" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="ITEMTYPEID" ColumnName="ITEMTYPEID" />
+                <ScalarProperty Name="LOCATIONID" ColumnName="LOCATIONID" />
+                <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ITEM_STATES">
+            <EntityTypeMapping TypeName="Model.ITEM_STATES">
+              <MappingFragment StoreEntitySet="ITEM_STATES">
+                <ScalarProperty Name="ITEM_STATESID" ColumnName="ITEM_STATESID" />
+                <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+                <ScalarProperty Name="STATEID" ColumnName="STATEID" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+                <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ITEMTYPEs">
+            <EntityTypeMapping TypeName="Model.ITEMTYPE">
+              <MappingFragment StoreEntitySet="ITEMTYPE">
+                <ScalarProperty Name="ITEMTYPEID" ColumnName="ITEMTYPEID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOCATIONs">
+            <EntityTypeMapping TypeName="Model.LOCATION">
+              <MappingFragment StoreEntitySet="LOCATION">
+                <ScalarProperty Name="LOCATIONID" ColumnName="LOCATIONID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERMISSIONs">
+            <EntityTypeMapping TypeName="Model.PERMISSION">
+              <MappingFragment StoreEntitySet="PERMISSION">
+                <ScalarProperty Name="PERMISSIONID" ColumnName="PERMISSIONID" />
+                <ScalarProperty Name="PRIVILEGEID" ColumnName="PRIVILEGEID" />
+                <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRIVILEGEs">
+            <EntityTypeMapping TypeName="Model.PRIVILEGE">
+              <MappingFragment StoreEntitySet="PRIVILEGE">
+                <ScalarProperty Name="PRIVILEGEID" ColumnName="PRIVILEGEID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REPORTERs">
+            <EntityTypeMapping TypeName="Model.REPORTER">
+              <MappingFragment StoreEntitySet="REPORTER">
+                <ScalarProperty Name="REPORTERID" ColumnName="REPORTERID" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONENUMBER" ColumnName="PHONENUMBER" />
+                <ScalarProperty Name="AUB" ColumnName="AUB" />
+                <ScalarProperty Name="IDDOCUMENT" ColumnName="IDDOCUMENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROLEs">
+            <EntityTypeMapping TypeName="Model.ROLE">
+              <MappingFragment StoreEntitySet="ROLE">
+                <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATEs">
+            <EntityTypeMapping TypeName="Model.STATE">
+              <MappingFragment StoreEntitySet="STATE">
+                <ScalarProperty Name="STATEID" ColumnName="STATEID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERs">
+            <EntityTypeMapping TypeName="Model.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONENUMBER" ColumnName="PHONENUMBER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

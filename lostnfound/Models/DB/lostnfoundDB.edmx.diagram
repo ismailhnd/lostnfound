@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6ca2aa4d212b49fdb4756f39740980f6" Name="Diagram1">
+        <EntityTypeShape EntityType="CrackTheCode.CATEGORY" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrackTheCode.COLOR" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrackTheCode.ITEM" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrackTheCode.ITEMSTATE" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrackTheCode.ITEMTYPE" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrackTheCode.LOCATION" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrackTheCode.PERMISSION" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrackTheCode.PRIVILEGE" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrackTheCode.REPORTER" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrackTheCode.ROLE" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrackTheCode.STATE" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrackTheCode.USER" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="CrackTheCode.FK_ITEM_REFERENCE_CATEGORY" ManuallyRouted="false" />
+        <AssociationConnector Association="CrackTheCode.FK_ITEM_REFERENCE_COLOR" ManuallyRouted="false" />
+        <AssociationConnector Association="CrackTheCode.FK_ITEM_REFERENCE_ITEMTYPE" ManuallyRouted="false" />
+        <AssociationConnector Association="CrackTheCode.FK_ITEM_REFERENCE_LOCATION" ManuallyRouted="false" />
+        <AssociationConnector Association="CrackTheCode.FK_ITEM_REFERENCE_REPORTER" ManuallyRouted="false" />
+        <AssociationConnector Association="CrackTheCode.FK_ITEM_REFERENCE_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="CrackTheCode.FK_ITEMSTAT_REFERENCE_ITEM" ManuallyRouted="false" />
+        <AssociationConnector Association="CrackTheCode.FK_ITEMSTAT_REFERENCE_STATE" ManuallyRouted="false" />
+        <AssociationConnector Association="CrackTheCode.FK_ITEMSTAT_REFERENCE_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="CrackTheCode.FK_PERMISSI_REFERENCE_PRIVILEG" ManuallyRouted="false" />
+        <AssociationConnector Association="CrackTheCode.FK_PERMISSI_REFERENCE_ROLE" ManuallyRouted="false" />
+        <AssociationConnector Association="CrackTheCode.FK_USER_REFERENCE_ROLE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

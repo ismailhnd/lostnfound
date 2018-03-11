@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CrackTheCode.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CATEGORY">
           <Key>
             <PropertyRef Name="CATEGORYID" />
           </Key>
           <Property Name="CATEGORYID" Type="int" Nullable="false" />
-          <Property Name="TITLE" Type="nvarchar" MaxLength="225" />
+          <Property Name="TITLE" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="COLOR">
           <Key>
@@ -24,29 +24,28 @@
             <PropertyRef Name="ITEMID" />
           </Key>
           <Property Name="ITEMID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="REPORTERID" Type="int" Nullable="false" />
+          <Property Name="CREATEDBYID" Type="int" Nullable="false" />
+          <Property Name="CREATEDDATE" Type="datetime" Nullable="false" />
+          <Property Name="ITEMTYPEID" Type="int" Nullable="false" />
+          <Property Name="STATEID" Type="int" Nullable="false" />
+          <Property Name="FLDATE" Type="datetime" Nullable="false" />
           <Property Name="CATEGORYID" Type="int" Nullable="false" />
           <Property Name="COLORID" Type="int" />
-          <Property Name="REPORTERID" Type="int" Nullable="false" />
-          <Property Name="DATEFOUNDORLOST" Type="datetime" Nullable="false" />
-          <Property Name="LOCATION" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="IMAGE" Type="nvarchar" MaxLength="256" />
-          <Property Name="BRAND" Type="nvarchar" MaxLength="100" />
-          <Property Name="CREATEDBYID" Type="int" Nullable="false" />
-          <Property Name="ITEMTYPEID" Type="int" Nullable="false" />
           <Property Name="LOCATIONID" Type="int" Nullable="false" />
-          <Property Name="CREATEDDATE" Type="datetime" Nullable="false" />
+          <Property Name="IMAGE" Type="nvarchar" MaxLength="256" />
+          <Property Name="NOTES" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="ITEM_STATES">
+        <EntityType Name="ITEMSTATE">
           <Key>
-            <PropertyRef Name="ITEM_STATESID" />
+            <PropertyRef Name="ITEMSTATEID" />
           </Key>
-          <Property Name="ITEM_STATESID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ITEMSTATEID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ITEMID" Type="int" Nullable="false" />
-          <Property Name="STATEID" Type="int" Nullable="false" />
           <Property Name="USERID" Type="int" Nullable="false" />
-          <Property Name="COMMENT" Type="nvarchar" MaxLength="500" />
           <Property Name="CREATEDDATE" Type="datetime" Nullable="false" />
+          <Property Name="STATEID" Type="int" Nullable="false" />
+          <Property Name="COMMENT" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="ITEMTYPE">
           <Key>
@@ -86,8 +85,8 @@
           <Property Name="LASTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="EMAIL" Type="nvarchar" MaxLength="200" />
           <Property Name="PHONENUMBER" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="AUB" Type="bit" Nullable="false" />
           <Property Name="IDDOCUMENT" Type="nvarchar" MaxLength="256" />
+          <Property Name="AUB" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ROLE">
           <Key>
@@ -187,38 +186,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ITEM_STA_REFERENCE_ITEM">
+        <Association Name="FK_ITEMSTAT_REFERENCE_ITEM">
           <End Role="ITEM" Type="Self.ITEM" Multiplicity="1" />
-          <End Role="ITEM_STATES" Type="Self.ITEM_STATES" Multiplicity="*" />
+          <End Role="ITEMSTATE" Type="Self.ITEMSTATE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ITEM">
               <PropertyRef Name="ITEMID" />
             </Principal>
-            <Dependent Role="ITEM_STATES">
+            <Dependent Role="ITEMSTATE">
               <PropertyRef Name="ITEMID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ITEM_STA_REFERENCE_STATE">
+        <Association Name="FK_ITEMSTAT_REFERENCE_STATE">
           <End Role="STATE" Type="Self.STATE" Multiplicity="1" />
-          <End Role="ITEM_STATES" Type="Self.ITEM_STATES" Multiplicity="*" />
+          <End Role="ITEMSTATE" Type="Self.ITEMSTATE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="STATE">
               <PropertyRef Name="STATEID" />
             </Principal>
-            <Dependent Role="ITEM_STATES">
+            <Dependent Role="ITEMSTATE">
               <PropertyRef Name="STATEID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ITEM_STA_REFERENCE_USER">
+        <Association Name="FK_ITEMSTAT_REFERENCE_USER">
           <End Role="USER" Type="Self.USER" Multiplicity="1" />
-          <End Role="ITEM_STATES" Type="Self.ITEM_STATES" Multiplicity="*" />
+          <End Role="ITEMSTATE" Type="Self.ITEMSTATE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USER">
               <PropertyRef Name="USERID" />
             </Principal>
-            <Dependent Role="ITEM_STATES">
+            <Dependent Role="ITEMSTATE">
               <PropertyRef Name="USERID" />
             </Dependent>
           </ReferentialConstraint>
@@ -259,11 +258,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ModelStoreContainer">
+        <EntityContainer Name="CrackTheCodeStoreContainer">
           <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COLOR" EntityType="Self.COLOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ITEM" EntityType="Self.ITEM" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ITEM_STATES" EntityType="Self.ITEM_STATES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ITEMSTATE" EntityType="Self.ITEMSTATE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ITEMTYPE" EntityType="Self.ITEMTYPE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOCATION" EntityType="Self.LOCATION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERMISSION" EntityType="Self.PERMISSION" Schema="dbo" store:Type="Tables" />
@@ -296,17 +295,17 @@
             <End Role="USER" EntitySet="USER" />
             <End Role="ITEM" EntitySet="ITEM" />
           </AssociationSet>
-          <AssociationSet Name="FK_ITEM_STA_REFERENCE_ITEM" Association="Self.FK_ITEM_STA_REFERENCE_ITEM">
+          <AssociationSet Name="FK_ITEMSTAT_REFERENCE_ITEM" Association="Self.FK_ITEMSTAT_REFERENCE_ITEM">
             <End Role="ITEM" EntitySet="ITEM" />
-            <End Role="ITEM_STATES" EntitySet="ITEM_STATES" />
+            <End Role="ITEMSTATE" EntitySet="ITEMSTATE" />
           </AssociationSet>
-          <AssociationSet Name="FK_ITEM_STA_REFERENCE_STATE" Association="Self.FK_ITEM_STA_REFERENCE_STATE">
+          <AssociationSet Name="FK_ITEMSTAT_REFERENCE_STATE" Association="Self.FK_ITEMSTAT_REFERENCE_STATE">
             <End Role="STATE" EntitySet="STATE" />
-            <End Role="ITEM_STATES" EntitySet="ITEM_STATES" />
+            <End Role="ITEMSTATE" EntitySet="ITEMSTATE" />
           </AssociationSet>
-          <AssociationSet Name="FK_ITEM_STA_REFERENCE_USER" Association="Self.FK_ITEM_STA_REFERENCE_USER">
+          <AssociationSet Name="FK_ITEMSTAT_REFERENCE_USER" Association="Self.FK_ITEMSTAT_REFERENCE_USER">
             <End Role="USER" EntitySet="USER" />
-            <End Role="ITEM_STATES" EntitySet="ITEM_STATES" />
+            <End Role="ITEMSTATE" EntitySet="ITEMSTATE" />
           </AssociationSet>
           <AssociationSet Name="FK_PERMISSI_REFERENCE_PRIVILEG" Association="Self.FK_PERMISSI_REFERENCE_PRIVILEG">
             <End Role="PRIVILEGE" EntitySet="PRIVILEGE" />
@@ -325,13 +324,13 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="CrackTheCode" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="CATEGORY">
           <Key>
             <PropertyRef Name="CATEGORYID" />
           </Key>
           <Property Name="CATEGORYID" Type="Int32" Nullable="false" />
-          <Property Name="TITLE" Type="String" MaxLength="225" FixedLength="false" Unicode="true" />
+          <Property Name="TITLE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ITEMs" Relationship="Self.FK_ITEM_REFERENCE_CATEGORY" FromRole="CATEGORY" ToRole="ITEM" />
         </EntityType>
         <EntityType Name="COLOR">
@@ -347,39 +346,38 @@
             <PropertyRef Name="ITEMID" />
           </Key>
           <Property Name="ITEMID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="REPORTERID" Type="Int32" Nullable="false" />
+          <Property Name="CREATEDBYID" Type="Int32" Nullable="false" />
+          <Property Name="CREATEDDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ITEMTYPEID" Type="Int32" Nullable="false" />
+          <Property Name="STATEID" Type="Int32" Nullable="false" />
+          <Property Name="FLDATE" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CATEGORYID" Type="Int32" Nullable="false" />
           <Property Name="COLORID" Type="Int32" />
-          <Property Name="REPORTERID" Type="Int32" Nullable="false" />
-          <Property Name="DATEFOUNDORLOST" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LOCATION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IMAGE" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="BRAND" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="CREATEDBYID" Type="Int32" Nullable="false" />
-          <Property Name="ITEMTYPEID" Type="Int32" Nullable="false" />
           <Property Name="LOCATIONID" Type="Int32" Nullable="false" />
-          <Property Name="CREATEDDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IMAGE" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="NOTES" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CATEGORY" Relationship="Self.FK_ITEM_REFERENCE_CATEGORY" FromRole="ITEM" ToRole="CATEGORY" />
           <NavigationProperty Name="COLOR" Relationship="Self.FK_ITEM_REFERENCE_COLOR" FromRole="ITEM" ToRole="COLOR" />
           <NavigationProperty Name="ITEMTYPE" Relationship="Self.FK_ITEM_REFERENCE_ITEMTYPE" FromRole="ITEM" ToRole="ITEMTYPE" />
-          <NavigationProperty Name="LOCATION1" Relationship="Self.FK_ITEM_REFERENCE_LOCATION" FromRole="ITEM" ToRole="LOCATION" />
+          <NavigationProperty Name="LOCATION" Relationship="Self.FK_ITEM_REFERENCE_LOCATION" FromRole="ITEM" ToRole="LOCATION" />
           <NavigationProperty Name="REPORTER" Relationship="Self.FK_ITEM_REFERENCE_REPORTER" FromRole="ITEM" ToRole="REPORTER" />
           <NavigationProperty Name="USER" Relationship="Self.FK_ITEM_REFERENCE_USER" FromRole="ITEM" ToRole="USER" />
-          <NavigationProperty Name="ITEM_STATES" Relationship="Self.FK_ITEM_STA_REFERENCE_ITEM" FromRole="ITEM" ToRole="ITEM_STATES" />
+          <NavigationProperty Name="ITEMSTATEs" Relationship="Self.FK_ITEMSTAT_REFERENCE_ITEM" FromRole="ITEM" ToRole="ITEMSTATE" />
         </EntityType>
-        <EntityType Name="ITEM_STATES">
+        <EntityType Name="ITEMSTATE">
           <Key>
-            <PropertyRef Name="ITEM_STATESID" />
+            <PropertyRef Name="ITEMSTATEID" />
           </Key>
-          <Property Name="ITEM_STATESID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ITEMSTATEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ITEMID" Type="Int32" Nullable="false" />
-          <Property Name="STATEID" Type="Int32" Nullable="false" />
           <Property Name="USERID" Type="Int32" Nullable="false" />
-          <Property Name="COMMENT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="CREATEDDATE" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="ITEM" Relationship="Self.FK_ITEM_STA_REFERENCE_ITEM" FromRole="ITEM_STATES" ToRole="ITEM" />
-          <NavigationProperty Name="STATE" Relationship="Self.FK_ITEM_STA_REFERENCE_STATE" FromRole="ITEM_STATES" ToRole="STATE" />
-          <NavigationProperty Name="USER" Relationship="Self.FK_ITEM_STA_REFERENCE_USER" FromRole="ITEM_STATES" ToRole="USER" />
+          <Property Name="STATEID" Type="Int32" Nullable="false" />
+          <Property Name="COMMENT" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ITEM" Relationship="Self.FK_ITEMSTAT_REFERENCE_ITEM" FromRole="ITEMSTATE" ToRole="ITEM" />
+          <NavigationProperty Name="STATE" Relationship="Self.FK_ITEMSTAT_REFERENCE_STATE" FromRole="ITEMSTATE" ToRole="STATE" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_ITEMSTAT_REFERENCE_USER" FromRole="ITEMSTATE" ToRole="USER" />
         </EntityType>
         <EntityType Name="ITEMTYPE">
           <Key>
@@ -424,8 +422,8 @@
           <Property Name="LASTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="PHONENUMBER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="AUB" Type="Boolean" Nullable="false" />
           <Property Name="IDDOCUMENT" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="AUB" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="ITEMs" Relationship="Self.FK_ITEM_REFERENCE_REPORTER" FromRole="REPORTER" ToRole="ITEM" />
         </EntityType>
         <EntityType Name="ROLE">
@@ -443,7 +441,7 @@
           </Key>
           <Property Name="STATEID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ITEM_STATES" Relationship="Self.FK_ITEM_STA_REFERENCE_STATE" FromRole="STATE" ToRole="ITEM_STATES" />
+          <NavigationProperty Name="ITEMSTATEs" Relationship="Self.FK_ITEMSTAT_REFERENCE_STATE" FromRole="STATE" ToRole="ITEMSTATE" />
         </EntityType>
         <EntityType Name="USER">
           <Key>
@@ -457,7 +455,7 @@
           <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PHONENUMBER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ITEMs" Relationship="Self.FK_ITEM_REFERENCE_USER" FromRole="USER" ToRole="ITEM" />
-          <NavigationProperty Name="ITEM_STATES" Relationship="Self.FK_ITEM_STA_REFERENCE_USER" FromRole="USER" ToRole="ITEM_STATES" />
+          <NavigationProperty Name="ITEMSTATEs" Relationship="Self.FK_ITEMSTAT_REFERENCE_USER" FromRole="USER" ToRole="ITEMSTATE" />
           <NavigationProperty Name="ROLE" Relationship="Self.FK_USER_REFERENCE_ROLE" FromRole="USER" ToRole="ROLE" />
         </EntityType>
         <Association Name="FK_ITEM_REFERENCE_CATEGORY">
@@ -532,38 +530,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ITEM_STA_REFERENCE_ITEM">
+        <Association Name="FK_ITEMSTAT_REFERENCE_ITEM">
           <End Role="ITEM" Type="Self.ITEM" Multiplicity="1" />
-          <End Role="ITEM_STATES" Type="Self.ITEM_STATES" Multiplicity="*" />
+          <End Role="ITEMSTATE" Type="Self.ITEMSTATE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ITEM">
               <PropertyRef Name="ITEMID" />
             </Principal>
-            <Dependent Role="ITEM_STATES">
+            <Dependent Role="ITEMSTATE">
               <PropertyRef Name="ITEMID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ITEM_STA_REFERENCE_STATE">
+        <Association Name="FK_ITEMSTAT_REFERENCE_STATE">
           <End Role="STATE" Type="Self.STATE" Multiplicity="1" />
-          <End Role="ITEM_STATES" Type="Self.ITEM_STATES" Multiplicity="*" />
+          <End Role="ITEMSTATE" Type="Self.ITEMSTATE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="STATE">
               <PropertyRef Name="STATEID" />
             </Principal>
-            <Dependent Role="ITEM_STATES">
+            <Dependent Role="ITEMSTATE">
               <PropertyRef Name="STATEID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ITEM_STA_REFERENCE_USER">
+        <Association Name="FK_ITEMSTAT_REFERENCE_USER">
           <End Role="USER" Type="Self.USER" Multiplicity="1" />
-          <End Role="ITEM_STATES" Type="Self.ITEM_STATES" Multiplicity="*" />
+          <End Role="ITEMSTATE" Type="Self.ITEMSTATE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USER">
               <PropertyRef Name="USERID" />
             </Principal>
-            <Dependent Role="ITEM_STATES">
+            <Dependent Role="ITEMSTATE">
               <PropertyRef Name="USERID" />
             </Dependent>
           </ReferentialConstraint>
@@ -604,11 +602,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="lostfoundDB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CATEGORies" EntityType="Self.CATEGORY" />
           <EntitySet Name="COLORs" EntityType="Self.COLOR" />
           <EntitySet Name="ITEMs" EntityType="Self.ITEM" />
-          <EntitySet Name="ITEM_STATES" EntityType="Self.ITEM_STATES" />
+          <EntitySet Name="ITEMSTATEs" EntityType="Self.ITEMSTATE" />
           <EntitySet Name="ITEMTYPEs" EntityType="Self.ITEMTYPE" />
           <EntitySet Name="LOCATIONs" EntityType="Self.LOCATION" />
           <EntitySet Name="PERMISSIONs" EntityType="Self.PERMISSION" />
@@ -641,17 +639,17 @@
             <End Role="USER" EntitySet="USERs" />
             <End Role="ITEM" EntitySet="ITEMs" />
           </AssociationSet>
-          <AssociationSet Name="FK_ITEM_STA_REFERENCE_ITEM" Association="Self.FK_ITEM_STA_REFERENCE_ITEM">
+          <AssociationSet Name="FK_ITEMSTAT_REFERENCE_ITEM" Association="Self.FK_ITEMSTAT_REFERENCE_ITEM">
             <End Role="ITEM" EntitySet="ITEMs" />
-            <End Role="ITEM_STATES" EntitySet="ITEM_STATES" />
+            <End Role="ITEMSTATE" EntitySet="ITEMSTATEs" />
           </AssociationSet>
-          <AssociationSet Name="FK_ITEM_STA_REFERENCE_STATE" Association="Self.FK_ITEM_STA_REFERENCE_STATE">
+          <AssociationSet Name="FK_ITEMSTAT_REFERENCE_STATE" Association="Self.FK_ITEMSTAT_REFERENCE_STATE">
             <End Role="STATE" EntitySet="STATEs" />
-            <End Role="ITEM_STATES" EntitySet="ITEM_STATES" />
+            <End Role="ITEMSTATE" EntitySet="ITEMSTATEs" />
           </AssociationSet>
-          <AssociationSet Name="FK_ITEM_STA_REFERENCE_USER" Association="Self.FK_ITEM_STA_REFERENCE_USER">
+          <AssociationSet Name="FK_ITEMSTAT_REFERENCE_USER" Association="Self.FK_ITEMSTAT_REFERENCE_USER">
             <End Role="USER" EntitySet="USERs" />
-            <End Role="ITEM_STATES" EntitySet="ITEM_STATES" />
+            <End Role="ITEMSTATE" EntitySet="ITEMSTATEs" />
           </AssociationSet>
           <AssociationSet Name="FK_PERMISSI_REFERENCE_PRIVILEG" Association="Self.FK_PERMISSI_REFERENCE_PRIVILEG">
             <End Role="PRIVILEGE" EntitySet="PRIVILEGEs" />
@@ -671,9 +669,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="CrackTheCodeStoreContainer" CdmEntityContainer="lostfoundDB">
           <EntitySetMapping Name="CATEGORies">
-            <EntityTypeMapping TypeName="Model.CATEGORY">
+            <EntityTypeMapping TypeName="CrackTheCode.CATEGORY">
               <MappingFragment StoreEntitySet="CATEGORY">
                 <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
                 <ScalarProperty Name="TITLE" ColumnName="TITLE" />
@@ -681,7 +679,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="COLORs">
-            <EntityTypeMapping TypeName="Model.COLOR">
+            <EntityTypeMapping TypeName="CrackTheCode.COLOR">
               <MappingFragment StoreEntitySet="COLOR">
                 <ScalarProperty Name="COLORID" ColumnName="COLORID" />
                 <ScalarProperty Name="TITLE" ColumnName="TITLE" />
@@ -689,38 +687,37 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ITEMs">
-            <EntityTypeMapping TypeName="Model.ITEM">
+            <EntityTypeMapping TypeName="CrackTheCode.ITEM">
               <MappingFragment StoreEntitySet="ITEM">
                 <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
+                <ScalarProperty Name="REPORTERID" ColumnName="REPORTERID" />
+                <ScalarProperty Name="CREATEDBYID" ColumnName="CREATEDBYID" />
+                <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="ITEMTYPEID" ColumnName="ITEMTYPEID" />
+                <ScalarProperty Name="STATEID" ColumnName="STATEID" />
+                <ScalarProperty Name="FLDATE" ColumnName="FLDATE" />
                 <ScalarProperty Name="CATEGORYID" ColumnName="CATEGORYID" />
                 <ScalarProperty Name="COLORID" ColumnName="COLORID" />
-                <ScalarProperty Name="REPORTERID" ColumnName="REPORTERID" />
-                <ScalarProperty Name="DATEFOUNDORLOST" ColumnName="DATEFOUNDORLOST" />
-                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
-                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
-                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
-                <ScalarProperty Name="BRAND" ColumnName="BRAND" />
-                <ScalarProperty Name="CREATEDBYID" ColumnName="CREATEDBYID" />
-                <ScalarProperty Name="ITEMTYPEID" ColumnName="ITEMTYPEID" />
                 <ScalarProperty Name="LOCATIONID" ColumnName="LOCATIONID" />
-                <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ITEM_STATES">
-            <EntityTypeMapping TypeName="Model.ITEM_STATES">
-              <MappingFragment StoreEntitySet="ITEM_STATES">
-                <ScalarProperty Name="ITEM_STATESID" ColumnName="ITEM_STATESID" />
+          <EntitySetMapping Name="ITEMSTATEs">
+            <EntityTypeMapping TypeName="CrackTheCode.ITEMSTATE">
+              <MappingFragment StoreEntitySet="ITEMSTATE">
+                <ScalarProperty Name="ITEMSTATEID" ColumnName="ITEMSTATEID" />
                 <ScalarProperty Name="ITEMID" ColumnName="ITEMID" />
-                <ScalarProperty Name="STATEID" ColumnName="STATEID" />
                 <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
                 <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+                <ScalarProperty Name="STATEID" ColumnName="STATEID" />
+                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ITEMTYPEs">
-            <EntityTypeMapping TypeName="Model.ITEMTYPE">
+            <EntityTypeMapping TypeName="CrackTheCode.ITEMTYPE">
               <MappingFragment StoreEntitySet="ITEMTYPE">
                 <ScalarProperty Name="ITEMTYPEID" ColumnName="ITEMTYPEID" />
                 <ScalarProperty Name="TITLE" ColumnName="TITLE" />
@@ -728,7 +725,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LOCATIONs">
-            <EntityTypeMapping TypeName="Model.LOCATION">
+            <EntityTypeMapping TypeName="CrackTheCode.LOCATION">
               <MappingFragment StoreEntitySet="LOCATION">
                 <ScalarProperty Name="LOCATIONID" ColumnName="LOCATIONID" />
                 <ScalarProperty Name="TITLE" ColumnName="TITLE" />
@@ -736,7 +733,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PERMISSIONs">
-            <EntityTypeMapping TypeName="Model.PERMISSION">
+            <EntityTypeMapping TypeName="CrackTheCode.PERMISSION">
               <MappingFragment StoreEntitySet="PERMISSION">
                 <ScalarProperty Name="PERMISSIONID" ColumnName="PERMISSIONID" />
                 <ScalarProperty Name="PRIVILEGEID" ColumnName="PRIVILEGEID" />
@@ -745,7 +742,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PRIVILEGEs">
-            <EntityTypeMapping TypeName="Model.PRIVILEGE">
+            <EntityTypeMapping TypeName="CrackTheCode.PRIVILEGE">
               <MappingFragment StoreEntitySet="PRIVILEGE">
                 <ScalarProperty Name="PRIVILEGEID" ColumnName="PRIVILEGEID" />
                 <ScalarProperty Name="TITLE" ColumnName="TITLE" />
@@ -753,20 +750,20 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="REPORTERs">
-            <EntityTypeMapping TypeName="Model.REPORTER">
+            <EntityTypeMapping TypeName="CrackTheCode.REPORTER">
               <MappingFragment StoreEntitySet="REPORTER">
                 <ScalarProperty Name="REPORTERID" ColumnName="REPORTERID" />
                 <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
                 <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="PHONENUMBER" ColumnName="PHONENUMBER" />
-                <ScalarProperty Name="AUB" ColumnName="AUB" />
                 <ScalarProperty Name="IDDOCUMENT" ColumnName="IDDOCUMENT" />
+                <ScalarProperty Name="AUB" ColumnName="AUB" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ROLEs">
-            <EntityTypeMapping TypeName="Model.ROLE">
+            <EntityTypeMapping TypeName="CrackTheCode.ROLE">
               <MappingFragment StoreEntitySet="ROLE">
                 <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
                 <ScalarProperty Name="TITLE" ColumnName="TITLE" />
@@ -774,7 +771,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="STATEs">
-            <EntityTypeMapping TypeName="Model.STATE">
+            <EntityTypeMapping TypeName="CrackTheCode.STATE">
               <MappingFragment StoreEntitySet="STATE">
                 <ScalarProperty Name="STATEID" ColumnName="STATEID" />
                 <ScalarProperty Name="TITLE" ColumnName="TITLE" />
@@ -782,7 +779,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USERs">
-            <EntityTypeMapping TypeName="Model.USER">
+            <EntityTypeMapping TypeName="CrackTheCode.USER">
               <MappingFragment StoreEntitySet="USER">
                 <ScalarProperty Name="USERID" ColumnName="USERID" />
                 <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />

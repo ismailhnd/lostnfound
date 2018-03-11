@@ -12,14 +12,14 @@ namespace lostnfound.Models.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class ITEM_STATES
+    public partial class ITEMSTATE
     {
-        public int ITEM_STATESID { get; set; }
+        public int ITEMSTATEID { get; set; }
         public int ITEMID { get; set; }
-        public int STATEID { get; set; }
         public int USERID { get; set; }
-        public string COMMENT { get; set; }
         public System.DateTime CREATEDDATE { get; set; }
+        public int STATEID { get; set; }
+        public string COMMENT { get; set; }
     
         public virtual ITEM ITEM { get; set; }
         public virtual STATE STATE { get; set; }

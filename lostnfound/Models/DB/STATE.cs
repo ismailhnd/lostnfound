@@ -17,13 +17,13 @@ namespace lostnfound.Models.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public STATE()
         {
-            this.ITEM_STATES = new HashSet<ITEM_STATES>();
+            this.ITEMSTATEs = new HashSet<ITEMSTATE>();
         }
     
         public int STATEID { get; set; }
         public string TITLE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ITEM_STATES> ITEM_STATES { get; set; }
+        public virtual ICollection<ITEMSTATE> ITEMSTATEs { get; set; }
     }
 }

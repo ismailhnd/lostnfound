@@ -13,10 +13,10 @@ namespace lostnfound.Models.DB
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class lostfoundDB : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public lostfoundDB()
+            : base("name=lostfoundDB")
         {
         }
     
@@ -28,7 +28,7 @@ namespace lostnfound.Models.DB
         public virtual DbSet<CATEGORY> CATEGORies { get; set; }
         public virtual DbSet<COLOR> COLORs { get; set; }
         public virtual DbSet<ITEM> ITEMs { get; set; }
-        public virtual DbSet<ITEM_STATES> ITEM_STATES { get; set; }
+        public virtual DbSet<ITEMSTATE> ITEMSTATEs { get; set; }
         public virtual DbSet<ITEMTYPE> ITEMTYPEs { get; set; }
         public virtual DbSet<LOCATION> LOCATIONs { get; set; }
         public virtual DbSet<PERMISSION> PERMISSIONs { get; set; }

@@ -98,86 +98,90 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Models\DB\Model1.Context.tt">
+    <Content Include="Models\DB\lostnfoundDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>lostnfoundDB.edmx</DependentUpon>
+      <LastGenOutput>lostnfoundDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DB\Model1.tt">
+    <Content Include="Models\DB\lostnfoundDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>lostnfoundDB.edmx</DependentUpon>
+      <LastGenOutput>lostnfoundDB.cs</LastGenOutput>
     </Content>
+    <Content Include="Styles\Layout.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\CATEGORY.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lostnfoundDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\COLOR.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lostnfoundDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\ITEM.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lostnfoundDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\ITEMSTATE.cs">
+      <DependentUpon>lostnfoundDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\ITEMTYPE.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DB\ITEM_STATES.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lostnfoundDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\LOCATION.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lostnfoundDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DB\Model1.Context.cs">
+    <Compile Include="Models\DB\lostnfoundDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>lostnfoundDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DB\Model1.cs">
+    <Compile Include="Models\DB\lostnfoundDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lostnfoundDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DB\Model1.Designer.cs">
+    <Compile Include="Models\DB\lostnfoundDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>lostnfoundDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\PERMISSION.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lostnfoundDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\PRIVILEGE.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lostnfoundDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\REPORTER.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lostnfoundDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\ROLE.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lostnfoundDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\STATE.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lostnfoundDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\USER.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lostnfoundDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\DB\Model1.edmx">
+    <EntityDeploy Include="Models\DB\lostnfoundDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>lostnfoundDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DB\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\DB\lostnfoundDB.edmx.diagram">
+      <DependentUpon>lostnfoundDB.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -187,7 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\EntityManager\" />
     <Folder Include="Models\ViewModel\" />
   </ItemGroup>

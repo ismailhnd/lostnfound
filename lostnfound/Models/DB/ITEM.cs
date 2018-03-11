@@ -17,30 +17,29 @@ namespace lostnfound.Models.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ITEM()
         {
-            this.ITEM_STATES = new HashSet<ITEM_STATES>();
+            this.ITEMSTATEs = new HashSet<ITEMSTATE>();
         }
     
         public int ITEMID { get; set; }
+        public int REPORTERID { get; set; }
+        public int CREATEDBYID { get; set; }
+        public System.DateTime CREATEDDATE { get; set; }
+        public int ITEMTYPEID { get; set; }
+        public int STATEID { get; set; }
+        public System.DateTime FLDATE { get; set; }
         public int CATEGORYID { get; set; }
         public Nullable<int> COLORID { get; set; }
-        public int REPORTERID { get; set; }
-        public System.DateTime DATEFOUNDORLOST { get; set; }
-        public string LOCATION { get; set; }
-        public string DESCRIPTION { get; set; }
-        public string IMAGE { get; set; }
-        public string BRAND { get; set; }
-        public int CREATEDBYID { get; set; }
-        public int ITEMTYPEID { get; set; }
         public int LOCATIONID { get; set; }
-        public System.DateTime CREATEDDATE { get; set; }
+        public string IMAGE { get; set; }
+        public string NOTES { get; set; }
     
         public virtual CATEGORY CATEGORY { get; set; }
         public virtual COLOR COLOR { get; set; }
         public virtual ITEMTYPE ITEMTYPE { get; set; }
-        public virtual LOCATION LOCATION1 { get; set; }
+        public virtual LOCATION LOCATION { get; set; }
         public virtual REPORTER REPORTER { get; set; }
         public virtual USER USER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ITEM_STATES> ITEM_STATES { get; set; }
+        public virtual ICollection<ITEMSTATE> ITEMSTATEs { get; set; }
     }
 }

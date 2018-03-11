@@ -25,8 +25,8 @@ namespace lostnfound.Models.DB
         public string LASTNAME { get; set; }
         public string EMAIL { get; set; }
         public string PHONENUMBER { get; set; }
-        public bool AUB { get; set; }
         public string IDDOCUMENT { get; set; }
+        public bool AUB { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ITEM> ITEMs { get; set; }

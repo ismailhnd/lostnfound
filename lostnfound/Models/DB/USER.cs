@@ -18,7 +18,7 @@ namespace lostnfound.Models.DB
         public USER()
         {
             this.ITEMs = new HashSet<ITEM>();
-            this.ITEM_STATES = new HashSet<ITEM_STATES>();
+            this.ITEMSTATEs = new HashSet<ITEMSTATE>();
         }
     
         public int USERID { get; set; }
@@ -32,7 +32,7 @@ namespace lostnfound.Models.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ITEM> ITEMs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ITEM_STATES> ITEM_STATES { get; set; }
+        public virtual ICollection<ITEMSTATE> ITEMSTATEs { get; set; }
         public virtual ROLE ROLE { get; set; }
     }
 }

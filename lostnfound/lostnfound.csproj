@@ -168,6 +168,8 @@
     <Compile Include="Models\DB\USER.cs">
       <DependentUpon>lostnfoundDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EntityManager\UserManager.cs" />
+    <Compile Include="Models\ViewModel\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,8 +193,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\EntityManager\" />
-    <Folder Include="Models\ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

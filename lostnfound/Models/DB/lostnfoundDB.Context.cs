@@ -37,5 +37,7 @@ namespace lostnfound.Models.DB
         public virtual DbSet<ROLE> ROLEs { get; set; }
         public virtual DbSet<STATE> STATEs { get; set; }
         public virtual DbSet<USER> USERs { get; set; }
+
+        public System.Data.Entity.DbSet<lostnfound.Models.ViewModel.CreateUserView> CreateUserViews { get; set; }
     }
 }

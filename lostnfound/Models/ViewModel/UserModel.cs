@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Drawing;
 
 namespace lostnfound.Models.ViewModel
 {
@@ -10,7 +8,6 @@ namespace lostnfound.Models.ViewModel
     {
         [Key]
 
-        
         public int UserID { get; set; }
 
         [Required(ErrorMessage = "*")]
@@ -33,7 +30,6 @@ namespace lostnfound.Models.ViewModel
         [Display(Name = "Password")]
         public string Passowrd{ get; set; }
 
-        [ForeignKey("UserID")]
         public int RoleID { get; set; }
     }
 

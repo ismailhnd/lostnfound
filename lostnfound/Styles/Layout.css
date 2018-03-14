@@ -101,17 +101,16 @@ footer {
 }
 
 /*################# Welcome Page ##################*/
-.headWelcome {
-    padding: 20px 10px 0px 10px;
-    text-align: center;
-    color: #ffffff;
-}
+
 
 .featuresBlock {
     padding: 50px 10px 0px 10px;
     text-align: center;
     color: #ffffff;
 }
+
+/*################# Account Page ##################*/
+
 /*################# Custom Styles ##################*/
 
 
@@ -141,4 +140,10 @@ footer {
     font-size: 20px;
     color: #4C93CE;
     text-align: right;
+}
+
+.headWelcome {
+    padding: 20px 10px 0px 10px;
+    text-align: center;
+    color: #ffffff;
 }

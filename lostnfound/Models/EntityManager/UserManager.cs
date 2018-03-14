@@ -9,13 +9,11 @@ namespace lostnfound.Models.EntityManager
     {
         public void AddUserAccount(CreateUserView user)
         {
-
             using (lostfoundDB db = new lostfoundDB())
             {
                 USER staff = new USER();
 
-                
-                staff.USERID = UniqueID();
+                staff.USERID = UniqueID("User");
                 staff.FIRSTNAME = user.FirstName;
                 staff.LASTNAME = user.LastName;
                 staff.EMAIL = user.Email;
@@ -30,20 +28,17 @@ namespace lostnfound.Models.EntityManager
 
         public void AddReporterAccount(CreateReporterView user)
         {
-
             using (lostfoundDB db = new lostfoundDB())
             {
                 REPORTER staff = new REPORTER();
 
-
-                staff.REPORTERID = UniqueID();
+                staff.REPORTERID = UniqueID("Reporter");
                 staff.FIRSTNAME = user.FirstName;
                 staff.LASTNAME = user.LastName;
                 staff.EMAIL = user.Email;
                 staff.PHONENUMBER = user.PhoneNumber;
                 staff.IDDOCUMENT = user.VerificationDocument;
                 staff.AUB = user.AUB;
-               //AUB should be yes or no
                 db.REPORTERs.Add(staff);
                 db.SaveChanges();
             }
@@ -56,24 +51,33 @@ namespace lostnfound.Models.EntityManager
                 return db.USERs.Where(o => o.EMAIL.Equals(email)).Any();
             }
         }
-
-
-        public bool IsIDExist(int id)
+        public bool IsIDExist(int id, string table)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
-                return db.REPORTERs.Where(o => o.REPORTERID.Equals(id)).Any();
+                if (table == "User")
+                {
+                    return db.USERs.Where(o => o.USERID.Equals(id)).Any();
+                }
+                else if (table == "Reporter")
+                {
+                    return db.REPORTERs.Where(o => o.REPORTERID.Equals(id)).Any();
+                }
+                else
+                {
+                    return false;
+                }
+
             }
         }
-
-        public int UniqueID()
+        public int UniqueID(string table)
         {
             Random rnd = new Random();
             int unique = rnd.Next(1, 1000);
 
-            if (IsIDExist(unique))
+            if (IsIDExist(unique, table))
             {
-                return UniqueID();
+                return UniqueID(table);
             }
             else
             {

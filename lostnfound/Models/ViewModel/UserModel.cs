@@ -2,8 +2,6 @@
 
 namespace lostnfound.Models.ViewModel
 {
-
-
     public class CreateUserView
     {
         [Key]
@@ -59,8 +57,8 @@ namespace lostnfound.Models.ViewModel
         public bool AUB { get; set; } 
         public string VerificationDocument { get; set; }
     }
-
-    public class CreateItemView
+    
+   /* public class CreateItemView
     {
         [Key]
 
@@ -103,5 +101,5 @@ namespace lostnfound.Models.ViewModel
     {
         public int CategoryID { get; set; }
         public string Title { get; set; }
-    }
+    }*/
 }

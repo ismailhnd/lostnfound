@@ -8,8 +8,10 @@ namespace lostnfound.Controllers
         
         public ActionResult Index()
         {
-            ViewBag.LeftString = "";
-            ViewBag.RightString = "";
+            ViewBag.LeftString = "Test One";
+            ViewBag.RightString = "Test Two";
+            ViewBag.LeftStringLink = "#";
+            ViewBag.RightStringLink = "#";
 
             return View();
         }

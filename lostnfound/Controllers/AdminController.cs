@@ -8,7 +8,7 @@ namespace lostnfound.Controllers
     public class AdminController : Controller
     {
         
-        public ActionResult User()
+        public ActionResult Account()
         {
             return View();
         }
@@ -19,7 +19,7 @@ namespace lostnfound.Controllers
         }
 
         [HttpPost]
-        public ActionResult User(CreateUserView user)
+        public ActionResult Account(CreateUserView user)
         {
             if (ModelState.IsValid)
             {

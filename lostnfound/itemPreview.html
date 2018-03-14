@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title | LostnFound</title>
+    <link rel="stylesheet" type="text/css" href="itemPrevStyle.css"/>
+</head>
+<body>
+
+    <nav>
+        <a href="#"><h1 id="logo">LostnFound</h1></a>
+    </nav>
+
+    <div class="row">
+
+            <div class="col-6">
+                <a href="#"><p class="reset leftString">@ViewBag.LeftString</p></a>
+            </div>
+            <div class="col-6">
+                <a href="#"><p class="reset rightString">@ViewBag.RightString</p></a>
+            </div>
+
+    </div>
+     
+    <div class="row">
+        <h1>Item Preview - iPhone X</h1>
+        <div class="container">
+                <img src="iPhone.jpg"><br>
+                <div id="information">
+                    <div class="left">
+                        <h4>Item ID:</h4>
+                        <h2>245815</h2>
+                    
+                        <h4>Created By:</h4>
+                        <h2 id="userName">CurrentUserName</h2>
+                    </div>
+
+                    <div class="right">
+                        <h4>State:</h4>
+                        <h2 id="state">Delivered</h2>
+
+                        <h4>Created on:</h4>
+                        <h2 id="Date">Current Date</h2>
+                    </div>
+                </div>            
+
+
+                <div id="reporterInfo">
+                    <h1>Reporter</h1>
+                    <div class="left">
+                        <h4>First Name</h4>
+                        <h2>Captain</h2>
+                        <br>
+                        <h4>Email</h4>
+                        <h2>cpm@mail.com</h2>
+                    </div>
+
+                    <div class="right">
+                        <h4>Last Name</h4>
+                        <h2>Majed</h2>
+                        <br>
+                        <h4>Phone Number</h4>
+                        <h2>+961 71 114 758</h2>
+                    </div>
+                </div>
+
+                <div id="itemInformation">
+                    <h1>Item Information</h1>
+                    <div class="left">
+                        <h4>Item Type</h4>
+                        <h2>Lost</h2>
+                        <br>
+                        <h4>Color</h4>
+                        <h2>Cyan Blue</h2>
+                        <br>
+                        <h4>Date</h4>
+                        <h2 id="Datee">Date</h2>
+                        <br>
+                        <h4>Notes</h4>
+                        <h2>256GB Black - One scratch on the back.</h2>
+                    </div>
+
+
+
+                    <div class="right">
+                        <h4>Category</h4>
+                        <h2>Mobile Phones</h2>
+                        <br>
+                        <h4>Location</h4>
+                        <h2>Bliss</h2>
+                        <br>    
+                    </div>
+                </div>
+    <div id="buttons">
+        <button id="modify">Modify State</button>
+        <button id="print">Print</button>
+    </div>
+        </div>
+    </div>
+   
+    <footer>
+        <p id="disclaimer">CrackTheCode &copy; @DateTime.Now.Year - CMPS253 Project</p>
+    </footer>
+   
+</body>
+</html>

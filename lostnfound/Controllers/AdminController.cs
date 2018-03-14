@@ -8,13 +8,18 @@ namespace lostnfound.Controllers
     public class AdminController : Controller
     {
         
-        public ActionResult Account()
+        public ActionResult User()
+        {
+            return View();
+        }
+
+        public ActionResult Reporter()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Account(CreateUserView user)
+        public ActionResult User(CreateUserView user)
         {
             if (ModelState.IsValid)
             {
@@ -29,6 +34,21 @@ namespace lostnfound.Controllers
                 }
                 else
                     ModelState.AddModelError("", "Email already taken.");
+            }
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Reporter(CreateReporterView user)
+        {
+            if (ModelState.IsValid)
+            {
+                UserManager UM = new UserManager();
+
+                UM.AddReporterAccount(user);
+                FormsAuthentication.SetAuthCookie(user.FirstName, false);
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }

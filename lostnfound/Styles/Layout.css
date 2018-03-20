@@ -116,13 +116,13 @@ footer {
 /*################# Home Page ##################*/
 
 .title {
-    margin: 20px 0px 10px 0px;
+    margin: 10px 0px 10px 0px;
     text-align: center;
     color: #a55256;
 }
 
 .subtitle {
-    margin: 10px 0px 40px 0px;
+    margin: 10px 0px 30px 0px;
     font-weight: normal;
     text-align: center;
     color: #ffffff;
@@ -135,19 +135,15 @@ footer {
 
 /*################# Account Page ##################*/
 
-.label {
-    color: #4C93CE;
-    font-size: 21px;
-    margin: 10px;
-}
-
 .field {
+    text-align: left;
     background-color: #ffffff;
     border: none;
-    border-radius: 5px;
-    width: 100%;
-    height: 30px;
-    margin: 10px;
+    border-radius: 3px;
+    width: 80%;
+    margin: 20px;
+    padding: 10px;
+    padding-left: 20px;
 }
 
 .btn {
@@ -155,17 +151,13 @@ footer {
     border: none;
     border-radius: 5px;
     color: white;
-    padding: 20px 100px 20px 100px;
+    padding: 7px 50px 7px 50px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
 }
 
-.create {
-    padding: 11px;
-    text-align: center;
-}
 
 
 /*################# Custom Styles ##################*/
@@ -178,6 +170,10 @@ footer {
 
 .lightWeight {
     font-weight: normal;
+}
+
+.centerText {
+    text-align: center;
 }
 
 .leftString {
@@ -206,5 +202,9 @@ footer {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 15px;
+    margin-top: 12px;
+}
+
+.danger{
+    color:#ff0000;
 }

@@ -1,39 +1,46 @@
 ﻿<!DOCTYPE html>
 
-<html>
+<html lang="en">
+
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="~/Styles/Layout.css" />
     <title>@ViewBag.Title | LostnFound</title>
-    <link rel="stylesheet" type="text/css" href="~/Styles/Layout.css"/>
 </head>
+
 <body>
 
+    <!-- Navigation Bar -->
     <nav>
         <a href="~/Home/Index"><h1 id="logo">LostnFound</h1></a>
     </nav>
 
+    <!-- Padding to Body -->
+    <div id="renderBody"></div>
+    
+    <!-- Navigation Strings -->
     <div class="row">
-
-            <div class="col-6">
-                <a href="@ViewBag.LeftStringLink"><p class="reset leftString">@ViewBag.LeftString</p></a>
-            </div>
-            <div class="col-6">
-                <a href="@ViewBag.RightStringLink"><p class="reset rightString">@ViewBag.RightString</p></a>
-            </div>
-
-    </div>
-     
-    <div class="row">
-        <div class="container">
-                
-            @RenderBody()
-
+        <div class="col-6">
+            <a href="@ViewBag.LeftStringLink"><p class="reset leftString">@ViewBag.LeftString</p></a>
+        </div>
+        <div class="col-6">
+            <a href="@ViewBag.RightStringLink"><p class="reset rightString">@ViewBag.RightString</p></a>
         </div>
     </div>
-   
+
+    <!-- Render Body -->
+    <div class="row">
+        <div class="panel-container">
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
         <p id="disclaimer">CrackTheCode &copy; @DateTime.Now.Year - CMPS253 Project</p>
     </footer>
-   
+
 </body>
+
 </html>

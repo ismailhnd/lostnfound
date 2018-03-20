@@ -7,6 +7,10 @@ namespace lostnfound.Models.EntityManager
 {
     public class UserManager
     {
+
+        /********************  Main Functions ********************/
+
+        //Add new User
         public void AddUserAccount(CreateUserView user)
         {
             using (lostfoundDB db = new lostfoundDB())
@@ -26,6 +30,7 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
+        //Add new Reporter
         public void AddReporterAccount(CreateReporterView user)
         {
             using (lostfoundDB db = new lostfoundDB())
@@ -44,6 +49,11 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
+
+
+        /********************  Sepcial Functions ********************/
+
+        //Check if email already exists in the database 
         public bool IsEmailExist(string email)
         {
             using (lostfoundDB db = new lostfoundDB())
@@ -51,7 +61,41 @@ namespace lostnfound.Models.EntityManager
                 return db.USERs.Where(o => o.EMAIL.Equals(email)).Any();
             }
         }
-        public bool IsIDExist(int id, string table)
+
+        //Generate a unique identifier between 1 and 1000
+        public int UniqueID(string table)
+        {
+            Random rnd = new Random();
+            int unique = rnd.Next(1, 1000);
+
+            if (IsIDExist(unique, table))
+            {
+                return UniqueID(table);
+            }
+            else
+            {
+                return unique;
+            }
+        }
+
+        //Get password from database
+        public string GetUserPassword(string email)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                var user = db.USERs.Where(o => o.EMAIL.ToLower().Equals(email));
+                if (user.Any())
+                    return user.FirstOrDefault().PASSWORD;
+                else
+                    return string.Empty;
+            }
+        }
+
+
+        /********************  Private Functions ********************/
+
+        //Check if ID already exist in database
+        private bool IsIDExist(int id, string table)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
@@ -70,21 +114,8 @@ namespace lostnfound.Models.EntityManager
 
             }
         }
-        public int UniqueID(string table)
-        {
-            Random rnd = new Random();
-            int unique = rnd.Next(1, 1000);
 
-            if (IsIDExist(unique, table))
-            {
-                return UniqueID(table);
-            }
-            else
-            {
-                return unique;
-            }
-        }
     }
 
-    
+
 }

@@ -7,17 +7,25 @@ namespace lostnfound.Controllers
 {
     public class AdminController : Controller
     {
-        
+        /********************  Main Views ********************/
+
+        //User View
         public ActionResult Account()
         {
             return View();
         }
 
+        //Reporter View
         public ActionResult Reporter()
         {
             return View();
         }
 
+
+        /********************  POST Request ********************/
+
+        //User POST Request
+        [Authorize]
         [HttpPost]
         public ActionResult Account(CreateUserView user)
         {
@@ -28,7 +36,7 @@ namespace lostnfound.Controllers
                 if (!UM.IsEmailExist(user.Email))
                 {
                     UM.AddUserAccount(user);
-                    FormsAuthentication.SetAuthCookie(user.FirstName, false);
+                    FormsAuthentication.SetAuthCookie(user.Email, false);
                     return RedirectToAction("Index", "Home");
 
                 }
@@ -38,7 +46,8 @@ namespace lostnfound.Controllers
             return View();
         }
 
-
+        //Reporter POST Request
+        [Authorize]
         [HttpPost]
         public ActionResult Reporter(CreateReporterView user)
         {
@@ -47,10 +56,22 @@ namespace lostnfound.Controllers
                 UserManager UM = new UserManager();
 
                 UM.AddReporterAccount(user);
-                FormsAuthentication.SetAuthCookie(user.FirstName, false);
+                FormsAuthentication.SetAuthCookie(user.Email, false);
                 return RedirectToAction("Index", "Home");
             }
             return View();
+        }
+
+
+
+        /********************  Special Functions ********************/
+
+        //SignOut current user
+        [Authorize]
+        public ActionResult SignOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

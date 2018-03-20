@@ -2,16 +2,25 @@
 
 @{
     ViewBag.Title = "Reporter";
+    ViewBag.leftString = "Add Item";
+    ViewBag.rightString = "";
+    ViewBag.leftStringLink = "#";
+    ViewBag.leftStringLink = "#";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Reporter</h2>
+<!-- Header -->
+<div class="row">
+    <div class="col-12">
+        <h1 class="reset headWelcome">Add a new Reporter</h1>
+    </div>
+</div>
 
-
-@using (Html.BeginForm()) 
+<!-- Reporter Section -->
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>CreateReporterView</h4>
         <hr />
@@ -74,10 +83,8 @@
     </div>
 }
 
+<!-- Signout Link -->
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Signout", "Index", "Home")
 </div>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

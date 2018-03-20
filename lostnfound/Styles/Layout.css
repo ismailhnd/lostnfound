@@ -9,11 +9,11 @@ body {
     background-color: #494b5b;
 }
 
-nav,footer {
+nav, footer {
     display: block;
 }
 
-a, a:visited {
+a, a:visited, a:hover {
     text-decoration: none;
 }
 
@@ -71,6 +71,19 @@ a, a:visited {
 .col-12 {
     width: 100%;
 }
+
+.panel-container {
+    margin: 0 auto;
+    width: 95%;
+    height: auto;
+    border-radius: 10px;
+    background-color: #2E323D;
+}
+
+#renderBody {
+    margin-top: 10px;
+}
+
 /*################# Navbar ##################*/
 nav {
     background-color: #292a32;
@@ -100,50 +113,98 @@ footer {
     margin-top: 20px;
 }
 
-/*################# Welcome Page ##################*/
+/*################# Home Page ##################*/
 
+.title {
+    margin: 20px 0px 10px 0px;
+    text-align: center;
+    color: #a55256;
+}
 
-.featuresBlock {
-    padding: 50px 10px 0px 10px;
+.subtitle {
+    margin: 10px 0px 40px 0px;
+    font-weight: normal;
     text-align: center;
     color: #ffffff;
 }
 
+.textTitle {
+    text-align: center;
+    color: #4C93CE;
+}
+
 /*################# Account Page ##################*/
+
+.label {
+    color: #4C93CE;
+    font-size: 21px;
+    margin: 10px;
+}
+
+.field {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 30px;
+    margin: 10px;
+}
+
+.btn {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 20px 100px 20px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
+
+.create {
+    padding: 11px;
+    text-align: center;
+}
+
 
 /*################# Custom Styles ##################*/
 
 
-.reset{
+.reset {
     margin: 0;
     padding: 0;
 }
 
-.container {
-    margin: 0 auto;
-    width: 1300px;
-    height: auto;
-    border-radius: 10px;
-    background-color: #2E323D;
+.lightWeight {
+    font-weight: normal;
 }
 
 .leftString {
-    padding:20px 0px 5px 35px;
+    padding: 10px 0px 5px 35px;
     font-size: 20px;
     color: #4C93CE;
-    text-align:left;
-    
+    text-align: left;
 }
 
 .rightString {
-    padding: 20px 40px 5px 0px;
+    padding: 10px 40px 5px 0px;
     font-size: 20px;
     color: #4C93CE;
     text-align: right;
 }
 
-.headWelcome {
-    padding: 20px 10px 0px 10px;
-    text-align: center;
+.text {
     color: #ffffff;
+    text-align: justify;
+    word-wrap: break-word;
+    padding: 30px;
+}
+
+.center {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
 }

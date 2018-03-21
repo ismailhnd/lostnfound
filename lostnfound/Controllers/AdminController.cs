@@ -2,6 +2,7 @@
 using System.Web.Security;
 using lostnfound.Models.ViewModel;
 using lostnfound.Models.EntityManager;
+using lostnfound.Security;
 
 namespace lostnfound.Controllers
 {
@@ -25,7 +26,7 @@ namespace lostnfound.Controllers
         /********************  POST Request ********************/
 
         //User POST Request
-        [Authorize]
+        [CustomAuthorize("admin")]
         [HttpPost]
         public ActionResult Account(CreateUserView user)
         {
@@ -47,7 +48,7 @@ namespace lostnfound.Controllers
         }
 
         //Reporter POST Request
-        [Authorize]
+        [CustomAuthorize("admin")]
         [HttpPost]
         public ActionResult Reporter(CreateReporterView user)
         {

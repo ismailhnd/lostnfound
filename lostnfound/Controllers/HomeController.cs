@@ -15,7 +15,11 @@ namespace lostnfound.Controllers
             return View();
         }
 
-
+        //Unauthorized Access
+        public ActionResult Unauthorized()
+        {
+            return View();
+        }
         /********************  POST Request ********************/
 
         //Login POST Request

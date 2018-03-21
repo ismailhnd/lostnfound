@@ -91,7 +91,31 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
+        //Verify User's role
+        public bool IsUserInRole(string email, string roleTitle)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                USER SU = db.USERs.Where(o => o.EMAIL.ToLower().Equals(email))?.FirstOrDefault();
+                if (SU != null)
+                {
+                    var roles = from q in db.ROLEs
+                                from s in db.USERs
+                                join r in db.PERMISSIONs on q.ROLEID equals r.ROLEID
+                                where q.TITLE.Equals(roleTitle) && s.USERID.Equals(SU.USERID)
+                                select q.TITLE;
 
+                    if (roles != null)
+                    {
+                        return roles.Any();
+                    }
+                }
+
+                return false;
+            }
+        }
+        
+        
         /********************  Private Functions ********************/
 
         //Check if ID already exist in database

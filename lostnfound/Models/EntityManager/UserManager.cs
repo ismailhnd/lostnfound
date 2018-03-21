@@ -96,21 +96,19 @@ namespace lostnfound.Models.EntityManager
         {
             using (lostfoundDB db = new lostfoundDB())
             {
-                USER SU = db.USERs.Where(o => o.EMAIL.ToLower().Equals(email))?.FirstOrDefault();
-                if (SU != null)
+                USER user = db.USERs.Where(o => o.EMAIL.ToLower().Equals(email))?.FirstOrDefault();
+                if (user != null)
                 {
-                    var roles = from q in db.ROLEs
-                                from s in db.USERs
-                                join r in db.PERMISSIONs on q.ROLEID equals r.ROLEID
-                                where q.TITLE.Equals(roleTitle) && s.USERID.Equals(SU.USERID)
-                                select q.TITLE;
+                    var roles = from q in db.USERs
+                                join r in db.ROLEs on q.ROLEID equals r.ROLEID
+                                where r.TITLE.Equals(roleTitle) && q.USERID.Equals(user.USERID)
+                                select r.TITLE;
 
                     if (roles != null)
                     {
                         return roles.Any();
                     }
                 }
-
                 return false;
             }
         }

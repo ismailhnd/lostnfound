@@ -11,12 +11,14 @@ namespace lostnfound.Controllers
         /********************  Main Views ********************/
 
         //User View
+        [CustomAuthorize("admin")]
         public ActionResult Account()
         {
             return View();
         }
 
         //Reporter View
+        [CustomAuthorize("admin")]
         public ActionResult Reporter()
         {
             return View();
@@ -26,7 +28,6 @@ namespace lostnfound.Controllers
         /********************  POST Request ********************/
 
         //User POST Request
-        [CustomAuthorize("admin")]
         [HttpPost]
         public ActionResult Account(CreateUserView user)
         {
@@ -48,7 +49,6 @@ namespace lostnfound.Controllers
         }
 
         //Reporter POST Request
-        [CustomAuthorize("admin")]
         [HttpPost]
         public ActionResult Reporter(CreateReporterView user)
         {
@@ -63,16 +63,5 @@ namespace lostnfound.Controllers
             return View();
         }
 
-
-
-        /********************  Special Functions ********************/
-
-        //SignOut current user
-        [Authorize]
-        public ActionResult SignOut()
-        {
-            FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
-        }
     }
 }

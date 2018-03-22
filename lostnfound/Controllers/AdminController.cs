@@ -63,5 +63,15 @@ namespace lostnfound.Controllers
             return View();
         }
 
+        /********************  Special Functions ********************/
+
+        //SignOut current user
+        /*[CustomAuthorize("admin")]
+        public ActionResult SignOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
+        }*/
     }
 }

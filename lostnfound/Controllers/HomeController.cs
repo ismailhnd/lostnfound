@@ -2,6 +2,10 @@
 using System.Web.Security;
 using lostnfound.Models.ViewModel;
 using lostnfound.Models.EntityManager;
+using lostnfound.Security;
+using System.Web;
+using System.Web.Configuration;
+using System;
 
 namespace lostnfound.Controllers
 {
@@ -60,6 +64,7 @@ namespace lostnfound.Controllers
         public ActionResult SignOut()
         {
             FormsAuthentication.SignOut();
+            Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
     }

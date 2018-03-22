@@ -113,7 +113,7 @@ footer {
     margin-top: 20px;
 }
 
-/*################# Home Page ##################*/
+/*################# Common Styles ##################*/
 
 .title {
     margin: 10px 0px 10px 0px;
@@ -132,8 +132,6 @@ footer {
     text-align: center;
     color: #4C93CE;
 }
-
-/*################# Account Page ##################*/
 
 .field {
     text-align: left;
@@ -157,8 +155,6 @@ footer {
     display: inline-block;
     font-size: 18px;
 }
-
-
 
 /*################# Custom Styles ##################*/
 
@@ -207,4 +203,10 @@ footer {
 
 .danger{
     color:#ff0000;
+}
+
+
+.unauthorizedPad {
+    margin-top: 56px;
+    margin-bottom: 56px;
 }

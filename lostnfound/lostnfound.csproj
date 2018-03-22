@@ -100,6 +100,7 @@
     <Content Include="Global.asax" />
     <Content Include="images\archive.png" />
     <Content Include="images\collaboration.png" />
+    <Content Include="images\danger.png" />
     <Content Include="images\signing.png" />
     <Content Include="Models\DB\lostnfoundDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -3,20 +3,31 @@
 @{
     ViewBag.Title = "Account";
     ViewBag.leftString = "Preferences";
-    ViewBag.rightString = "";
+    ViewBag.rightString = "Save";
     ViewBag.leftStringLink = "#";
-    ViewBag.leftStringLink = "#";
+    ViewBag.rightStringLink = "#";
+    ViewBag.SignOut = @Html.ActionLink("Signout", "Index", "Home");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <!-- Header -->
-<div class="row">
+<!-- Title -->
+<div class="row title">
     <div class="col-12">
-        <h1 class="reset headWelcome">Create a new Account</h1>
+        <h1 class="reset">Create a New Account</h1>
     </div>
-
 </div>
+
+<!--  SubTitle -->
+<div class="row subtitle">
+    <div class="col-12">
+        <h4 class="reset lightWeight">
+            Only administrators are allowed to create users from this panel
+        </h4>
+    </div>
+</div>
+
+
 
 <!-- User Section -->
 @using (Html.BeginForm())
@@ -27,7 +38,7 @@
     <div class="row ">
         <div class="col-6 ">
             <div class="row center">
-                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "label " })
+                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "label" })
             </div>
 
             <div class="row">
@@ -59,27 +70,27 @@
 
             <div class="row">
                 @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "danger" })
             </div>
 
             <div class="row">
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "danger" })
             </div>
 
             <div class="row">
                 @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "danger" })
             </div>
 
             <div class="row">
                 @Html.EditorFor(model => model.Passowrd, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.Passowrd, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Passowrd, "", new { @class = "danger" })
             </div>
 
             <div class="row">
                 @Html.EditorFor(model => model.RoleID, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "danger" })
             </div>
 
             <div class="row create">

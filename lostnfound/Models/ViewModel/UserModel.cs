@@ -10,10 +10,10 @@ namespace lostnfound.Models.ViewModel
         [Key]
         public int UserID { get; set; }
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "* required")]
         [Display(Name = "Email")]
         public string Email { get; set; }
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "* required")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -26,23 +26,24 @@ namespace lostnfound.Models.ViewModel
 
         public int UserID { get; set; }
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "* required")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "* required")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "* required")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "* required")]
         [Display(Name = "Phone Number")]
         public string PhoneNumber{ get; set; }
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "* required")]
+        [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Passowrd{ get; set; }
 

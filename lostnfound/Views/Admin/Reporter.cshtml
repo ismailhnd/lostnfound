@@ -5,7 +5,8 @@
     ViewBag.leftString = "Add Item";
     ViewBag.rightString = "";
     ViewBag.leftStringLink = "#";
-    ViewBag.leftStringLink = "#";
+    ViewBag.rightStringLink = "#";
+    ViewBag.SignOut = @Html.ActionLink("Signout", "Index", "Home");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -82,9 +83,4 @@
         </div>
     </div>
 }
-
-<!-- Signout Link -->
-<div>
-    @Html.ActionLink("Signout", "Index", "Home")
-</div>
 

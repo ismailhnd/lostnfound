@@ -27,19 +27,17 @@
         <AssociationConnector Association="CrackTheCode.FK_ITEMSTAT_REFERENCE_STATE" ManuallyRouted="false" />
         <AssociationConnector Association="CrackTheCode.FK_ITEMSTAT_REFERENCE_USER" ManuallyRouted="true" >
           <ConnectorPoint PointX="3.75" PointY="10.191793619791666" />
-          <ConnectorPoint PointX="3.75" PointY="10.441793619791667" />
-          <ConnectorPoint PointX="5" PointY="10.441793619791667" />
-          <ConnectorPoint PointX="5" PointY="11.485006510416669" />
-          <ConnectorPoint PointX="5.5104141666666671" PointY="11.485006510416669" />
-          <ConnectorPoint PointX="5.6770808333333331" PointY="11.485006510416669" />
-          <ConnectorPoint PointX="5.916666666666667" PointY="11.485006510416669" />
-          <ConnectorPoint PointX="6.083333333333333" PointY="11.485006510416669" />
-          <ConnectorPoint PointX="6.3229191666666669" PointY="11.485006510416669" />
-          <ConnectorPoint PointX="6.4895858333333329" PointY="11.485006510416669" />
-          <ConnectorPoint PointX="7.125" PointY="11.485006510416669" />
-          <ConnectorPoint PointX="7.125" PointY="8.0311210468749987" />
-          <ConnectorPoint PointX="7.197916666666667" PointY="8.0311210468749987" />
-          <ConnectorPoint PointX="7.364583333333333" PointY="8.0311210468749987" />
+          <ConnectorPoint PointX="3.75" PointY="11.297506510416667" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="11.297506510416667" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="11.297506510416667" />
+          <ConnectorPoint PointX="5.916666666666667" PointY="11.297506510416667" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="11.297506510416667" />
+          <ConnectorPoint PointX="6.3229191666666669" PointY="11.297506510416667" />
+          <ConnectorPoint PointX="6.4895858333333329" PointY="11.297506510416667" />
+          <ConnectorPoint PointX="7.0625" PointY="11.297506510416667" />
+          <ConnectorPoint PointX="7.0625" PointY="8.0311210468749987" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="8.0311210468749987" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="8.0311210468749987" />
           <ConnectorPoint PointX="7.5" PointY="8.0311210468749987" />
         </AssociationConnector>
         <AssociationConnector Association="CrackTheCode.FK_PERMISSI_REFERENCE_PRIVILEG" ManuallyRouted="false" />

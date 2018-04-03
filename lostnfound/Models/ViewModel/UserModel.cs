@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace lostnfound.Models.ViewModel
 {
@@ -77,12 +78,24 @@ namespace lostnfound.Models.ViewModel
         public bool AUB { get; set; } 
         public string VerificationDocument { get; set; }
     }
-
-    //Empty Model - Not Completed Yet 
+    
     //New Item Model
     public class CreateItemView
     {
-         
+        [Key]
+
+        public int ItemID { get; set; }           
+        public int ReporterID { get; set; }
+        public int CreatedByID { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int ItemTypeID { get; set; }
+        public int StateID { get; set; }
+        public DateTime FLDateID { get; set; }
+        public int CategoryID { get; set; }
+        public int ColorID { get; set; }
+        public int LocationID { get; set; }
+        public string Image { get; set; }
+        public string Notes { get; set; }
     }
 
     //New Color Model

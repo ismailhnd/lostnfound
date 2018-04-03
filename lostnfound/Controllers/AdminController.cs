@@ -63,6 +63,62 @@ namespace lostnfound.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Item(CreateItemView item)
+        {
+            if (ModelState.IsValid)
+            {
+                UserManager UM = new UserManager();
+
+                UM.AddItemToDatabase(item);
+
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Color(CreateColorView color)
+        {
+            if (ModelState.IsValid)
+            {
+                UserManager UM = new UserManager();
+                
+                UM.AddColorToDatabase(color);
+
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Location(CreateLocationView location)
+        {
+            if (ModelState.IsValid)
+            {
+                UserManager UM = new UserManager();
+
+                UM.AddLocationToDatabase(location);
+
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Category(CreateCategoryView category)
+        {
+            if (ModelState.IsValid)
+            {
+                UserManager UM = new UserManager();
+
+                UM.AddCategoryToDatabase(category);
+
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+        
         /********************  Special Functions ********************/
 
         //SignOut current user

@@ -24,6 +24,34 @@ namespace lostnfound.Controllers
             return View();
         }
 
+        //Color View
+        [CustomAuthorize("admin")]
+        public ActionResult Color()
+        {
+            return View();
+        }
+
+        //Item View
+        [CustomAuthorize("admin")]
+        public ActionResult Item()
+        {
+            return View();
+        }
+
+        //Location View
+        [CustomAuthorize("admin")]
+        public ActionResult Location()
+        {
+            return View();
+        }
+
+
+        //Category View
+        [CustomAuthorize("admin")]
+        public ActionResult Category()
+        {
+            return View();
+        }
 
         /********************  POST Request ********************/
 

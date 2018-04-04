@@ -205,7 +205,7 @@ namespace lostnfound.Models.EntityManager
                 }
                 else if (table == "CATEGORY")
                 {
-                    return db.CATEGORYs.Where(o => o.CATEGORYID.Equals(id)).Any();
+                    return db.CATEGORies.Where(o => o.CATEGORYID.Equals(id)).Any();
                 }
                 else
                 {

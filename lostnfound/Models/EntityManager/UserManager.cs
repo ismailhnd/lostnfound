@@ -11,40 +11,40 @@ namespace lostnfound.Models.EntityManager
         /********************  Main Functions ********************/
 
         //Add new User
-        public void AddUserAccount(CreateUserView userView)
+        public void AddUserAccount(CreateUserView user)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
                 USER staff = new USER
                 {
                     USERID = UniqueID("User"),
-                    FIRSTNAME = userView.FirstName,
-                    LASTNAME = userView.LastName,
-                    EMAIL = userView.Email,
-                    PHONENUMBER = userView.PhoneNumber,
-                    PASSWORD = userView.Passowrd
+                    FIRSTNAME = user.FirstName,
+                    LASTNAME = user.LastName,
+                    EMAIL = user.Email,
+                    PHONENUMBER = user.PhoneNumber,
+                    PASSWORD = user.Passowrd
                 };
-                staff.FIRSTNAME = userView.FirstName;
-                staff.ROLEID = userView.RoleID;
+                staff.FIRSTNAME = user.FirstName;
+                staff.ROLEID = user.RoleID;
                 db.USERs.Add(staff);
                 db.SaveChanges();
             }
         }
 
         //Add new Reporter
-        public void AddReporterAccount(CreateReporterView reporterView)
+        public void AddReporterAccount(CreateReporterView user)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
                 REPORTER reporter = new REPORTER
                 {
                     REPORTERID = UniqueID("Reporter"),
-                    FIRSTNAME = reporterView.FirstName,
-                    LASTNAME = reporterView.LastName,
-                    EMAIL = reporterView.Email,
-                    PHONENUMBER = reporterView.PhoneNumber,
-                    IDDOCUMENT = reporterView.VerificationDocument,
-                    AUB = reporterView.AUB
+                    FIRSTNAME = user.FirstName,
+                    LASTNAME = user.LastName,
+                    EMAIL = user.Email,
+                    PHONENUMBER = user.PhoneNumber,
+                    IDDOCUMENT = user.VerificationDocument,
+                    AUB = user.AUB
                 };
                 db.REPORTERs.Add(reporter);
                 db.SaveChanges();
@@ -52,63 +52,64 @@ namespace lostnfound.Models.EntityManager
         }
 
         //Add new item
-        public void AddItemToDatabase(CreateItemView itemView)
+        //TODO: check id fetching and foreign keys
+        public void AddItem(CreateItemView data)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
                 ITEM item = new ITEM
                 {
                     ITEMID = UniqueID("Item"),
-                    REPORTERID = itemView.ReporterID,
-                    CREATEDBYID = itemView.CreatedByID,
-                    CREATEDDATE = itemView.CreatedDate,
-                    ITEMTYPEID = itemView.ItemTypeID,
-                    STATEID = itemView.StateID,
-                    FLDATE = itemView.FLDateID,
-                    CATEGORYID = itemView.CategoryID,
-                    COLORID = itemView.ColorID,
-                    LOCATIONID = itemView.LocationID,
-                    IMAGE = itemView.Image,
-                    NOTES = itemView.Notes
+                    REPORTERID = data.ReporterID,
+                    CREATEDBYID = data.CreatedByID,
+                    CREATEDDATE = data.CreatedDate,
+                    ITEMTYPEID = data.ItemTypeID,
+                    STATEID = data.StateID,
+                    FLDATE = data.FLDateID,
+                    CATEGORYID = data.CategoryID,
+                    COLORID = data.ColorID,
+                    LOCATIONID = data.LocationID,
+                    IMAGE = data.Image,
+                    NOTES = data.Notes
                 };
             }
         }
 
         //Add new color
-        public void AddColorToDatabase(CreateColorView colorView)
+        public void AddColor(CreateColorView data)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
                 COLOR color = new COLOR
                 {
                     COLORID = UniqueID("Color"),
-                    TITLE = colorView.Title
+                    TITLE = data.Title
                 };
             }
         }
 
         //Add new location
-        public void AddLocationToDatabase(CreateLocationView locationView)
+        public void AddLocation(CreateLocationView data)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
                 LOCATION location = new LOCATION
                 {
                     LOCATIONID = UniqueID("Location"),
-                    TITLE = locationView.Title
+                    TITLE = data.Title
                 };
             }
         }
 
         //Add new category
-        public void AddCategoryToDatabase(CreateCategoryView categoryView)
+        public void AddCategory(CreateCategoryView data)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
                 CATEGORY category = new CATEGORY
                 {
                     CATEGORYID = UniqueID("Category"),
-                    TITLE = categoryView.Title
+                    TITLE = data.Title
                 };
             }
         }

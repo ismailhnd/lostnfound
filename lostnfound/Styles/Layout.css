@@ -166,6 +166,14 @@ footer {
     font-size: 18px;
 }
 
+.label {
+    text-align: left;
+    color: #4C93CE;
+    margin:5px;
+    padding:5px;
+}
+
+
 /*################# Custom Styles ##################*/
 
 
@@ -193,6 +201,7 @@ footer {
 .danger {
     color: #ff0000;
 }
+
 
 /*################# Special Styles ##################*/
 

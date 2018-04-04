@@ -101,15 +101,19 @@ namespace lostnfound.Models.ViewModel
     //New Color Model
      public class CreateColorView
      {
-         public int ColorID { get; set; }
-         public string Title { get; set; }
+        public int ColorID { get; set; }
+        [Required(ErrorMessage = "* required")]
+        [Display(Name = "Color")]
+        public string Title { get; set; }
      }
 
     //New Location Model
      public class CreateLocationView
      {
-         public int LocationID { get; set; }
-         public string Title { get; set; }
+        public int LocationID { get; set; }
+        [Required(ErrorMessage = "* required")]
+        [Display(Name = "Location")]
+        public string Title { get; set; }
 
      }
     
@@ -117,6 +121,8 @@ namespace lostnfound.Models.ViewModel
      public class CreateCategoryView
      {
          public int CategoryID { get; set; }
-         public string Title { get; set; }
+        [Required(ErrorMessage = "* required")]
+        [Display(Name = "Category")]
+        public string Title { get; set; }
      }
 }

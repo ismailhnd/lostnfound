@@ -98,7 +98,7 @@ namespace lostnfound.Controllers
             {
                 UserManager UM = new UserManager();
 
-                UM.AddItemToDatabase(item);
+                UM.AddItem(item);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -112,7 +112,7 @@ namespace lostnfound.Controllers
             {
                 UserManager UM = new UserManager();
                 
-                UM.AddColorToDatabase(color);
+                UM.AddColor(color);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -126,7 +126,7 @@ namespace lostnfound.Controllers
             {
                 UserManager UM = new UserManager();
 
-                UM.AddLocationToDatabase(location);
+                UM.AddLocation(location);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -140,7 +140,7 @@ namespace lostnfound.Controllers
             {
                 UserManager UM = new UserManager();
 
-                UM.AddCategoryToDatabase(category);
+                UM.AddCategory(category);
 
                 return RedirectToAction("Index", "Home");
             }

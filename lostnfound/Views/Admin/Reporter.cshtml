@@ -11,9 +11,10 @@
 }
 
 <!-- Header -->
-<div class="row">
+<!-- Title -->
+<div class="row title">
     <div class="col-12">
-        <h1 class="reset headWelcome">Add a new Reporter</h1>
+        <h1 class="reset">Create a New Reporter</h1>
     </div>
 </div>
 
@@ -23,43 +24,42 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>CreateReporterView</h4>
-        <hr />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "label" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "field" } })
                 @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "label" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "field" } })
                 @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "label" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "field" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "label" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "field" } })
                 @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AUB, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AUB, htmlAttributes: new { @class = "label" })
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.AUB)
@@ -69,9 +69,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.VerificationDocument, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.VerificationDocument, htmlAttributes: new { @class = "label" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.VerificationDocument, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.VerificationDocument, new { htmlAttributes = new { @class = "field" } })
                 @Html.ValidationMessageFor(model => model.VerificationDocument, "", new { @class = "text-danger" })
             </div>
         </div>

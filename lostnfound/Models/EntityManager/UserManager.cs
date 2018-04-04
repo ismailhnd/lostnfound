@@ -2,6 +2,7 @@
 using System.Linq;
 using lostnfound.Models.DB;
 using lostnfound.Models.ViewModel;
+using System.Collections.Generic;
 
 namespace lostnfound.Models.EntityManager
 {
@@ -135,6 +136,119 @@ namespace lostnfound.Models.EntityManager
                 }
 
             }
+        }
+        //*******NEW*****  
+        
+        public List<LookUpAvailableRole> GetAllRoles()
+        {
+            using (lostfoundDB db = new lostfoundDB() )
+            {
+                var roles = db.ROLEs.Select(o => new LookUpAvailableRole
+                {
+                    ROLEID = o.ROLEID,
+                    TITLE = o.TITLE,
+
+                }).ToList();
+
+                return roles;
+            }
+        }
+
+        public int GetUserID(string loginName)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                var user = db.USERs.Where(o => o.EMAIL.Equals(loginName));
+                if (user.Any()) return user.FirstOrDefault().USERID;
+            }
+            return 0;
+        }
+
+        public List<CreateUserView> GetAllUserProfiles()
+        {
+            List<CreateUserView> profiles = new List<CreateUserView>();
+
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                CreateUserView UPV;
+                var users = db.USERs.ToList();
+
+                foreach (USER u in db.USERs)
+                {
+                    UPV = new CreateUserView();
+                    UPV.UserID = u.USERID;
+                    UPV.Email = u.EMAIL;
+                    UPV.Passowrd = u.PASSWORD;
+
+                    var SUP = db.USERs.Find(u.USERID);
+                    if (SUP != null)
+                    {
+                        UPV.FirstName = SUP.FIRSTNAME;
+                        UPV.LastName = SUP.LASTNAME;
+                        //UPV.ROLEID = SUP.ROLEID;
+                        UPV.PhoneNumber = SUP.PHONENUMBER;
+                        
+                    }
+
+                    var SUR = db.USERs.Where(o => o.USERID.Equals(u.USERID));
+                    if (SUR.Any())
+                    {
+                        var userRole = SUR.FirstOrDefault();
+                        UPV.ROLEID = userRole.ROLEID;
+                        UPV.ROLE = userRole.ROLE;
+                        //UPV.r = userRole.IsActive;
+                    }
+
+                    profiles.Add(UPV);
+                }
+            }
+
+            return profiles;
+        }
+
+        public UserManager GetUserDataView(string loginName)
+        {
+            UserManager UDV = new UserManager();
+            List<USER> profiles = GetAllUserProfiles();
+            List<ROLE> roles = GetAllRoles();
+
+            int? userAssignedRoleID = 0, userID = 0;
+           // string userGender = string.Empty;
+
+            userID = GetUserID(loginName);
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                userAssignedRoleID = db.USERs.Where(o => o.USERID == userID)?.FirstOrDefault().ROLEID;
+                
+               // userGender = db.USERs.Where(o => o.USERID == userID)?.FirstOrDefault().Gender;
+            }
+
+           /* List<Gender> genders = new List<Gender>();
+            genders.Add(new Gender
+            {
+                Text = "Male",
+                Value = "M"
+            });
+            genders.Add(new Gender
+            {
+                Text = "Female",
+                Value = "F"
+            });*/
+
+            UDV.UserProfile = profiles;
+            UDV.UserRoles = new UserRoles
+            {
+                SelectedRoleID = userAssignedRoleID,
+                UserRoleList = roles
+            };
+
+           /* UDV.UserGender = new UserGender
+            {
+                SelectedGender = userGender,
+                Gender = genders
+            };*/
+
+            return UDV;
         }
 
     }

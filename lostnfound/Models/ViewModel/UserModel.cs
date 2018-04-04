@@ -84,6 +84,15 @@ namespace lostnfound.Models.ViewModel
     {
          
     }
+    //NEW METHOD PART3
+    public class LookUpAvailableRole
+    {
+        [Key]
+        public int LOOKUPROLEID { get; set; }
+        public int ROLEID { get; set; }
+        public string TITLE { get; set; }
+        //public  PERMISSIONs { get; set; }
+    }
 
     //New Color Model
      public class CreateColorView

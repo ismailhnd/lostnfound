@@ -72,6 +72,8 @@ namespace lostnfound.Models.EntityManager
                     IMAGE = data.Image,
                     NOTES = data.Notes
                 };
+                db.ITEMs.Add(item);
+                db.SaveChanges();
             }
         }
 
@@ -85,7 +87,10 @@ namespace lostnfound.Models.EntityManager
                     COLORID = UniqueID("Color"),
                     TITLE = data.Title
                 };
+                db.COLORs.Add(color);
+                db.SaveChanges();
             }
+
         }
 
         //Add new location
@@ -98,6 +103,9 @@ namespace lostnfound.Models.EntityManager
                     LOCATIONID = UniqueID("Location"),
                     TITLE = data.Title
                 };
+
+                db.LOCATIONs.Add(location);
+                db.SaveChanges();
             }
         }
 
@@ -111,6 +119,8 @@ namespace lostnfound.Models.EntityManager
                     CATEGORYID = UniqueID("Category"),
                     TITLE = data.Title
                 };
+                db.CATEGORies.Add(category);
+                db.SaveChanges();
             }
         }
 

@@ -67,5 +67,20 @@ namespace lostnfound.Controllers
             Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
+
+        //****NEW****
+        [CustomAuthorize("admin")]
+        public ActionResult ManageUserPartial()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                string loginName = User.Identity.Name;
+                UserManager UM = new UserManager();
+                UserLoginView UDV = UM.GetUserDataView(loginName);
+                return PartialView(UDV);
+            }
+
+            return View();
+        }
     }
 }

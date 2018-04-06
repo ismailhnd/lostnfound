@@ -54,7 +54,7 @@
             </div>
 
             <div class="row">
-                @Html.LabelFor(model => model.Passowrd, htmlAttributes: new { @class = "label" })
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "label" })
             </div>
 
             <div class="row">
@@ -84,12 +84,13 @@
             </div>
 
             <div class="row">
-                @Html.EditorFor(model => model.Passowrd, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.Passowrd, "", new { @class = "danger" })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "field" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "danger" })
             </div>
 
             <div class="row">
-                @Html.EditorFor(model => model.RoleID, new { htmlAttributes = new { @class = "field" } })
+                
+                @Html.DropDownListFor(m => m.RoleID, new SelectList(Model.roleinfo, "RoleID", "Title"), "Select Role", new { @class ="field"})
                 @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "danger" })
             </div>
 

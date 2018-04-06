@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using lostnfound.Models.DB;
 using lostnfound.Models.ViewModel;
@@ -7,7 +8,6 @@ namespace lostnfound.Models.EntityManager
 {
     public class UserManager
     {
-
         /********************  Main Functions ********************/
 
         //Add new User
@@ -22,13 +22,13 @@ namespace lostnfound.Models.EntityManager
                     LASTNAME = user.LastName,
                     EMAIL = user.Email,
                     PHONENUMBER = user.PhoneNumber,
-                    PASSWORD = user.Passowrd
+                    PASSWORD = user.Password
                 };
-                staff.FIRSTNAME = user.FirstName;
                 staff.ROLEID = user.RoleID;
                 db.USERs.Add(staff);
                 db.SaveChanges();
             }
+            
         }
 
         //Add new Reporter
@@ -50,6 +50,7 @@ namespace lostnfound.Models.EntityManager
                 db.SaveChanges();
             }
         }
+
 
         //Add new item
         //TODO: check id fetching and foreign keys
@@ -124,6 +125,29 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
+        /********************  DDL Functions ********************/
+
+        public CreateUserView RoleOptions()
+        {
+
+            CreateUserView roleView = new CreateUserView();
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                List<CreateUserView> userlist = new List<CreateUserView>();
+                foreach (ROLE r in db.ROLEs)
+                {
+                    CreateUserView temp = new CreateUserView();
+                    temp.RoleID = r.ROLEID;
+                    temp.Title = r.TITLE;
+                    userlist.Add(temp);
+
+                }
+
+                roleView.roleinfo = userlist;
+            }
+            return roleView;
+        }
+
         /********************  Sepcial Functions ********************/
 
         //Check if email already exists in the database 
@@ -150,7 +174,7 @@ namespace lostnfound.Models.EntityManager
                 return unique;
             }
         }
-        
+
         //Get password from database
         public string GetUserPassword(string email)
         {
@@ -185,8 +209,8 @@ namespace lostnfound.Models.EntityManager
                 return false;
             }
         }
-        
-        
+
+
         /********************  Private Functions ********************/
 
         //Check if ID already exist in database
@@ -225,8 +249,5 @@ namespace lostnfound.Models.EntityManager
 
             }
         }
-
     }
-
-
 }

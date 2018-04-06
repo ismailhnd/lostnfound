@@ -14,7 +14,9 @@ namespace lostnfound.Controllers
         [CustomAuthorize("admin")]
         public ActionResult Account()
         {
-            return View();
+
+            UserManager UM = new UserManager();
+            return View(UM.RoleOptions());
         }
 
         //Reporter View
@@ -59,10 +61,11 @@ namespace lostnfound.Controllers
         [HttpPost]
         public ActionResult Account(CreateUserView user)
         {
+            
             if (ModelState.IsValid)
             {
-                UserManager UM = new UserManager();
 
+                UserManager UM = new UserManager();
                 if (!UM.IsEmailExist(user.Email))
                 {
                     UM.AddUserAccount(user);

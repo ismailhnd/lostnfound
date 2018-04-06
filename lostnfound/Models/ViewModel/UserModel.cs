@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace lostnfound.Models.ViewModel
@@ -46,9 +47,12 @@ namespace lostnfound.Models.ViewModel
         [Required(ErrorMessage = "* required")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
-        public string Passowrd{ get; set; }
+        public string Password{ get; set; }
 
+        [Display(Name = "Role")]
         public int RoleID { get; set; }
+        public string Title { get; set; }
+        public List<CreateUserView> roleinfo { get; set; }
     }
 
     //New Reporter Model
@@ -120,9 +124,19 @@ namespace lostnfound.Models.ViewModel
     //New Category Model
      public class CreateCategoryView
      {
-         public int CategoryID { get; set; }
+        public int CategoryID { get; set; }
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Category")]
         public string Title { get; set; }
      }
+
+   /* //Role DropDownList
+    public class RoleDetails
+    {
+        [Key]
+        public int RoleID { get; set; }
+        public string Title { get; set; }
+        public List<RoleDetails> roleinfo { get; set; } 
+    }*/
+
 }

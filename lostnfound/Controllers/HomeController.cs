@@ -6,6 +6,7 @@ using lostnfound.Security;
 using System.Web;
 using System.Web.Configuration;
 using System;
+using System.Collections.Generic;
 
 namespace lostnfound.Controllers
 {
@@ -13,8 +14,8 @@ namespace lostnfound.Controllers
     {
         /********************  Main Views ********************/
 
-        //Homepage View
-        public ActionResult Index()
+//Homepage View
+public ActionResult Index()
         {
             return View();
         }
@@ -66,6 +67,21 @@ namespace lostnfound.Controllers
             FormsAuthentication.SignOut();
             Session.Abandon();
             return RedirectToAction("Index", "Home");
+        }
+
+
+        [CustomAuthorize("admin")]
+        public ActionResult ManageUserPartial()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                string loginName = User.Identity.Name;
+                UserManager UM = new UserManager();
+                List<CreateUserView> UDV = UM.GetAllUserProfiles();
+                return PartialView(UDV);
+            }
+
+            return View();
         }
     }
 }

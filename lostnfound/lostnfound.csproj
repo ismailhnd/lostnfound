@@ -200,6 +200,8 @@
     <Content Include="Views\Admin\Color.cshtml" />
     <Content Include="Views\Admin\Location.cshtml" />
     <Content Include="Views\Admin\Category.cshtml" />
+    <Content Include="Views\Home\ManageUserPartial.cshtml" />
+    <Content Include="Views\Admin\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

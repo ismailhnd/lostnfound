@@ -130,13 +130,14 @@ namespace lostnfound.Models.ViewModel
         public string Title { get; set; }
      }
 
-   /* //Role DropDownList
-    public class RoleDetails
-    {
-        [Key]
-        public int RoleID { get; set; }
-        public string Title { get; set; }
-        public List<RoleDetails> roleinfo { get; set; } 
-    }*/
+    /* //Role DropDownList
+     public class RoleDetails
+     {
+         [Key]
+         public int RoleID { get; set; }
+         public string Title { get; set; }
+         public List<RoleDetails> roleinfo { get; set; } 
+     }*/
+   
 
 }

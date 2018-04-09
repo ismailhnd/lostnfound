@@ -17,6 +17,7 @@ namespace lostnfound.Models.EntityManager
             {
                 USER staff = new USER
                 {
+                    USERID = UniqueID("User"),
                     FIRSTNAME = user.FirstName,
                     LASTNAME = user.LastName,
                     EMAIL = user.Email,
@@ -183,6 +184,61 @@ namespace lostnfound.Models.EntityManager
                     }
                 }
                 return false;
+            }
+        }
+
+        //Generate a unique identifier between 1 and 1000
+        public int UniqueID(string table)
+        {
+            Random rnd = new Random();
+            int unique = rnd.Next(1, 1000);
+
+            if (IsIDExist(unique, table))
+            {
+                return UniqueID(table);
+            }
+            else
+            {
+                return unique;
+            }
+        }
+
+        /********************  Private Functions ********************/
+
+        //Check if ID already exist in database
+        private bool IsIDExist(int id, string table)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                if (table == "User")
+                {
+                    return db.USERs.Where(o => o.USERID.Equals(id)).Any();
+                }
+                else if (table == "Reporter")
+                {
+                    return db.REPORTERs.Where(o => o.REPORTERID.Equals(id)).Any();
+                }
+                else if (table == "Item")
+                {
+                    return db.ITEMs.Where(o => o.ITEMID.Equals(id)).Any();
+                }
+                else if (table == "Color")
+                {
+                    return db.COLORs.Where(o => o.COLORID.Equals(id)).Any();
+                }
+                else if (table == "Location")
+                {
+                    return db.LOCATIONs.Where(o => o.LOCATIONID.Equals(id)).Any();
+                }
+                else if (table == "CATEGORY")
+                {
+                    return db.CATEGORies.Where(o => o.CATEGORYID.Equals(id)).Any();
+                }
+                else
+                {
+                    return false;
+                }
+
             }
         }
     }

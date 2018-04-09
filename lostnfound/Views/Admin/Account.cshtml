@@ -27,76 +27,111 @@
     </div>
 </div>
 
-
-
 <!-- User Section -->
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { })
 
-    <div class="row ">
-        <div class="col-6 ">
-            <div class="row center">
-                @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "label" })
-            </div>
+    <div class="row">
 
-            <div class="row">
-                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "label" })
-            </div>
+        <div class="row">
+            <div class="col-6 centerText">
 
-            <div class="row">
-                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "label" })
-            </div>
+                <!-- First name container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "field" } })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-            <div class="row">
-                @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "label" })
-            </div>
+                <!-- Last name container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "field" } })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "danger" })
+                    </div>
+                </div>
 
-            <div class="row">
-                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "label" })
+                <!-- Phone Number container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "field" } })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "danger" })
+                    </div>
+                </div>
             </div>
+            <div class="col-6 centerText">
 
-            <div class="row">
-                @Html.LabelFor(model => model.RoleID, htmlAttributes: new { @class = "label" })
+                <!-- Email container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "field" } })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "danger" })
+                    </div>
+                </div>
+
+                <!-- Password container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "field" } })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "danger" })
+                    </div>
+                </div>
+
+                <!-- Role container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.RoleID, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.RoleID, new SelectList(Model.roleinfo, "RoleID", "Title"), "Select Role", new { @class = "ddl" })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "danger" })
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="col-6 ">
-            <div class="row">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="row">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "danger" })
-            </div>
-
-            <div class="row">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "danger" })
-            </div>
-
-            <div class="row">
-                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "danger" })
-            </div>
-
-            <div class="row">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "danger" })
-            </div>
-
-            <div class="row">
-                
-                @Html.DropDownListFor(m => m.RoleID, new SelectList(Model.roleinfo, "RoleID", "Title"), "Select Role", new { @class ="field"})
-                @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "danger" })
-            </div>
-
-            <div class="row create">
+        
+        <div class="row center ">
+            <div class="col-12 centerText" id="createAccount" >
                 <input type="submit" value="Create" class="btn" />
-            </div>
+            </div>  
         </div>
     </div>
+
+   
+
+   
+
+    
+
+    
 }

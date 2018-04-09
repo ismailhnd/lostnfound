@@ -47,7 +47,6 @@ namespace lostnfound.Controllers
             return View();
         }
 
-
         //Category View
         [CustomAuthorize("admin")]
         public ActionResult Category()
@@ -94,6 +93,7 @@ namespace lostnfound.Controllers
             return View();
         }
 
+        //Item POST Request
         [HttpPost]
         public ActionResult Item(CreateItemView item)
         {
@@ -108,6 +108,7 @@ namespace lostnfound.Controllers
             return View();
         }
 
+        //Color POST Request
         [HttpPost]
         public ActionResult Color(CreateColorView color)
         {
@@ -122,6 +123,7 @@ namespace lostnfound.Controllers
             return View();
         }
 
+        //Location POST Request
         [HttpPost]
         public ActionResult Location(CreateLocationView location)
         {
@@ -136,6 +138,7 @@ namespace lostnfound.Controllers
             return View();
         }
 
+        //Category POST Request
         [HttpPost]
         public ActionResult Category(CreateCategoryView category)
         {
@@ -152,13 +155,5 @@ namespace lostnfound.Controllers
         
         /********************  Special Functions ********************/
 
-        //SignOut current user
-        /*[CustomAuthorize("admin")]
-        public ActionResult SignOut()
-        {
-            FormsAuthentication.SignOut();
-            Session.Abandon();
-            return RedirectToAction("Index", "Home");
-        }*/
     }
 }

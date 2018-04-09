@@ -17,7 +17,6 @@ namespace lostnfound.Models.EntityManager
             {
                 USER staff = new USER
                 {
-                    USERID = UniqueID("User"),
                     FIRSTNAME = user.FirstName,
                     LASTNAME = user.LastName,
                     EMAIL = user.Email,
@@ -38,7 +37,6 @@ namespace lostnfound.Models.EntityManager
             {
                 REPORTER reporter = new REPORTER
                 {
-                    REPORTERID = UniqueID("Reporter"),
                     FIRSTNAME = user.FirstName,
                     LASTNAME = user.LastName,
                     EMAIL = user.Email,
@@ -51,16 +49,13 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
-
         //Add new item
-        //TODO: check id fetching and foreign keys
         public void AddItem(CreateItemView data)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
                 ITEM item = new ITEM
                 {
-                    ITEMID = UniqueID("Item"),
                     REPORTERID = data.ReporterID,
                     CREATEDBYID = data.CreatedByID,
                     CREATEDDATE = data.CreatedDate,
@@ -85,7 +80,6 @@ namespace lostnfound.Models.EntityManager
             {
                 COLOR color = new COLOR
                 {
-                    COLORID = UniqueID("Color"),
                     TITLE = data.Title
                 };
                 db.COLORs.Add(color);
@@ -101,7 +95,6 @@ namespace lostnfound.Models.EntityManager
             {
                 LOCATION location = new LOCATION
                 {
-                    LOCATIONID = UniqueID("Location"),
                     TITLE = data.Title
                 };
 
@@ -117,7 +110,6 @@ namespace lostnfound.Models.EntityManager
             {
                 CATEGORY category = new CATEGORY
                 {
-                    CATEGORYID = UniqueID("Category"),
                     TITLE = data.Title
                 };
                 db.CATEGORies.Add(category);
@@ -159,22 +151,6 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
-        //Generate a unique identifier between 1 and 1000
-        public int UniqueID(string table)
-        {
-            Random rnd = new Random();
-            int unique = rnd.Next(1, 1000);
-
-            if (IsIDExist(unique, table))
-            {
-                return UniqueID(table);
-            }
-            else
-            {
-                return unique;
-            }
-        }
-
         //Get password from database
         public string GetUserPassword(string email)
         {
@@ -207,46 +183,6 @@ namespace lostnfound.Models.EntityManager
                     }
                 }
                 return false;
-            }
-        }
-
-
-        /********************  Private Functions ********************/
-
-        //Check if ID already exist in database
-        private bool IsIDExist(int id, string table)
-        {
-            using (lostfoundDB db = new lostfoundDB())
-            {
-                if (table == "User")
-                {
-                    return db.USERs.Where(o => o.USERID.Equals(id)).Any();
-                }
-                else if (table == "Reporter")
-                {
-                    return db.REPORTERs.Where(o => o.REPORTERID.Equals(id)).Any();
-                }
-                else if (table == "Item")
-                {
-                    return db.ITEMs.Where(o => o.ITEMID.Equals(id)).Any();
-                }
-                else if (table == "Color")
-                {
-                    return db.COLORs.Where(o => o.COLORID.Equals(id)).Any();
-                }
-                else if (table == "Location")
-                {
-                    return db.LOCATIONs.Where(o => o.LOCATIONID.Equals(id)).Any();
-                }
-                else if (table == "CATEGORY")
-                {
-                    return db.CATEGORies.Where(o => o.CATEGORYID.Equals(id)).Any();
-                }
-                else
-                {
-                    return false;
-                }
-
             }
         }
     }

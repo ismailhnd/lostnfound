@@ -13,9 +13,7 @@ namespace lostnfound.Security
             this.userAssignedRoles = roles;
         }
 
-
         /********************  Authorization Methods ********************/
-
 
         //Authorize Core filter 
         protected override bool AuthorizeCore(HttpContextBase httpContext)

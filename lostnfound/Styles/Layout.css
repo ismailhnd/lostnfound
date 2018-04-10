@@ -1,6 +1,5 @@
 ﻿/*################# Defaults ##################*/
 
-
 html {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -105,8 +104,6 @@ nav {
     margin: 0px;
 }
 
-
-
 /*################# Footer ##################*/
 footer {
     background-color: #292a32;
@@ -173,9 +170,7 @@ footer {
     padding:5px;
 }
 
-
 /*################# Custom Styles ##################*/
-
 
 .reset {
     margin: 0;
@@ -201,7 +196,6 @@ footer {
 .danger {
     color: #ff0000;
 }
-
 
 /*################# Special Styles ##################*/
 

@@ -60,7 +60,7 @@ namespace lostnfound.Models.EntityManager
                     CREATEDBYID = data.CreatedByID,
                     CREATEDDATE = data.CreatedDate,
                     ITEMTYPEID = data.ItemTypeID,
-                    STATEID = data.ItemStateID,
+                    STATEID = data.StateID,
                     FLDATE = data.FLDate,
                     CATEGORYID = data.CategoryID,
                     COLORID = data.ColorID,
@@ -159,7 +159,7 @@ namespace lostnfound.Models.EntityManager
                 foreach (ITEMSTATE i in db.ITEMSTATEs)
                 {
                     CreateItemView temp = new CreateItemView();
-                    temp.ItemStateID = i.ITEMSTATEID;
+                    temp.StateID = i.STATEID;
                     itemStateList.Add(temp);
                 }
                 itemView.StateInfo = itemStateList;

@@ -106,7 +106,7 @@ namespace lostnfound.Models.ViewModel
 
         [Required(ErrorMessage = "* required")]
         [Display(Name = "State")]
-        public int ItemStateID { get; set; }
+        public int StateID { get; set; }
         public string State { get; set; }
         public List<CreateItemView> StateInfo { get; set; }
 

@@ -57,12 +57,12 @@ namespace lostnfound.Models.EntityManager
             {
                 ITEM item = new ITEM
                 {
+                    ITEMID = UniqueID("Item"),
                     REPORTERID = data.ReporterID,
-                    CREATEDBYID = data.CreatedByID,
-                    CREATEDDATE = data.CreatedDate,
                     ITEMTYPEID = data.ItemTypeID,
+                    CREATEDDATE = DateTime.Now.Date,
                     STATEID = data.StateID,
-                    FLDATE = data.FLDate,
+                    FLDATE = DateTime.Now.Date,
                     CATEGORYID = data.CategoryID,
                     COLORID = data.ColorID,
                     LOCATIONID = data.LocationID,
@@ -147,50 +147,75 @@ namespace lostnfound.Models.EntityManager
             CreateItemView itemView = new CreateItemView();
             using (lostfoundDB db = new lostfoundDB())
             {
+
+                List<CreateItemView> userList = new List<CreateItemView>();
+                foreach (USER i in db.USERs)
+                {
+                    CreateItemView temp = new CreateItemView();
+                    temp.CreatedByID = i.USERID;
+                    temp.fname = i.FIRSTNAME;
+                    userList.Add(temp);
+                }
+                itemView.userinfo = userList;
+
+                List<CreateItemView> reporterList = new List<CreateItemView>();
+                foreach (REPORTER i in db.REPORTERs)
+                {
+                    CreateItemView temp = new CreateItemView();
+                    temp.ReporterID = i.REPORTERID;
+                    temp.FirstName = i.FIRSTNAME;
+                    reporterList.Add(temp);
+                }
+                itemView.reporterinfo = reporterList;
                 List<CreateItemView> itemTypeList = new List<CreateItemView>();
                 foreach (ITEMTYPE i in db.ITEMTYPEs)
                 {
                     CreateItemView temp = new CreateItemView();
                     temp.ItemTypeID = i.ITEMTYPEID;
+                    temp.Type = i.TITLE;
                     itemTypeList.Add(temp);
                 }
-               itemView.TypeInfo = itemTypeList;
+               itemView.typeinfo = itemTypeList;
 
                 List<CreateItemView> itemStateList = new List<CreateItemView>();
-                foreach (ITEMSTATE i in db.ITEMSTATEs)
+                foreach (STATE i in db.STATEs)
                 {
                     CreateItemView temp = new CreateItemView();
                     temp.StateID = i.STATEID;
+                    temp.State = i.TITLE;
                     itemStateList.Add(temp);
                 }
-                itemView.StateInfo = itemStateList;
+                itemView.stateinfo = itemStateList;
 
                 List<CreateItemView> categoryList = new List<CreateItemView>();
                 foreach (CATEGORY c in db.CATEGORies)
                 {
                     CreateItemView temp = new CreateItemView();
                     temp.CategoryID = c.CATEGORYID;
+                    temp.Category = c.TITLE;
                     categoryList.Add(temp);
                 }
-                itemView.CategoryInfo = categoryList;
+                itemView.categoryinfo = categoryList;
 
                 List<CreateItemView> colorList = new List<CreateItemView>();
                 foreach (COLOR c in db.COLORs)
                 {
                     CreateItemView temp = new CreateItemView();
                     temp.ColorID = c.COLORID;
+                    temp.Color = c.TITLE;
                     colorList.Add(temp);
                 }
-                itemView.ColorInfo = colorList;
+                itemView.colorinfo = colorList;
 
                 List<CreateItemView> locationList = new List<CreateItemView>();
                 foreach (LOCATION l in db.LOCATIONs)
                 {
                     CreateItemView temp = new CreateItemView();
                     temp.LocationID = l.LOCATIONID;
+                    temp.Location = l.TITLE;
                     locationList.Add(temp);
                 }
-                itemView.LocationInfo = locationList;
+                itemView.locationinfo = locationList;
             }
             return itemView;
         }

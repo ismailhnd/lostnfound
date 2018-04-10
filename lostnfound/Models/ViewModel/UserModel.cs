@@ -88,13 +88,20 @@ namespace lostnfound.Models.ViewModel
     public class CreateItemView
     {
         [Key]
-
         public int ItemID { get; set; }
-        public int ReporterID { get; set; }
 
         [Required(ErrorMessage = "* required")]
-        [Display(Name = "User ID")]
+        [Display(Name = "Reporter")]
+        public int ReporterID { get; set; }
+        public string FirstName { get; set; }
+        public List<CreateItemView> reporterinfo { get; set; }
+
+
+        [Required(ErrorMessage = "* required")]
+        [Display(Name = "User")]
         public int CreatedByID { get; set; }
+        public string fname { get; set; }
+        public List<CreateItemView> userinfo { get; set; }
 
         public DateTime CreatedDate { get; set; }
 
@@ -102,41 +109,43 @@ namespace lostnfound.Models.ViewModel
         [Display(Name = "Type")]
         public int ItemTypeID { get; set; }
         public string Type { get; set; }
-        public List<CreateItemView> TypeInfo { get; set; }
+        public List<CreateItemView> typeinfo { get; set; }
 
         [Required(ErrorMessage = "* required")]
         [Display(Name = "State")]
         public int StateID { get; set; }
         public string State { get; set; }
-        public List<CreateItemView> StateInfo { get; set; }
+        public List<CreateItemView> stateinfo { get; set; }
 
         [Display(Name = "Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime FLDate { get; set; }
 
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Category")]
         public int CategoryID { get; set; }
         public string Category { get; set; }
-        public List<CreateItemView> CategoryInfo { get; set; }
+        public List<CreateItemView> categoryinfo { get; set; }
         
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Color")]
         public int ColorID { get; set; }
         public string Color { get; set; }
-        public List<CreateItemView> ColorInfo { get; set; }
+        public List<CreateItemView> colorinfo { get; set; }
 
 
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Location")]
         public int LocationID { get; set; }
         public string Location { get; set; }
-        public List<CreateItemView> LocationInfo { get; set; }
+        public List<CreateItemView> locationinfo { get; set; }
 
 
         public string Image { get; set; }
 
         [Required(ErrorMessage = "* required")]
-        [Display(Name = "Notes or brief description regarding item (brand, size, etc.)")]
+        [Display(Name = "Notes")]
         public string Notes { get; set; }
     }
 

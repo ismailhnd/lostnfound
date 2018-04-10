@@ -26,20 +26,21 @@ namespace lostnfound.Controllers
             return View();
         }
 
+        //Item View
+        [CustomAuthorize("admin")]
+        public ActionResult Item()
+        {
+            UserManager UM = new UserManager();
+            return View(UM.ItemOptions());
+        }
+
         //Color View
         [CustomAuthorize("admin")]
         public ActionResult Color()
         {
             return View();
         }
-
-        //Item View
-        [CustomAuthorize("admin")]
-        public ActionResult Item()
-        {
-            return View();
-        }
-
+                
         //Location View
         [CustomAuthorize("admin")]
         public ActionResult Location()

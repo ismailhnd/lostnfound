@@ -1,6 +1,8 @@
 ﻿@model lostnfound.Models.ViewModel.CreateReporterView
 
 @{
+    /**/
+
     ViewBag.Title = "Reporter";
     ViewBag.leftString = "Add Item";
     ViewBag.rightString = "";
@@ -22,65 +24,100 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-horizontal">
+    <div class="row">
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "label" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-6 centerText">
+
+                <!-- First name container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "field" } })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Last name container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "field" } })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "danger" })
+                    </div>
+                </div>
+
+                <!-- Phone Number container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "field" } })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "danger" })
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="col-6 centerText">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "label" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <!-- Email container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "field" } })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "label" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <!-- AUB container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.AUB, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.AUB)
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.AUB, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "label" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AUB, htmlAttributes: new { @class = "label" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.AUB)
-                    @Html.ValidationMessageFor(model => model.AUB, "", new { @class = "text-danger" })
+                <!-- Verification Document container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.VerificationDocument, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.VerificationDocument, new { htmlAttributes = new { @class = "field" } })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.VerificationDocument, "", new { @class = "text-danger" })
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.VerificationDocument, htmlAttributes: new { @class = "label" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.VerificationDocument, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.VerificationDocument, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <div class="row center ">
+            <div class="col-12 centerText" id="createAccount">
+                <input type="submit" value="Create" class="btn" />
             </div>
         </div>
     </div>
-}
 
+}

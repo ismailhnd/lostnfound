@@ -16,97 +16,146 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-<div class="form-horizontal">
-
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.ReporterID, htmlAttributes: new { @class = "label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.ReporterID, new SelectList(Model.reporterinfo, "ReporterID", "FirstName"), "Choose Reporter", new { @class = "field" })
-            @Html.ValidationMessageFor(model => model.ReporterID, "", new { @class = "text-danger" })
+
+    <div class="row">
+
+        <div class="row">
+            <div class="col-6 centerText">
+
+                <!-- User container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.CreatedByID, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.CreatedByID, new SelectList(Model.userinfo, "CreatedByID", "fname"), "Choose User", new { @class = "field" })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.CreatedByID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Reporter container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.ReporterID, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.ReporterID, new SelectList(Model.reporterinfo, "ReporterID", "FirstName"), "Choose Reporter", new { @class = "field" })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.ReporterID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Item Type container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.ItemTypeID, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.ItemTypeID, new SelectList(Model.typeinfo, "ItemTypeID", "Type"), "Select Type", new { @class = "field" })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.ItemTypeID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- State container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.StateID, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.StateID, new SelectList(Model.stateinfo, "StateID", "State"), "Select State", new { @class = "field" })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.StateID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Lost Found Date container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.FLDate, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.FLDate, new { htmlAttributes = new { @class = "field" } })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.FLDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 centerText">
+
+                <!-- Category container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.CategoryID, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.CategoryID, new SelectList(Model.categoryinfo, "CategoryID", "Category"), "Select Category", new { @class = "field" })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Color container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.ColorID, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.ColorID, new SelectList(Model.colorinfo, "ColorID", "Color"), "Select Color", new { @class = "field" })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.ColorID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Location container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.LocationID, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.DropDownListFor(m => m.LocationID, new SelectList(Model.locationinfo, "LocationID", "Location"), "Select Location", new { @class = "field" })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.LocationID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Images container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "field" } })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <!-- Notes container -->
+                <div class="row">
+                    <div class="col-3 leftAlign">
+                        @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "label" })
+                    </div>
+                    <div class="col-8">
+                        @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "field" } })
+                    </div>
+                    <div class="col-1">
+                        @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.CreatedByID, htmlAttributes: new { @class = "label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.CreatedByID, new SelectList(Model.userinfo, "CreatedByID", "fname"), "Choose User", new { @class = "field" })
-            @Html.ValidationMessageFor(model => model.CreatedByID, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ItemTypeID, htmlAttributes: new { @class = "label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.ItemTypeID, new SelectList(Model.typeinfo, "ItemTypeID", "Type"), "Select Type", new { @class = "field" })
-            @Html.ValidationMessageFor(model => model.ItemTypeID, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.StateID, htmlAttributes: new { @class = "label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.StateID, new SelectList(Model.stateinfo, "StateID", "State"), "Select State", new { @class = "field" })
-            @Html.ValidationMessageFor(model => model.StateID, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.FLDate, htmlAttributes: new { @class = "label" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.FLDate, new { htmlAttributes = new { @class = "field" } })
-            @Html.ValidationMessageFor(model => model.FLDate, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.CategoryID, htmlAttributes: new { @class = "label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.CategoryID, new SelectList(Model.categoryinfo, "CategoryID", "Category"), "Select Category", new { @class = "field" })
-            @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ColorID, htmlAttributes: new { @class = "label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.ColorID, new SelectList(Model.colorinfo, "ColorID", "Color"), "Select Color", new { @class = "field" })
-            @Html.ValidationMessageFor(model => model.ColorID, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.LocationID, htmlAttributes: new { @class = "label" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.LocationID, new SelectList(Model.locationinfo, "LocationID", "Location"), "Select Location", new { @class = "field" })
-            @Html.ValidationMessageFor(model => model.LocationID, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "label" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "field" } })
-            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "label" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "field" } })
-            @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }

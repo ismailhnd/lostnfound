@@ -65,8 +65,8 @@ namespace lostnfound.Models.EntityManager
                     CREATEDBYID = data.CreatedByID,
                     CREATEDDATE = data.CreatedDate,
                     ITEMTYPEID = data.ItemTypeID,
-                    STATEID = data.StateID,
-                    FLDATE = data.FLDateID,
+                    STATEID = data.ItemStateID,
+                    FLDATE = data.FLDate,
                     CATEGORYID = data.CategoryID,
                     COLORID = data.ColorID,
                     LOCATIONID = data.LocationID,
@@ -146,6 +146,60 @@ namespace lostnfound.Models.EntityManager
                 roleView.roleinfo = userlist;
             }
             return roleView;
+        }
+
+        public CreateItemView ItemOptions()
+        {
+
+            CreateItemView itemView = new CreateItemView();
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                List<CreateItemView> itemTypeList = new List<CreateItemView>();
+                foreach (ITEMTYPE i in db.ITEMTYPEs)
+                {
+                    CreateItemView temp = new CreateItemView();
+                    temp.ItemTypeID = i.ITEMTYPEID;
+                    itemTypeList.Add(temp);
+                }
+               itemView.TypeInfo = itemTypeList;
+
+                List<CreateItemView> itemStateList = new List<CreateItemView>();
+                foreach (ITEMSTATE i in db.ITEMSTATEs)
+                {
+                    CreateItemView temp = new CreateItemView();
+                    temp.ItemStateID = i.ITEMSTATEID;
+                    itemStateList.Add(temp);
+                }
+                itemView.StateInfo = itemStateList;
+
+                List<CreateItemView> categoryList = new List<CreateItemView>();
+                foreach (CATEGORY c in db.CATEGORies)
+                {
+                    CreateItemView temp = new CreateItemView();
+                    temp.CategoryID = c.CATEGORYID;
+                    categoryList.Add(temp);
+                }
+                itemView.CategoryInfo = categoryList;
+
+                List<CreateItemView> colorList = new List<CreateItemView>();
+                foreach (COLOR c in db.COLORs)
+                {
+                    CreateItemView temp = new CreateItemView();
+                    temp.ColorID = c.COLORID;
+                    colorList.Add(temp);
+                }
+                itemView.ColorInfo = colorList;
+
+                List<CreateItemView> locationList = new List<CreateItemView>();
+                foreach (LOCATION l in db.LOCATIONs)
+                {
+                    CreateItemView temp = new CreateItemView();
+                    temp.LocationID = l.LOCATIONID;
+                    locationList.Add(temp);
+                }
+                itemView.LocationInfo = locationList;
+            }
+            return itemView;
         }
 
         /********************  Sepcial Functions ********************/

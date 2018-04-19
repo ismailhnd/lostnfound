@@ -14,6 +14,8 @@ namespace lostnfound.Models.DB
     
     public partial class CATEGORY
     {
+        internal static bool HasValue;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CATEGORY()
         {

@@ -106,4 +106,12 @@ namespace lostnfound.Models.ViewModel
          public int CategoryID { get; set; }
          public string Title { get; set; }
      }
+
+    public class LOOKUPAvailableRole
+    {
+        [Key]
+        public int LOOKUPRoleID { get; set; }
+        public string ROLEID { get; set; }
+        public string TITLE { get; set; }
+    }
 }

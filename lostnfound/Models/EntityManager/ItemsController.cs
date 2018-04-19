@@ -10,7 +10,7 @@ namespace lostnfound.Models.EntityManager
     public class ItemsController : Controller
     {
         // GET: Items
-        public List<ITEM> GetItems()
+        public List<ITEM> getItem()
         {
             using (lostfoundDB db = new lostfoundDB())
             {
@@ -22,6 +22,14 @@ namespace lostnfound.Models.EntityManager
                     ITEMTYPEID = o.ITEMTYPEID
                 }).ToList();
             }
+        }
+
+        public ActionResult Index()
+        {
+            var item = from i in ITEM
+                       orderby i.ID
+                       select i;
+            return View(item);
         }
     }
 }

@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace lostnfound.Controllers
 {
-    public class SharedController : Controller
+    public class ItemController : Controller
     {
-        // GET: Shared
-        public ActionResult _Unauthorized()
+        // GET: Item
+        public ActionResult Index()
         {
             return View();
         }

@@ -194,15 +194,16 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Admin\Reporter.cshtml" />
-    <Content Include="Views\Admin\Account.cshtml" />
     <Content Include="Views\Shared\_Unauthorized.cshtml" />
     <Content Include="Views\Admin\Item.cshtml" />
-    <Content Include="Views\Admin\Color.cshtml" />
-    <Content Include="Views\Admin\Location.cshtml" />
-    <Content Include="Views\Admin\Category.cshtml" />
     <None Include="Properties\PublishProfiles\foundnlost - Web Deploy.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Preferences\CreateAccount.cshtml" />
+    <Content Include="Views\Preferences\Index.cshtml" />
+    <Content Include="Views\Preferences\_AddColor.cshtml" />
+    <Content Include="Views\Preferences\_AddLocation.cshtml" />
+    <Content Include="Views\Preferences\_AddCategory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -213,7 +214,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Item\" />
-    <Folder Include="Views\Preferences\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

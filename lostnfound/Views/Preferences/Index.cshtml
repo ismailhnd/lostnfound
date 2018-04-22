@@ -1,0 +1,39 @@
+﻿@model lostnfound.Models.ViewModel.PreferencesView
+
+@{
+    ViewBag.Title = "Advanced";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Header -->
+<!-- Title -->
+<div class="row title">
+    <div class="col-12">
+        <h1 class="reset">Advanced Preferences</h1>
+    </div>
+</div>
+
+<!--  SubTitle -->
+<div class="row subtitle">
+    <div class="col-12">
+        <h4 class="reset lightWeight">
+            This panel can be accessed by the Head of the Protection Office in the American University of Beirut only.
+        </h4>
+    </div>
+</div>
+
+
+@{  
+    Html.RenderPartial("_AddColor");
+
+ }
+@{
+    Html.RenderPartial("_AddLocation");
+}
+
+@{
+    Html.RenderPartial("_AddCategory");
+}
+
+
+

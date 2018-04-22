@@ -1,0 +1,24 @@
+﻿@model lostnfound.Models.ViewModel.PreferencesView
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "label" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "field" } })
+                @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row center ">
+            <div class="col-12 centerText" id="createAccount">
+                <input type="submit" value="Create" class="btn" />
+            </div>
+        </div>
+    </div>
+}

@@ -32,6 +32,8 @@ namespace lostnfound.Models.EntityManager
             
         }
 
+
+
         //Add new Reporter
         public void AddReporterAccount(CreateReporterView user)
         {
@@ -76,13 +78,13 @@ namespace lostnfound.Models.EntityManager
         }
 
         //Add new color
-        public void AddColor(CreateColorView data)
+        public void AddColor(PreferencesView data)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
                 COLOR color = new COLOR
                 {
-                    TITLE = data.Title
+                    TITLE = data.Location
                 };
                 db.COLORs.Add(color);
                 db.SaveChanges();
@@ -91,13 +93,13 @@ namespace lostnfound.Models.EntityManager
         }
 
         //Add new location
-        public void AddLocation(CreateLocationView data)
+        public void AddLocation(PreferencesView data)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
                 LOCATION location = new LOCATION
                 {
-                    TITLE = data.Title
+                    TITLE = data.Color
                 };
 
                 db.LOCATIONs.Add(location);
@@ -106,13 +108,13 @@ namespace lostnfound.Models.EntityManager
         }
 
         //Add new category
-        public void AddCategory(CreateCategoryView data)
+        public void AddCategory(PreferencesView data)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
                 CATEGORY category = new CATEGORY
                 {
-                    TITLE = data.Title
+                    TITLE = data.Category
                 };
                 db.CATEGORies.Add(category);
                 db.SaveChanges();
@@ -121,6 +123,7 @@ namespace lostnfound.Models.EntityManager
 
         /********************  DDL Functions ********************/
 
+        //DropdownLIst with all role Options found
         public CreateUserView RoleOptions()
         {
 

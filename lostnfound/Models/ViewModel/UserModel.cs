@@ -24,7 +24,7 @@ namespace lostnfound.Models.ViewModel
     }
 
     /******************** Preferences Models ********************/
-
+    
     //New User Model
     public class CreateUserView
     {
@@ -33,18 +33,22 @@ namespace lostnfound.Models.ViewModel
 
         [Required(ErrorMessage = "* required")]
         [Display(Name = "First Name")]
+        [StringLength(20)]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Last Name")]
+        [StringLength(20)]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "* required")]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Phone Number")]
+        [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "* required")]
@@ -52,38 +56,30 @@ namespace lostnfound.Models.ViewModel
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        [Required(ErrorMessage = "* required")]
         [Display(Name = "Role")]
         public int RoleID { get; set; }
         public string Title { get; set; }
         public List<CreateUserView> roleinfo { get; set; }
     }
 
-    //New Color Model
-    public class CreateColorView
+    //Advanced Preferences Model
+    public class PreferencesView
     {
         public int ColorID { get; set; }
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Color")]
-        public string Title { get; set; }
-    }
+        public string Color { get; set; }
 
-    //New Location Model
-    public class CreateLocationView
-    {
         public int LocationID { get; set; }
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Location")]
-        public string Title { get; set; }
+        public string Location { get; set; }
 
-    }
-
-    //New Category Model
-    public class CreateCategoryView
-    {
         public int CategoryID { get; set; }
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Category")]
-        public string Title { get; set; }
+        public string Category { get; set; }
     }
 
     /******************** Item Models ********************/

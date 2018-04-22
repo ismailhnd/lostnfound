@@ -10,14 +10,6 @@ namespace lostnfound.Controllers
     {
         /********************  Main Views ********************/
 
-        //User View
-        [CustomAuthorize("admin")]
-        public ActionResult Account()
-        {
-
-            UserManager UM = new UserManager();
-            return View(UM.RoleOptions());
-        }
 
         //Reporter View
         [CustomAuthorize("admin")]
@@ -34,50 +26,9 @@ namespace lostnfound.Controllers
             return View(UM.ItemOptions());
         }
 
-        //Color View
-        [CustomAuthorize("admin")]
-        public ActionResult Color()
-        {
-            return View();
-        }
-                
-        //Location View
-        [CustomAuthorize("admin")]
-        public ActionResult Location()
-        {
-            return View();
-        }
-
-        //Category View
-        [CustomAuthorize("admin")]
-        public ActionResult Category()
-        {
-            return View();
-        }
-
         /********************  POST Request ********************/
 
-        //User POST Request
-        [HttpPost]
-        public ActionResult Account(CreateUserView user)
-        {
-            
-            if (ModelState.IsValid)
-            {
-
-                UserManager UM = new UserManager();
-                if (!UM.IsEmailExist(user.Email))
-                {
-                    UM.AddUserAccount(user);
-                    FormsAuthentication.SetAuthCookie(user.Email, false);
-                    return RedirectToAction("Index", "Home");
-
-                }
-                else
-                    ModelState.AddModelError("", "Email already taken.");
-            }
-            return View();
-        }
+        
 
         //Reporter POST Request
         [HttpPost]
@@ -109,59 +60,6 @@ namespace lostnfound.Controllers
             return View();
         }
 
-        //Color POST Request
-        [HttpPost]
-        public ActionResult Color(CreateColorView color)
-        {
-            if (ModelState.IsValid)
-            {
-                UserManager UM = new UserManager();
-                
-                UM.AddColor(color);
-
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
-        }
-
-        //Location POST Request
-        [HttpPost]
-        public ActionResult Location(CreateLocationView location)
-        {
-            if (ModelState.IsValid)
-            {
-                UserManager UM = new UserManager();
-
-                UM.AddLocation(location);
-
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
-        }
-
-        //Category POST Request
-        [HttpPost]
-        public ActionResult Category(CreateCategoryView category)
-        {
-            if (ModelState.IsValid)
-            {
-                UserManager UM = new UserManager();
-
-                UM.AddCategory(category);
-
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
-        }
-
-        /********************  Special Functions ********************/
-
-        //SignOut current user
-        [Authorize]
-        public ActionResult SignOut()
-        {
-            FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
-        }
+        
     }
 }

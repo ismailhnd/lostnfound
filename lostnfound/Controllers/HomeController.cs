@@ -2,7 +2,7 @@
 using System.Web.Security;
 using lostnfound.Models.ViewModel;
 using lostnfound.Models.EntityManager;
-
+using lostnfound.Security;
 
 namespace lostnfound.Controllers
 {
@@ -16,11 +16,12 @@ namespace lostnfound.Controllers
             return View();
         }
 
-        //Unauthorized Access
-        public ActionResult Unauthorized()
+        public ActionResult Dashboard()
         {
             return View();
         }
+
+      
         /********************  POST Request ********************/
 
         //Login POST Request
@@ -33,17 +34,17 @@ namespace lostnfound.Controllers
                 string password = UM.GetUserPassword(ULV.Email);
 
                 if (string.IsNullOrEmpty(password))
-                    ModelState.AddModelError("", "The user login or password provided is incorrect.");
+                    ModelState.AddModelError("", "Your email or password is not valid.");
                 else
                 {
-                    if (ULV.Password.Equals(password))
+                    if (ULV.Password.Equals(Utilities.DecryptText(password)))
                     {
                         FormsAuthentication.SetAuthCookie(ULV.Email, false);
-                        return RedirectToAction("Reporter", "Admin");
+                        return RedirectToAction("Dashboard", "Home");
                     }
                     else
                     {
-                        ModelState.AddModelError("", "The password provided is incorrect.");
+                        ModelState.AddModelError("", "Your password is incorrect.");
                     }
                 }
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using lostnfound.Models.DB;
 using lostnfound.Models.ViewModel;
+using lostnfound.Security;
 
 namespace lostnfound.Models.EntityManager
 {
@@ -22,7 +23,7 @@ namespace lostnfound.Models.EntityManager
                     LASTNAME = user.LastName,
                     EMAIL = user.Email,
                     PHONENUMBER = user.PhoneNumber,
-                    PASSWORD = user.Password
+                    PASSWORD = Encrypt(user.Password),
                 };
                 staff.ROLEID = user.RoleID;
                 db.USERs.Add(staff);
@@ -319,6 +320,12 @@ namespace lostnfound.Models.EntityManager
                 }
 
             }
+        }
+
+        private string Encrypt(string plainText)
+        {
+
+            return Utilities.EncryptText(plainText);
         }
     }
 }

@@ -35,7 +35,7 @@ namespace lostnfound.Security
         //Unauthorized  Access Handler
         protected override void HandleUnauthorizedRequest(AuthorizationContext filterContext)
         {
-            filterContext.Result = new RedirectResult("~/Home/Unauthorized");
+            filterContext.Result = new RedirectResult("~/Shared/_Unauthorized");
         }
     }
 }

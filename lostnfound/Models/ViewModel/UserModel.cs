@@ -13,6 +13,7 @@ namespace lostnfound.Models.ViewModel
         public int UserID { get; set; }
 
         [Required(ErrorMessage = "* required")]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
@@ -22,11 +23,13 @@ namespace lostnfound.Models.ViewModel
         public string Password { get; set; }
     }
 
+
+
+
     //New User Model
     public class CreateUserView
     {
         [Key]
-
         public int UserID { get; set; }
 
         [Required(ErrorMessage = "* required")]
@@ -176,15 +179,6 @@ namespace lostnfound.Models.ViewModel
         [Display(Name = "Category")]
         public string Title { get; set; }
     }
-
-    /* //Role DropDownList
-     public class RoleDetails
-     {
-         [Key]
-         public int RoleID { get; set; }
-         public string Title { get; set; }
-         public List<RoleDetails> roleinfo { get; set; } 
-     }*/
 
     //New Item Profile Model
     public class ItemProfileView

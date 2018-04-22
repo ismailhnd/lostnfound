@@ -119,6 +119,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -177,6 +178,7 @@
     <Compile Include="Models\ViewModel\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Security\Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -189,16 +191,16 @@
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Admin\Reporter.cshtml" />
     <Content Include="Views\Admin\Account.cshtml" />
-    <Content Include="Views\Home\Unauthorized.cshtml" />
-    <None Include="Properties\PublishProfiles\foundnlost - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\foundnlost - Web Deploy.pubxml" />
+    <Content Include="Views\Shared\_Unauthorized.cshtml" />
     <Content Include="Views\Admin\Item.cshtml" />
     <Content Include="Views\Admin\Color.cshtml" />
     <Content Include="Views\Admin\Location.cshtml" />
     <Content Include="Views\Admin\Category.cshtml" />
+    <None Include="Properties\PublishProfiles\foundnlost - Web Deploy.pubxml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

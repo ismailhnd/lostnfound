@@ -73,6 +73,13 @@ a, a:visited, a:hover {
     width: 100%;
 }
 
+.reset {
+    margin: 0;
+    padding: 0;
+}
+
+/*################# Layout ##################*/
+
 .panel-container {
     margin: 0 auto;
     width: 95%;
@@ -120,6 +127,34 @@ footer {
     margin-top: 20px;
 }
 
+/*################# Home Styles ##################*/
+.featureTitle {
+    text-align: center;
+    color: #4C93CE;
+    padding-bottom: 20px;
+}
+
+.features {
+    color: #ffffff;
+    text-align: justify;
+    word-wrap: break-word;
+    padding: 60px 30px 50px 30px;
+}
+
+.HomeLogIn {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+}
+
+
+/*############## Unauthorized Styles ###############*/
+
+.unauthorizedPad {
+    margin-top: 56px;
+    margin-bottom: 56px;
+}
+
 /*################# Common Styles ##################*/
 
 .title {
@@ -133,11 +168,6 @@ footer {
     font-weight: normal;
     text-align: center;
     color: #ffffff;
-}
-
-.textTitle {
-    text-align: center;
-    color: #4C93CE;
 }
 
 .field {
@@ -182,12 +212,12 @@ footer {
     padding:5px;
 }
 
-/*################# Custom Styles ##################*/
-
-.reset {
-    margin: 0;
-    padding: 0;
+.danger {
+    color: #ff0000;
+    list-style-type: none;
 }
+
+/*################# Custom Styles ##################*/
 
 .lightWeight {
     font-weight: normal;
@@ -205,13 +235,15 @@ footer {
     text-align:right;
 }
 
-.danger {
-    color: #ff0000;
-    padding:1px;
-    margin:1px;
-}
-
 /*################# Special Styles ##################*/
+.images {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: 12px;
+}
 
 .leftString {
     padding: 10px 0px 5px 35px;
@@ -226,28 +258,6 @@ footer {
     color: #4C93CE;
     text-align: right;
 }
-
-.text {
-    color: #ffffff;
-    text-align: justify;
-    word-wrap: break-word;
-    padding: 30px;
-}
-
-.center {
-    text-align: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: auto;
-    margin-top: 12px;
-}
-
-.unauthorizedPad {
-    margin-top: 56px;
-    margin-bottom: 56px;
-}
-
 
 #createAccount{
     padding:46px 0px 46px 0px;

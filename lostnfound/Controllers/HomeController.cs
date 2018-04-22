@@ -55,13 +55,6 @@ namespace lostnfound.Controllers
 
         /********************  Special Functions ********************/
 
-        //SignOut current user
-        [Authorize]
-        public ActionResult SignOut()
-        {
-            FormsAuthentication.SignOut();
-            Session.Abandon();
-            return RedirectToAction("Index", "Home");
-        }
+        
     }
 }

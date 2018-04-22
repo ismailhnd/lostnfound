@@ -3,8 +3,9 @@
     ViewBag.Title = "Dashboard";
     ViewBag.leftString = "Add item";
     ViewBag.rightString = "Preferences";
-    ViewBag.leftStringLink = "~/Admin/Item";
+    ViewBag.leftStringLink = "../Admin/Item";
     ViewBag.rightStringLink = "#";
+    ViewBag.SignOut = @Html.ActionLink("Sign Out", "SignOut", "Admin");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 

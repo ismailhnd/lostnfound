@@ -84,7 +84,7 @@ namespace lostnfound.Models.EntityManager
             {
                 COLOR color = new COLOR
                 {
-                    TITLE = data.Location
+                    TITLE = data.Color
                 };
                 db.COLORs.Add(color);
                 db.SaveChanges();
@@ -99,7 +99,7 @@ namespace lostnfound.Models.EntityManager
             {
                 LOCATION location = new LOCATION
                 {
-                    TITLE = data.Color
+                    TITLE = data.Location
                 };
 
                 db.LOCATIONs.Add(location);

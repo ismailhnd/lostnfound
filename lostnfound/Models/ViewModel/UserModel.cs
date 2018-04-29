@@ -82,7 +82,7 @@ namespace lostnfound.Models.ViewModel
         public string Category { get; set; }
     }
 
-    /******************** Item Models ********************/
+    /******************** Reporter Models ********************/
 
     //New Reporter Model
     public class CreateReporterView
@@ -111,6 +111,8 @@ namespace lostnfound.Models.ViewModel
         public bool AUB { get; set; }
         public string VerificationDocument { get; set; }
     }
+
+    /******************** Item Models ********************/
 
     //New Item Model
     public class CreateItemView
@@ -158,7 +160,7 @@ namespace lostnfound.Models.ViewModel
 
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Color")]
-        public int ColorID { get; set; }
+        public int? ColorID { get; set; }
         public string Color { get; set; }
         public List<CreateItemView> colorinfo { get; set; }
 
@@ -177,5 +179,4 @@ namespace lostnfound.Models.ViewModel
         public string Notes { get; set; }
     }
 
-    
-}
+ }

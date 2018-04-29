@@ -204,6 +204,7 @@
     <Content Include="Views\Preferences\_AddColor.cshtml" />
     <Content Include="Views\Preferences\_AddLocation.cshtml" />
     <Content Include="Views\Preferences\_AddCategory.cshtml" />
+    <Content Include="Views\Item\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -213,7 +214,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Item\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

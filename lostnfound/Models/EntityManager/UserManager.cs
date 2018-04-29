@@ -121,6 +121,8 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
+
+
         /********************  DDL Functions ********************/
 
         //DropdownLIst with all role Options found
@@ -133,9 +135,11 @@ namespace lostnfound.Models.EntityManager
                 List<CreateUserView> userlist = new List<CreateUserView>();
                 foreach (ROLE r in db.ROLEs)
                 {
-                    CreateUserView temp = new CreateUserView();
-                    temp.RoleID = r.ROLEID;
-                    temp.Title = r.TITLE;
+                    CreateUserView temp = new CreateUserView
+                    {
+                        RoleID = r.ROLEID,
+                        Title = r.TITLE
+                    };
                     userlist.Add(temp);
 
                 }
@@ -155,9 +159,11 @@ namespace lostnfound.Models.EntityManager
                 List<CreateItemView> userList = new List<CreateItemView>();
                 foreach (USER i in db.USERs)
                 {
-                    CreateItemView temp = new CreateItemView();
-                    temp.CreatedByID = i.USERID;
-                    temp.fname = i.FIRSTNAME;
+                    CreateItemView temp = new CreateItemView
+                    {
+                        CreatedByID = i.USERID,
+                        fname = i.FIRSTNAME
+                    };
                     userList.Add(temp);
                 }
                 itemView.userinfo = userList;
@@ -165,18 +171,22 @@ namespace lostnfound.Models.EntityManager
                 List<CreateItemView> reporterList = new List<CreateItemView>();
                 foreach (REPORTER i in db.REPORTERs)
                 {
-                    CreateItemView temp = new CreateItemView();
-                    temp.ReporterID = i.REPORTERID;
-                    temp.FirstName = i.FIRSTNAME;
+                    CreateItemView temp = new CreateItemView
+                    {
+                        ReporterID = i.REPORTERID,
+                        FirstName = i.FIRSTNAME
+                    };
                     reporterList.Add(temp);
                 }
                 itemView.reporterinfo = reporterList;
                 List<CreateItemView> itemTypeList = new List<CreateItemView>();
                 foreach (ITEMTYPE i in db.ITEMTYPEs)
                 {
-                    CreateItemView temp = new CreateItemView();
-                    temp.ItemTypeID = i.ITEMTYPEID;
-                    temp.Type = i.TITLE;
+                    CreateItemView temp = new CreateItemView
+                    {
+                        ItemTypeID = i.ITEMTYPEID,
+                        Type = i.TITLE
+                    };
                     itemTypeList.Add(temp);
                 }
                itemView.typeinfo = itemTypeList;
@@ -184,9 +194,11 @@ namespace lostnfound.Models.EntityManager
                 List<CreateItemView> itemStateList = new List<CreateItemView>();
                 foreach (STATE i in db.STATEs)
                 {
-                    CreateItemView temp = new CreateItemView();
-                    temp.StateID = i.STATEID;
-                    temp.State = i.TITLE;
+                    CreateItemView temp = new CreateItemView
+                    {
+                        StateID = i.STATEID,
+                        State = i.TITLE
+                    };
                     itemStateList.Add(temp);
                 }
                 itemView.stateinfo = itemStateList;
@@ -194,9 +206,11 @@ namespace lostnfound.Models.EntityManager
                 List<CreateItemView> categoryList = new List<CreateItemView>();
                 foreach (CATEGORY c in db.CATEGORies)
                 {
-                    CreateItemView temp = new CreateItemView();
-                    temp.CategoryID = c.CATEGORYID;
-                    temp.Category = c.TITLE;
+                    CreateItemView temp = new CreateItemView
+                    {
+                        CategoryID = c.CATEGORYID,
+                        Category = c.TITLE
+                    };
                     categoryList.Add(temp);
                 }
                 itemView.categoryinfo = categoryList;
@@ -204,9 +218,11 @@ namespace lostnfound.Models.EntityManager
                 List<CreateItemView> colorList = new List<CreateItemView>();
                 foreach (COLOR c in db.COLORs)
                 {
-                    CreateItemView temp = new CreateItemView();
-                    temp.ColorID = c.COLORID;
-                    temp.Color = c.TITLE;
+                    CreateItemView temp = new CreateItemView
+                    {
+                        ColorID = c.COLORID,
+                        Color = c.TITLE
+                    };
                     colorList.Add(temp);
                 }
                 itemView.colorinfo = colorList;
@@ -214,9 +230,11 @@ namespace lostnfound.Models.EntityManager
                 List<CreateItemView> locationList = new List<CreateItemView>();
                 foreach (LOCATION l in db.LOCATIONs)
                 {
-                    CreateItemView temp = new CreateItemView();
-                    temp.LocationID = l.LOCATIONID;
-                    temp.Location = l.TITLE;
+                    CreateItemView temp = new CreateItemView
+                    {
+                        LocationID = l.LOCATIONID,
+                        Location = l.TITLE
+                    };
                     locationList.Add(temp);
                 }
                 itemView.locationinfo = locationList;

@@ -76,25 +76,59 @@ namespace lostnfound.Models.ViewModel
         public List<User> roleinfo { get; set; }
     }
 
-    public class Settings
+    public class Color
     {
         public int ColorID { get; set; }
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Color")]
-        public string Color { get; set; }
+        public string Title { get; set; }
 
-        public int LocationID { get; set; }
-        [Required(ErrorMessage = "* required")]
-        [Display(Name = "Location")]
-        public string Location { get; set; }
+    }
 
+    public class Category
+    {
         public int CategoryID { get; set; }
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Category")]
-        public string Category { get; set; }
+        public string Title { get; set; }
+
     }
 
+    public class Location
+    {
+        public int LocationID { get; set; }
+        [Required(ErrorMessage = "* required")]
+        [Display(Name = "Location")]
+        public string Title { get; set; }
 
+    }
+
+    public class Role
+    {
+        public int RoleID { get; set; }
+        [Required(ErrorMessage = "* required")]
+        [Display(Name = "Role")]
+        public string Title { get; set; }
+
+    }
+
+    public class State
+    {
+        public int StateID { get; set; }
+        [Required(ErrorMessage = "* required")]
+        [Display(Name = "State")]
+        public string Title { get; set; }
+
+    }
+
+    public class ItemType
+    {
+        public int TypeID { get; set; }
+        [Required(ErrorMessage = "* required")]
+        [Display(Name = "Type")]
+        public string Title { get; set; }
+
+    }
     /*############################################### Items Models ###############################################*/
     public class Reporter
     {

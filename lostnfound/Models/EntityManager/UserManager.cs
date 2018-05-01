@@ -30,13 +30,13 @@ namespace lostnfound.Models.EntityManager
             
         }
 
-        public void AddColor(Settings data)
+        public void AddColor(Color data)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
                 COLOR color = new COLOR
                 {
-                    TITLE = data.Location
+                    TITLE = data.Title
                 };
                 db.COLORs.Add(color);
                 db.SaveChanges();
@@ -44,13 +44,13 @@ namespace lostnfound.Models.EntityManager
 
         }
 
-        public void AddLocation(Settings data)
+        public void AddLocation(Location data)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
                 LOCATION location = new LOCATION
                 {
-                    TITLE = data.Color
+                    TITLE = data.Title
                 };
 
                 db.LOCATIONs.Add(location);
@@ -58,15 +58,54 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
-        public void AddCategory(Settings data)
+        public void AddCategory(Category data)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
                 CATEGORY category = new CATEGORY
                 {
-                    TITLE = data.Category
+                    TITLE = data.Title
                 };
                 db.CATEGORies.Add(category);
+                db.SaveChanges();
+            }
+        }
+
+        public void AddType(ItemType data)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                ITEMTYPE type = new ITEMTYPE
+                {
+                    TITLE = data.Title
+                };
+                db.ITEMTYPEs.Add(type);
+                db.SaveChanges();
+            }
+        }
+
+        public void AddState(State data)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                STATE state = new STATE
+                {
+                    TITLE = data.Title
+                };
+                db.STATEs.Add(state);
+                db.SaveChanges();
+            }
+        }
+
+        public void AddRole(Role data)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                ROLE role = new ROLE
+                {
+                    TITLE = data.Title
+                };
+                db.ROLEs.Add(role);
                 db.SaveChanges();
             }
         }

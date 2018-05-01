@@ -199,10 +199,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Preferences\CreateUser.cshtml" />
     <Content Include="Views\Preferences\Index.cshtml" />
-    <Content Include="Views\Preferences\AddColor.cshtml" />
-    <Content Include="Views\Preferences\AddLocation.cshtml" />
-    <Content Include="Views\Preferences\AddCategory.cshtml" />
+    <Content Include="Views\Preferences\Color.cshtml" />
+    <Content Include="Views\Preferences\Location.cshtml" />
+    <Content Include="Views\Preferences\Category.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Preferences\State.cshtml" />
+    <Content Include="Views\Preferences\Role.cshtml" />
+    <Content Include="Views\Preferences\Type.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

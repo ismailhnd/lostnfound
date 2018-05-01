@@ -1,0 +1,43 @@
+﻿@model lostnfound.Models.ViewModel.Color
+
+@{
+    ViewBag.Title = "Advanced";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Header -->
+<!-- Title -->
+<div class="row title">
+    <div class="col-12">
+        <h1 class="reset">Advanced Preferences</h1>
+    </div>
+</div>
+
+<!--  SubTitle -->
+<div class="row subtitle">
+    <div class="col-12">
+        <h4 class="reset lightWeight">
+            Add a new color to the list of options that can be used while creating a new item.
+        </h4>
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "field" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row center ">
+            <div class="col-12 centerText" id="createAccount">
+                <input type="submit" value="Add" class="btn" />
+            </div>
+        </div>
+    </div>
+}

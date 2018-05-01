@@ -1,5 +1,4 @@
-﻿@model lostnfound.Models.ViewModel.Settings
-
+﻿
 @{
     ViewBag.Title = "Advanced";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -23,17 +22,61 @@
 </div>
 
 
-@{  
-    Html.RenderPartial("_AddColor");
+<div class="row">
 
- }
-@{
-    Html.RenderPartial("_AddLocation");
-}
+    <div class="col-6">
+        <div class="row images">
+            <form action="~/Preferences/Color">
+                <input type="submit" value="Add Color" class="btn" />
+            </form>
+        </div>
 
-@{
-    Html.RenderPartial("_AddCategory");
-}
+        <div class="row images">
+
+            <form action="~/Preferences/Category">
+                <input type="submit" value="Add Category" class="btn" />
+            </form>
+
+        </div>
+
+        <div class="row images">
+            <form action="~/Preferences/Location">
+                <input type="submit" value="Add Location" class="btn" />
+            </form>
+        </div>
+    </div>
+
+
+    <div class="col-6">
+        <div class="row  images">
+            <form action="~/Preferences/State">
+                <input type="submit" value="Add State" class="btn" />
+            </form>
+        </div>
+
+        <div class="row images">
+            <form action="~/Preferences/Role">
+                <input type="submit" value="Add Role" class="btn" />
+            </form>
+        </div>
+
+        <div class="row images">
+            <form action="~/Preferences/Type">
+                <input type="submit" value="Add Type" class="btn" />
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+                        
+
+                          
+                         
+                                
 
 
 

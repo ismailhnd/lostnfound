@@ -26,36 +26,36 @@ namespace lostnfound.Controllers
         }
 
         //GET: Add Color
-        public ActionResult AddColor()
+        public ActionResult Color()
         {
             return View();
         }
 
         //GET: Add Category
-        public ActionResult AddCategory()
+        public ActionResult Category()
         {
             return View();
         }
 
         //GET: Add Location
-        public ActionResult AddLocation()
+        public ActionResult Location()
         {
             return View();
         }
 
         //GET: Add Role
-        public ActionResult AddRole()
+        public ActionResult Role()
         {
             return View();
         }
         //GET: Add State
-        public ActionResult AddState()
+        public ActionResult State()
         {
             return View();
         }
 
         //GET: Add Type
-        public ActionResult AddType()
+        public ActionResult Type()
         {
             return View();
         }
@@ -88,7 +88,7 @@ namespace lostnfound.Controllers
 
         //POST: Add Color
         [HttpPost]
-        public ActionResult AddColor(Settings color)
+        public ActionResult Color(Color color)
         {
             if (ModelState.IsValid)
             {
@@ -103,7 +103,7 @@ namespace lostnfound.Controllers
 
         //POST: Add Location
         [HttpPost]
-        public ActionResult AddLocation(Settings location)
+        public ActionResult Location(Location location)
          {
             if (ModelState.IsValid)
             {
@@ -118,16 +118,62 @@ namespace lostnfound.Controllers
 
         //POST: Add Category
         [HttpPost]
-        public ActionResult AddCategory(Settings category)
+        public ActionResult Category(Category category)
         {
             if (ModelState.IsValid)
             {
                 UserManager UM = new UserManager();
 
-                UM.AddLocation(category);
+                UM.AddCategory(category);
 
             return RedirectToAction("Index", "Preferences");
         }
+            return View();
+        }
+
+        //POST: Add State
+        [HttpPost]
+        public ActionResult State(State state)
+        {
+            if (ModelState.IsValid)
+            {
+                UserManager UM = new UserManager();
+
+                UM.AddState(state);
+
+                return RedirectToAction("Index", "Preferences");
+            }
+            return View();
+
+        }
+
+        //POST: Add Type
+        [HttpPost]
+        public ActionResult Type(ItemType type)
+        {
+            if (ModelState.IsValid)
+            {
+                UserManager UM = new UserManager();
+
+                UM.AddType(type);
+
+                return RedirectToAction("Index", "Preferences");
+            }
+            return View();
+        }
+
+        //POST: Add Role
+        [HttpPost]
+        public ActionResult Role(Role role)
+        {
+            if (ModelState.IsValid)
+            {
+                UserManager UM = new UserManager();
+
+                UM.AddRole(role);
+
+                return RedirectToAction("Index", "Preferences");
+            }
             return View();
         }
     } 

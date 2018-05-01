@@ -136,6 +136,17 @@ namespace lostnfound.Models.ViewModel
 
         public int ReporterID { get; set; }
 
+        
+    }
+
+    public class Item
+    {
+        [Key]
+        public int ItemID { get; set; }
+
+        [Required(ErrorMessage = "* required")]
+        [Display(Name = "Reporter")]
+        public int ReporterID { get; set; }
         [Required(ErrorMessage = "*")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -155,18 +166,6 @@ namespace lostnfound.Models.ViewModel
 
         public bool AUB { get; set; }
         public string VerificationDocument { get; set; }
-    }
-
-    public class Item
-    {
-        [Key]
-        public int ItemID { get; set; }
-
-        [Required(ErrorMessage = "* required")]
-        [Display(Name = "Reporter")]
-        public int ReporterID { get; set; }
-        public string FirstName { get; set; }
-        public List<Item> reporterinfo { get; set; }
 
 
         [Required(ErrorMessage = "* required")]

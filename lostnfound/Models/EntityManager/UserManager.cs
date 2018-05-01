@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Web.Mvc;
 using lostnfound.Models.DB;
 using lostnfound.Models.ViewModel;
 using lostnfound.Security;
@@ -112,28 +114,22 @@ namespace lostnfound.Models.EntityManager
 
         /*############################################### Items Manager ###############################################*/
 
-        public void CreateReporter(Reporter user)
-        {
-            using (lostfoundDB db = new lostfoundDB())
-            {
-                REPORTER reporter = new REPORTER
-                {
-                    FIRSTNAME = user.FirstName,
-                    LASTNAME = user.LastName,
-                    EMAIL = user.Email,
-                    PHONENUMBER = user.PhoneNumber,
-                    IDDOCUMENT = user.VerificationDocument,
-                    AUB = user.AUB
-                };
-                db.REPORTERs.Add(reporter);
-                db.SaveChanges();
-            }
-        }
-
         public void CreateItem(Item data)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
+
+                REPORTER reporter = new REPORTER
+                {
+                    FIRSTNAME = data.FirstName,
+                    LASTNAME = data.LastName,
+                    EMAIL = data.Email,
+                    PHONENUMBER = data.PhoneNumber,
+                    IDDOCUMENT = data.VerificationDocument,
+                    AUB = data.AUB
+                };
+                db.REPORTERs.Add(reporter);
+
                 ITEM item = new ITEM
                 {
                     ITEMID = UniqueID("Item"),
@@ -152,6 +148,45 @@ namespace lostnfound.Models.EntityManager
                 db.SaveChanges();
             }
         }
+
+        public Item getItem(int? id)
+        {
+            
+
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                Item item = new Item();
+                ITEM temp = db.ITEMs.Find(id);
+
+                temp.ITEMID = (int) id;
+                temp.REPORTERID = item.ReporterID;
+                temp.ITEMTYPEID = item.ItemTypeID;
+                temp.CREATEDDATE = item.CreatedDate;
+                temp.STATEID = item.StateID;
+                temp.FLDATE = item.FLDate;
+                temp.CATEGORYID = item.CategoryID;
+                temp.COLORID = item.ColorID;
+                temp.LOCATIONID = item.LocationID;
+                temp.IMAGE = item.Image;
+                temp.NOTES = item.Notes;
+                return item;
+            }
+                
+        }
+
+        public void DeleteItem(int? id)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+
+                ITEM item = db.ITEMs.Find((int) id);
+                db.ITEMs.Remove(item);
+                db.SaveChanges();
+   
+            }
+
+        }
+
 
 
         /*#############################################################################################################*/
@@ -198,15 +233,6 @@ namespace lostnfound.Models.EntityManager
                 }
                 itemView.userinfo = userList;
 
-                List<Item> reporterList = new List<Item>();
-                foreach (REPORTER i in db.REPORTERs)
-                {
-                    Item temp = new Item();
-                    temp.ReporterID = i.REPORTERID;
-                    temp.FirstName = i.FIRSTNAME;
-                    reporterList.Add(temp);
-                }
-                itemView.reporterinfo = reporterList;
                 List<Item> itemTypeList = new List<Item>();
                 foreach (ITEMTYPE i in db.ITEMTYPEs)
                 {

@@ -206,6 +206,9 @@
     <Content Include="Views\Preferences\State.cshtml" />
     <Content Include="Views\Preferences\Role.cshtml" />
     <Content Include="Views\Preferences\Type.cshtml" />
+    <Content Include="Views\Item\Create.cshtml" />
+    <Content Include="Views\Item\Delete.cshtml" />
+    <Content Include="Views\Item\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

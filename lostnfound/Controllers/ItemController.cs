@@ -4,6 +4,7 @@ using lostnfound.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -16,7 +17,9 @@ namespace lostnfound.Controllers
         // GET: Item (Create Item)
         public ActionResult Create()
         {
-            return View();
+
+            UserManager UM = new UserManager();
+            return View(UM.ItemOptions());
         }
 
         // GET: Item (Edit Item)
@@ -26,15 +29,41 @@ namespace lostnfound.Controllers
         }
 
         // GET: Item (Item Details)
-        public ActionResult Details()
+        public ActionResult Details(int? id)
         {
-            return View();
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            UserManager UM = new UserManager();
+            Item item = UM.getItem(id);
+
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+            return View(item);
         }
 
         // GET: Item (Delete Item)
-        public ActionResult Delete()
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            UserManager UM = new UserManager();
+            Item item = UM.getItem(id);
+
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(item);
         }
 
 
@@ -46,18 +75,26 @@ namespace lostnfound.Controllers
         }
 
         /*############################################### POST Views ###############################################*/
-        [HttpPost]
-        public ActionResult Reporter(Reporter user)
-        {
-            if (ModelState.IsValid)
-            {
-                UserManager UM = new UserManager();
 
-                UM.CreateReporter(user);
-                FormsAuthentication.SetAuthCookie(user.Email, false);
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
+
+        // POST: Item (Create Item)
+        [HttpPost]
+        public ActionResult Create(Item item)
+        {
+            UserManager UM = new UserManager();
+
+            UM.CreateItem(item);
+            return View(item);
+        }
+
+        // POST: Item (Delete Item)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            UserManager UM = new UserManager();
+            UM.DeleteItem(id);
+            return RedirectToAction("Index");
         }
     }
 }

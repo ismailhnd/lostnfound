@@ -1,0 +1,107 @@
+﻿@model lostnfound.Models.ViewModel.Item
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ITEM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CREATEDDATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CREATEDDATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STATEID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STATEID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FLDATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FLDATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMAGE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMAGE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOTES)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOTES)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CATEGORY.TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CATEGORY.TITLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COLOR.TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COLOR.TITLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ITEMTYPE.TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ITEMTYPE.TITLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOCATION.TITLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOCATION.TITLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REPORTER.FIRSTNAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REPORTER.FIRSTNAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USER.PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USER.PASSWORD)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ITEMID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

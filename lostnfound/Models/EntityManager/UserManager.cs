@@ -286,6 +286,35 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
+        public List<Item> GetItems()
+        {
+            List<Item> items = new List<Item>();
+            
+            using (lostfoundDB db = new lostfoundDB()) {
+
+                foreach (ITEM item in db.ITEMs)
+                {
+                    Item temp = new Item();
+                    temp.ItemID = item.ITEMID;
+                    temp.Reporter = GetData(item.REPORTERID, "reporter");
+                    temp.CreatedByName= GetData(item.CREATEDBYID, "user");
+                    temp.CreatedDate = item.CREATEDDATE;
+                    temp.ItemType = GetData (item.ITEMTYPEID, "type");
+                    temp.State = GetData(item.STATEID,"state");
+                    temp.FLDate = item.FLDATE;
+                    temp.Category = GetData( item.CATEGORYID, "category");
+                   // temp.Color = GetColor( item.COLORID);
+                    temp.Location = GetData(item.LOCATIONID, "location");
+                    temp.Image = item.IMAGE;
+                    temp.Notes = item.NOTES;
+                    items.Add(temp);
+                }
+                
+            }
+
+            return items;
+        }
+
         /********************  Private Functions ********************/
 
         //Check if ID already exist in database
@@ -329,6 +358,71 @@ namespace lostnfound.Models.EntityManager
         {
 
             return Utilities.EncryptText(plainText);
+        }
+
+
+        /*public string GetColor(int? id)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+              
+                var color = db.COLORs.Where(o => o.COLORID.Equals(id));
+                if (color.Any())
+                    return color.FirstOrDefault().TITLE;
+                else
+                    return string.Empty;
+            }
+        }*/
+
+        public string GetData(int id, string table)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                var result ="";
+                switch(table){
+                    case "reporter":
+                        var reporter = db.REPORTERs.Where(o => o.REPORTERID.Equals(id));
+                        if (reporter.Any())
+                            result = reporter.FirstOrDefault().FIRSTNAME + " " + reporter.FirstOrDefault().LASTNAME;
+                        break;
+                    case "user":
+                        var user = db.USERs.Where(o => o.USERID.Equals(id));
+                        if (user.Any())
+                            result = user.FirstOrDefault().FIRSTNAME + " " + user.FirstOrDefault().LASTNAME;
+                        break;
+
+                    case "type":
+                        var type = db.ITEMTYPEs.Where(o => o.ITEMTYPEID.Equals(id));
+                        if (type.Any())
+                            result = type.FirstOrDefault().TITLE;
+                        break;
+
+                    case "state":
+                        var state = db.STATEs.Where(o => o.STATEID.Equals(id));
+                        if (state.Any())
+                            result = state.FirstOrDefault().TITLE;
+                        break;
+
+
+                    case "category":
+                        var category = db.CATEGORies.Where(o => o.CATEGORYID.Equals(id));
+                        if (category.Any())
+                            result = category.FirstOrDefault().TITLE;
+                        break;
+
+                    case "color":
+                        var color = db.COLORs.Where(o => o.COLORID.Equals(id));
+                        if (color.Any())
+                            result = color.FirstOrDefault().TITLE;
+                        break;
+                    case "location":
+                        var location = db.LOCATIONs.Where(o => o.LOCATIONID.Equals(id));
+                        if (location.Any())
+                            result = location.FirstOrDefault().TITLE;
+                        break;
+                }
+                return result;
+            }
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Web.Security;
 using lostnfound.Models.ViewModel;
 using lostnfound.Models.EntityManager;
 using lostnfound.Security;
-
+using System.Linq;
 namespace lostnfound.Controllers
 {
     public class HomeController : Controller
@@ -18,7 +18,13 @@ namespace lostnfound.Controllers
 
         public ActionResult Dashboard()
         {
-            return View();
+            UserManager UM = new UserManager();
+
+            var items = from i in UM.GetItems()
+                        orderby i.ItemID
+                        select i;
+
+            return View(items);
         }
 
       

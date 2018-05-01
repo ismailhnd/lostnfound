@@ -177,5 +177,23 @@ namespace lostnfound.Models.ViewModel
         public string Notes { get; set; }
     }
 
+
+    public class Item
+    {
+        [Key]
+        public int ItemID { get; set; }
+        public String Reporter { get; set; }
+        public String CreatedByName { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public String ItemType{ get; set; }
+        public String State { get; set; }
+        public DateTime FLDate { get; set; }
+        public String Category { get; set; }     
+        public String Color { get; set; }       
+        public String Location { get; set; }
+        public string Image { get; set; }
+        public string Notes { get; set; }
+    }
     
 }
+

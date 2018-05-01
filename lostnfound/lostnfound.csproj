@@ -198,12 +198,12 @@
     <Content Include="Views\Admin\Item.cshtml" />
     <None Include="Properties\PublishProfiles\foundnlost - Web Deploy.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Preferences\CreateAccount.cshtml" />
     <Content Include="Views\Preferences\Index.cshtml" />
     <Content Include="Views\Preferences\_AddColor.cshtml" />
     <Content Include="Views\Preferences\_AddLocation.cshtml" />
     <Content Include="Views\Preferences\_AddCategory.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -337,7 +337,7 @@
           <Key>
             <PropertyRef Name="COLORID" />
           </Key>
-          <Property Name="COLORID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COLORID" Type="Int32" annotation:StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ITEMs" Relationship="Self.FK_ITEM_REFERENCE_COLOR" FromRole="COLOR" ToRole="ITEM" />
         </EntityType>

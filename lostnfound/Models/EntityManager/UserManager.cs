@@ -32,8 +32,6 @@ namespace lostnfound.Models.EntityManager
             
         }
 
-
-
         //Add new Reporter
         public void AddReporterAccount(CreateReporterView user)
         {
@@ -303,7 +301,7 @@ namespace lostnfound.Models.EntityManager
                     temp.State = GetData(item.STATEID,"state");
                     temp.FLDate = item.FLDATE;
                     temp.Category = GetData( item.CATEGORYID, "category");
-                   // temp.Color = GetColor( item.COLORID);
+                    temp.Color = item.COLORID;
                     temp.Location = GetData(item.LOCATIONID, "location");
                     temp.Image = item.IMAGE;
                     temp.Notes = item.NOTES;

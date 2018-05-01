@@ -189,7 +189,7 @@ namespace lostnfound.Models.ViewModel
         public String State { get; set; }
         public DateTime FLDate { get; set; }
         public String Category { get; set; }     
-        public String Color { get; set; }       
+        public int? Color { get; set; }       
         public String Location { get; set; }
         public string Image { get; set; }
         public string Notes { get; set; }

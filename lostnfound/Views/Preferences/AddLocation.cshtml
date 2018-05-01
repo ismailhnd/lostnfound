@@ -1,17 +1,19 @@
-﻿@model lostnfound.Models.ViewModel.PreferencesView
+﻿@model lostnfound.Models.ViewModel.Settings
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+
         <div class="form-group">
-            @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "label" })
+            @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "label" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "field" } })
+                @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -22,4 +24,3 @@
         </div>
     </div>
 }
-

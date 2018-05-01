@@ -8,11 +8,11 @@
         <EntityTypeShape EntityType="CrackTheCode.CATEGORY" Width="1.5" PointX="11.875" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CrackTheCode.COLOR" Width="1.5" PointX="10.25" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="CrackTheCode.ITEM" Width="1.5" PointX="6.375" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CrackTheCode.ITEMSTATE" Width="1.5" PointX="6.375" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrackTheCode.ITEMSTATE" Width="1.5" PointX="6.375" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CrackTheCode.ITEMTYPE" Width="1.5" PointX="8.625" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CrackTheCode.LOCATION" Width="1.5" PointX="13.625" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CrackTheCode.PERMISSION" Width="1.5" PointX="2.375" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CrackTheCode.PRIVILEGE" Width="1.5" PointX="0.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CrackTheCode.PRIVILEGE" Width="1.5" PointX="0.5" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CrackTheCode.REPORTER" Width="1.5" PointX="4.125" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CrackTheCode.ROLE" Width="1.5" PointX="2.375" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CrackTheCode.STATE" Width="1.5" PointX="8.625" PointY="4.5" IsExpanded="true" />

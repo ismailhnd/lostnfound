@@ -8,44 +8,64 @@ namespace lostnfound.Controllers
 {
     public class PreferencesController : Controller
     {
-        /********************  Main Views ********************/
-        //Preferences Main Panel
+        /*############################################### GET Views ###############################################*/
+        
+        //GET: Index (Settings)
         [CustomAuthorize("admin")]
         public ActionResult Index()
         {
             return View();
         }
 
-        //Create new User
+        //GET: Create User
         [CustomAuthorize("admin")]
-        public ActionResult CreateAccount()
+        public ActionResult CreateUser()
         {
             UserManager UM = new UserManager();
             return View(UM.RoleOptions());
         }
 
-        /********************  Partial Views ********************/
-
-        public ActionResult _AddColor()
+        //GET: Add Color
+        public ActionResult AddColor()
         {
             return View();
         }
 
-        public ActionResult _AddLocation()
+        //GET: Add Category
+        public ActionResult AddCategory()
         {
             return View();
         }
 
-        public ActionResult _AddCategory()
+        //GET: Add Location
+        public ActionResult AddLocation()
         {
             return View();
         }
 
-        /********************  POST Views ********************/
+        //GET: Add Role
+        public ActionResult AddRole()
+        {
+            return View();
+        }
+        //GET: Add State
+        public ActionResult AddState()
+        {
+            return View();
+        }
 
-        //User POST Request
+        //GET: Add Type
+        public ActionResult AddType()
+        {
+            return View();
+        }
+
+        /*############################################### POST Views ###############################################*/
+
+
+        //POST: Create User
         [HttpPost]
-        public ActionResult CreateAccount(User user)
+        public ActionResult CreateUser(User user)
         {
 
             if (ModelState.IsValid)
@@ -66,9 +86,9 @@ namespace lostnfound.Controllers
         }
 
 
-        //Color POST Request
+        //POST: Add Color
         [HttpPost]
-        public ActionResult _AddColor(Settings color)
+        public ActionResult AddColor(Settings color)
         {
             if (ModelState.IsValid)
             {
@@ -81,33 +101,34 @@ namespace lostnfound.Controllers
             return View();
         }
 
-
-         [HttpPost]
-         public ActionResult _AddLocation(Settings location)
+        //POST: Add Location
+        [HttpPost]
+        public ActionResult AddLocation(Settings location)
          {
-             if (ModelState.IsValid)
-             {
-                 UserManager UM = new UserManager();
+            if (ModelState.IsValid)
+            {
+                UserManager UM = new UserManager();
 
-                 UM.AddLocation(location);
+                UM.AddLocation(location);
 
-                return RedirectToAction("Index", "Preferences");
+            return RedirectToAction("Index", "Preferences");
             }
-             return View();
+            return View();
          }
 
-         [HttpPost]
-         public ActionResult _AddCategory(Settings category)
-         {
-             if (ModelState.IsValid)
-             {
-                 UserManager UM = new UserManager();
+        //POST: Add Category
+        [HttpPost]
+        public ActionResult AddCategory(Settings category)
+        {
+            if (ModelState.IsValid)
+            {
+                UserManager UM = new UserManager();
 
-                 UM.AddLocation(category);
+                UM.AddLocation(category);
 
-                return RedirectToAction("Index", "Preferences");
-            }
-             return View();
-         }
+            return RedirectToAction("Index", "Preferences");
+        }
+            return View();
+        }
     } 
 }

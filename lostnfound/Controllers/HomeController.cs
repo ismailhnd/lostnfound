@@ -8,14 +8,15 @@ namespace lostnfound.Controllers
 {
     public class HomeController : Controller
     {
-        /********************  Main Views ********************/
+        /*############################################### GET Views ###############################################*/
 
-        //Homepage View
+        //GET: Hompage
         public ActionResult Index()
         {
             return View();
         }
 
+        //GET: Dashboard
         public ActionResult Dashboard()
         {
             UserManager UM = new UserManager();
@@ -27,10 +28,14 @@ namespace lostnfound.Controllers
             return View(items);
         }
 
-      
-        /********************  POST Request ********************/
+        //GET: Search
+        public ActionResult Search()
+        { return View(); }
 
-        //Login POST Request
+
+        /*############################################### POST Views ###############################################*/
+
+        //POST: Homepage (Login)
         [HttpPost]
         public ActionResult Index(LoginModel ULV, string returnUrl)
         {
@@ -54,8 +59,6 @@ namespace lostnfound.Controllers
                     }
                 }
             }
-
-            // If we got this far, something failed, redisplay form  
             return View(ULV);
         }
  

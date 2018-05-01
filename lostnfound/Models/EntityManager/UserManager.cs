@@ -9,10 +9,8 @@ namespace lostnfound.Models.EntityManager
 {
     public class UserManager
     {
-        /********************  Main Functions ********************/
-
-        //Add new User
-        public void AddUserAccount(CreateUserView user)
+        /*############################################### Preferences Manager ###############################################*/
+        public void CreateAccount(User user)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
@@ -32,8 +30,50 @@ namespace lostnfound.Models.EntityManager
             
         }
 
-        //Add new Reporter
-        public void AddReporterAccount(CreateReporterView user)
+        public void AddColor(Settings data)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                COLOR color = new COLOR
+                {
+                    TITLE = data.Location
+                };
+                db.COLORs.Add(color);
+                db.SaveChanges();
+            }
+
+        }
+
+        public void AddLocation(Settings data)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                LOCATION location = new LOCATION
+                {
+                    TITLE = data.Color
+                };
+
+                db.LOCATIONs.Add(location);
+                db.SaveChanges();
+            }
+        }
+
+        public void AddCategory(Settings data)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                CATEGORY category = new CATEGORY
+                {
+                    TITLE = data.Category
+                };
+                db.CATEGORies.Add(category);
+                db.SaveChanges();
+            }
+        }
+
+        /*############################################### Items Manager ###############################################*/
+
+        public void CreateReporter(Reporter user)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
@@ -51,8 +91,7 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
-        //Add new item
-        public void AddItem(CreateItemView data)
+        public void CreateItem(Item data)
         {
             using (lostfoundDB db = new lostfoundDB())
             {
@@ -75,63 +114,23 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
-        //Add new color
-        public void AddColor(PreferencesView data)
-        {
-            using (lostfoundDB db = new lostfoundDB())
-            {
-                COLOR color = new COLOR
-                {
-                    TITLE = data.Location
-                };
-                db.COLORs.Add(color);
-                db.SaveChanges();
-            }
 
-        }
+        /*#############################################################################################################*/
+        /*#############################################################################################################*/
+        /*#############################################################################################################*/
 
-        //Add new location
-        public void AddLocation(PreferencesView data)
-        {
-            using (lostfoundDB db = new lostfoundDB())
-            {
-                LOCATION location = new LOCATION
-                {
-                    TITLE = data.Color
-                };
 
-                db.LOCATIONs.Add(location);
-                db.SaveChanges();
-            }
-        }
-
-        //Add new category
-        public void AddCategory(PreferencesView data)
-        {
-            using (lostfoundDB db = new lostfoundDB())
-            {
-                CATEGORY category = new CATEGORY
-                {
-                    TITLE = data.Category
-                };
-                db.CATEGORies.Add(category);
-                db.SaveChanges();
-            }
-        }
-
-        /********************  DDL Functions ********************/
-
-        //DropdownLIst with all role Options found
-        public CreateUserView RoleOptions()
+        /*############################################### DDL Manager ###############################################*/
+        public User RoleOptions()
         {
 
-            CreateUserView roleView = new CreateUserView();
+            User roleView = new User();
             using (lostfoundDB db = new lostfoundDB())
             {
-                List<CreateUserView> userlist = new List<CreateUserView>();
+                List<User> userlist = new List<User>();
                 foreach (ROLE r in db.ROLEs)
                 {
-                    CreateUserView temp = new CreateUserView();
+                    User temp = new User();
                     temp.RoleID = r.ROLEID;
                     temp.Title = r.TITLE;
                     userlist.Add(temp);
@@ -143,76 +142,76 @@ namespace lostnfound.Models.EntityManager
             return roleView;
         }
 
-        public CreateItemView ItemOptions()
+        public Item ItemOptions()
         {
 
-            CreateItemView itemView = new CreateItemView();
+            Item itemView = new Item();
             using (lostfoundDB db = new lostfoundDB())
             {
 
-                List<CreateItemView> userList = new List<CreateItemView>();
+                List<Item> userList = new List<Item>();
                 foreach (USER i in db.USERs)
                 {
-                    CreateItemView temp = new CreateItemView();
+                    Item temp = new Item();
                     temp.CreatedByID = i.USERID;
                     temp.fname = i.FIRSTNAME;
                     userList.Add(temp);
                 }
                 itemView.userinfo = userList;
 
-                List<CreateItemView> reporterList = new List<CreateItemView>();
+                List<Item> reporterList = new List<Item>();
                 foreach (REPORTER i in db.REPORTERs)
                 {
-                    CreateItemView temp = new CreateItemView();
+                    Item temp = new Item();
                     temp.ReporterID = i.REPORTERID;
                     temp.FirstName = i.FIRSTNAME;
                     reporterList.Add(temp);
                 }
                 itemView.reporterinfo = reporterList;
-                List<CreateItemView> itemTypeList = new List<CreateItemView>();
+                List<Item> itemTypeList = new List<Item>();
                 foreach (ITEMTYPE i in db.ITEMTYPEs)
                 {
-                    CreateItemView temp = new CreateItemView();
+                    Item temp = new Item();
                     temp.ItemTypeID = i.ITEMTYPEID;
                     temp.Type = i.TITLE;
                     itemTypeList.Add(temp);
                 }
                itemView.typeinfo = itemTypeList;
 
-                List<CreateItemView> itemStateList = new List<CreateItemView>();
+                List<Item> itemStateList = new List<Item>();
                 foreach (STATE i in db.STATEs)
                 {
-                    CreateItemView temp = new CreateItemView();
+                    Item temp = new Item();
                     temp.StateID = i.STATEID;
                     temp.State = i.TITLE;
                     itemStateList.Add(temp);
                 }
                 itemView.stateinfo = itemStateList;
 
-                List<CreateItemView> categoryList = new List<CreateItemView>();
+                List<Item> categoryList = new List<Item>();
                 foreach (CATEGORY c in db.CATEGORies)
                 {
-                    CreateItemView temp = new CreateItemView();
+                    Item temp = new Item();
                     temp.CategoryID = c.CATEGORYID;
                     temp.Category = c.TITLE;
                     categoryList.Add(temp);
                 }
                 itemView.categoryinfo = categoryList;
 
-                List<CreateItemView> colorList = new List<CreateItemView>();
+                List<Item> colorList = new List<Item>();
                 foreach (COLOR c in db.COLORs)
                 {
-                    CreateItemView temp = new CreateItemView();
+                    Item temp = new Item();
                     temp.ColorID = c.COLORID;
                     temp.Color = c.TITLE;
                     colorList.Add(temp);
                 }
                 itemView.colorinfo = colorList;
 
-                List<CreateItemView> locationList = new List<CreateItemView>();
+                List<Item> locationList = new List<Item>();
                 foreach (LOCATION l in db.LOCATIONs)
                 {
-                    CreateItemView temp = new CreateItemView();
+                    Item temp = new Item();
                     temp.LocationID = l.LOCATIONID;
                     temp.Location = l.TITLE;
                     locationList.Add(temp);
@@ -222,9 +221,7 @@ namespace lostnfound.Models.EntityManager
             return itemView;
         }
 
-        /********************  Sepcial Functions ********************/
-
-        //Check if email already exists in the database 
+        /*############################################### Helper Methods Manager ###############################################*/
         public bool IsEmailExist(string email)
         {
             using (lostfoundDB db = new lostfoundDB())
@@ -233,7 +230,6 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
-        //Get password from database
         public string GetUserPassword(string email)
         {
             using (lostfoundDB db = new lostfoundDB())
@@ -246,7 +242,6 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
-        //Verify User's role
         public bool IsUserInRole(string email, string roleTitle)
         {
             using (lostfoundDB db = new lostfoundDB())
@@ -268,7 +263,6 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
-        //Generate a unique identifier between 1 and 1000
         public int UniqueID(string table)
         {
             Random rnd = new Random();
@@ -284,15 +278,15 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
-        public List<Item> GetItems()
+        public List<Items> GetItems()
         {
-            List<Item> items = new List<Item>();
+            List<Items> items = new List<Items>();
             
             using (lostfoundDB db = new lostfoundDB()) {
 
                 foreach (ITEM item in db.ITEMs)
                 {
-                    Item temp = new Item();
+                    Items temp = new Items();
                     temp.ItemID = item.ITEMID;
                     temp.Reporter = GetData(item.REPORTERID, "reporter");
                     temp.CreatedByName= GetData(item.CREATEDBYID, "user");
@@ -313,9 +307,7 @@ namespace lostnfound.Models.EntityManager
             return items;
         }
 
-        /********************  Private Functions ********************/
-
-        //Check if ID already exist in database
+        /*############################################### Private Helper Methods Manager ###############################################*/
         private bool IsIDExist(int id, string table)
         {
             using (lostfoundDB db = new lostfoundDB())
@@ -372,7 +364,7 @@ namespace lostnfound.Models.EntityManager
             }
         }*/
 
-        public string GetData(int id, string table)
+        private string GetData(int id, string table)
         {
             using (lostfoundDB db = new lostfoundDB())
             {

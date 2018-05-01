@@ -32,7 +32,7 @@ namespace lostnfound.Controllers
 
         //Login POST Request
         [HttpPost]
-        public ActionResult Index(UserLoginView ULV, string returnUrl)
+        public ActionResult Index(LoginModel ULV, string returnUrl)
         {
             if (ModelState.IsValid)
             {

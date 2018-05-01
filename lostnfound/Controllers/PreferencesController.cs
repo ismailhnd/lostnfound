@@ -45,7 +45,7 @@ namespace lostnfound.Controllers
 
         //User POST Request
         [HttpPost]
-        public ActionResult CreateAccount(CreateUserView user)
+        public ActionResult CreateAccount(User user)
         {
 
             if (ModelState.IsValid)
@@ -54,7 +54,7 @@ namespace lostnfound.Controllers
                 UserManager UM = new UserManager();
                 if (!UM.IsEmailExist(user.Email))
                 {
-                    UM.AddUserAccount(user);
+                    UM.CreateAccount(user);
                     FormsAuthentication.SetAuthCookie(user.Email, false);
                     return RedirectToAction("Index", "Preferences");
 
@@ -68,7 +68,7 @@ namespace lostnfound.Controllers
 
         //Color POST Request
         [HttpPost]
-        public ActionResult _AddColor(PreferencesView color)
+        public ActionResult _AddColor(Settings color)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace lostnfound.Controllers
 
 
          [HttpPost]
-         public ActionResult _AddLocation(PreferencesView location)
+         public ActionResult _AddLocation(Settings location)
          {
              if (ModelState.IsValid)
              {
@@ -97,7 +97,7 @@ namespace lostnfound.Controllers
          }
 
          [HttpPost]
-         public ActionResult _AddCategory(PreferencesView category)
+         public ActionResult _AddCategory(Settings category)
          {
              if (ModelState.IsValid)
              {

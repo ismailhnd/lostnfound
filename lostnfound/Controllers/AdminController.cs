@@ -32,13 +32,13 @@ namespace lostnfound.Controllers
 
         //Reporter POST Request
         [HttpPost]
-        public ActionResult Reporter(CreateReporterView user)
+        public ActionResult Reporter(Reporter user)
         {
             if (ModelState.IsValid)
             {
                 UserManager UM = new UserManager();
 
-                UM.AddReporterAccount(user);
+                UM.CreateReporter(user);
                 FormsAuthentication.SetAuthCookie(user.Email, false);
                 return RedirectToAction("Index", "Home");
             }
@@ -47,13 +47,13 @@ namespace lostnfound.Controllers
 
         //Item POST Request
         [HttpPost]
-        public ActionResult Item(CreateItemView item)
+        public ActionResult Item(Item item)
         {
             if (ModelState.IsValid)
             {
                 UserManager UM = new UserManager();
 
-                UM.AddItem(item);
+                UM.CreateItem(item);
 
                 return RedirectToAction("Index", "Home");
             }

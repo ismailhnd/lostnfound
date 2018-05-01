@@ -4,10 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace lostnfound.Models.ViewModel
 {
-    /******************** Home Models ********************/
-
-    //Log In authentication Model
-    public class UserLoginView
+    /*############################################### Home Models ###############################################*/
+    public class LoginModel
     {
         [Key]
         public int UserID { get; set; }
@@ -23,10 +21,25 @@ namespace lostnfound.Models.ViewModel
         public string Password { get; set; }
     }
 
-    /******************** Preferences Models ********************/
-    
-    //New User Model
-    public class CreateUserView
+    public class Items
+    {
+        [Key]
+        public int ItemID { get; set; }
+        public String Reporter { get; set; }
+        public String CreatedByName { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public String ItemType { get; set; }
+        public String State { get; set; }
+        public DateTime FLDate { get; set; }
+        public String Category { get; set; }
+        public int? Color { get; set; }
+        public String Location { get; set; }
+        public string Image { get; set; }
+        public string Notes { get; set; }
+    }
+
+    /*############################################ Preferences Models ############################################*/
+    public class User
     {
         [Key]
         public int UserID { get; set; }
@@ -60,11 +73,10 @@ namespace lostnfound.Models.ViewModel
         [Display(Name = "Role")]
         public int RoleID { get; set; }
         public string Title { get; set; }
-        public List<CreateUserView> roleinfo { get; set; }
+        public List<User> roleinfo { get; set; }
     }
 
-    //Advanced Preferences Model
-    public class PreferencesView
+    public class Settings
     {
         public int ColorID { get; set; }
         [Required(ErrorMessage = "* required")]
@@ -82,10 +94,9 @@ namespace lostnfound.Models.ViewModel
         public string Category { get; set; }
     }
 
-    /******************** Item Models ********************/
 
-    //New Reporter Model
-    public class CreateReporterView
+    /*############################################### Items Models ###############################################*/
+    public class Reporter
     {
         [Key]
 
@@ -112,8 +123,7 @@ namespace lostnfound.Models.ViewModel
         public string VerificationDocument { get; set; }
     }
 
-    //New Item Model
-    public class CreateItemView
+    public class Item
     {
         [Key]
         public int ItemID { get; set; }
@@ -122,14 +132,14 @@ namespace lostnfound.Models.ViewModel
         [Display(Name = "Reporter")]
         public int ReporterID { get; set; }
         public string FirstName { get; set; }
-        public List<CreateItemView> reporterinfo { get; set; }
+        public List<Item> reporterinfo { get; set; }
 
 
         [Required(ErrorMessage = "* required")]
         [Display(Name = "User")]
         public int CreatedByID { get; set; }
         public string fname { get; set; }
-        public List<CreateItemView> userinfo { get; set; }
+        public List<Item> userinfo { get; set; }
 
         public DateTime CreatedDate { get; set; }
 
@@ -137,13 +147,13 @@ namespace lostnfound.Models.ViewModel
         [Display(Name = "Type")]
         public int ItemTypeID { get; set; }
         public string Type { get; set; }
-        public List<CreateItemView> typeinfo { get; set; }
+        public List<Item> typeinfo { get; set; }
 
         [Required(ErrorMessage = "* required")]
         [Display(Name = "State")]
         public int StateID { get; set; }
         public string State { get; set; }
-        public List<CreateItemView> stateinfo { get; set; }
+        public List<Item> stateinfo { get; set; }
 
         [Display(Name = "Date")]
         [DataType(DataType.Date)]
@@ -154,44 +164,26 @@ namespace lostnfound.Models.ViewModel
         [Display(Name = "Category")]
         public int CategoryID { get; set; }
         public string Category { get; set; }
-        public List<CreateItemView> categoryinfo { get; set; }
+        public List<Item> categoryinfo { get; set; }
 
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Color")]
         public int ColorID { get; set; }
         public string Color { get; set; }
-        public List<CreateItemView> colorinfo { get; set; }
+        public List<Item> colorinfo { get; set; }
 
 
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Location")]
         public int LocationID { get; set; }
         public string Location { get; set; }
-        public List<CreateItemView> locationinfo { get; set; }
+        public List<Item> locationinfo { get; set; }
 
 
         public string Image { get; set; }
 
         [Required(ErrorMessage = "* required")]
         [Display(Name = "Notes")]
-        public string Notes { get; set; }
-    }
-
-
-    public class Item
-    {
-        [Key]
-        public int ItemID { get; set; }
-        public String Reporter { get; set; }
-        public String CreatedByName { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public String ItemType{ get; set; }
-        public String State { get; set; }
-        public DateTime FLDate { get; set; }
-        public String Category { get; set; }     
-        public int? Color { get; set; }       
-        public String Location { get; set; }
-        public string Image { get; set; }
         public string Notes { get; set; }
     }
     

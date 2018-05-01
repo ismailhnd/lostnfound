@@ -117,7 +117,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\PreferencesController.cs" />
@@ -193,9 +192,9 @@
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Admin\Reporter.cshtml" />
+    <Content Include="Views\Item\Reporter.cshtml" />
     <Content Include="Views\Shared\_Unauthorized.cshtml" />
-    <Content Include="Views\Admin\Item.cshtml" />
+    <Content Include="Views\Item\Item.cshtml" />
     <None Include="Properties\PublishProfiles\foundnlost - Web Deploy.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Preferences\CreateAccount.cshtml" />
@@ -213,7 +212,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Item\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Web.Mvc;
 using lostnfound.Models.DB;
 using lostnfound.Models.ViewModel;
 using lostnfound.Security;
@@ -153,6 +155,49 @@ namespace lostnfound.Models.EntityManager
             }
         }
 
+        public Item GetItem(int? id)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                Item item = new Item();
+                ITEM temp = db.ITEMs.Find(id);
+
+                temp.ITEMID = (int)item.ItemID;
+                temp.REPORTERID = item.ReporterID;
+                temp.ITEMTYPEID = item.ItemTypeID;
+                temp.CREATEDDATE = DateTime.Now.Date;
+                temp.STATEID = item.StateID;
+                temp.FLDATE = DateTime.Now.Date;
+                temp.CATEGORYID = item.CategoryID;
+                temp.COLORID = item.ColorID;
+                temp.LOCATIONID = item.LocationID;
+                temp.IMAGE = item.Image;
+                temp.NOTES = item.Notes;
+
+                return item;
+            }
+        }
+
+        public void EditItem(Item temp)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                ITEM item = db.ITEMs.Find(temp.ItemID);
+                db.Entry(item).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            
+        }
+
+        public void DeleteItem(int? id)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                ITEM item = db.ITEMs.Find(id);
+                db.ITEMs.Remove(item);
+                db.SaveChanges();
+            }
+        }
 
         /*#############################################################################################################*/
         /*#############################################################################################################*/

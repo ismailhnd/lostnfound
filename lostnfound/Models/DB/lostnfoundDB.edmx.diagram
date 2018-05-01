@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6ca2aa4d212b49fdb4756f39740980f6" Name="Diagram1" ZoomLevel="62">
+      <Diagram DiagramId="6ca2aa4d212b49fdb4756f39740980f6" Name="Diagram1" ZoomLevel="105">
         <EntityTypeShape EntityType="CrackTheCode.CATEGORY" Width="1.5" PointX="11.875" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CrackTheCode.COLOR" Width="1.5" PointX="10.25" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="CrackTheCode.ITEM" Width="1.5" PointX="6.375" PointY="1.25" IsExpanded="true" />

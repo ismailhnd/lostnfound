@@ -4,6 +4,7 @@ using lostnfound.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -20,21 +21,57 @@ namespace lostnfound.Controllers
         }
 
         // GET: Item (Edit Item)
-        public ActionResult Edit()
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            UserManager UM = new UserManager();
+            Item item = UM.GetItem(id);
+
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+            return View(item);
         }
 
         // GET: Item (Item Details)
-        public ActionResult Details()
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            UserManager UM = new UserManager();
+            Item item = UM.GetItem(id);
+
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+            return View(item);
         }
 
         // GET: Item (Delete Item)
-        public ActionResult Delete()
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            UserManager UM = new UserManager();
+            Item item = UM.GetItem(id);
+
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+            return View(item);
         }
 
 

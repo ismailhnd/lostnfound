@@ -41,5 +41,6 @@ namespace lostnfound.Models.DB
         public virtual USER USER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ITEMSTATE> ITEMSTATEs { get; set; }
+        public object CATEGORies { get; internal set; }
     }
 }

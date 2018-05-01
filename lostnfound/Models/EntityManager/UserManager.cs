@@ -11,6 +11,25 @@ namespace lostnfound.Models.EntityManager
 {
     public class UserManager
     {
+
+        /*############################################### Home Manager ###############################################*/
+        public IEnumerable<Items> Search(string searchby, string search, IEnumerable<Items> items)
+        {
+            using(lostfoundDB db = new lostfoundDB())
+            {
+
+                if (searchby == "Images")
+                {
+                    return items.Where(x => x.Image == search || search == null).ToList();
+                }
+                else
+                {
+                    return items.Where(x => x.Notes.Contains(search)).ToList();
+                }
+            }
+            
+        }
+       
         /*############################################### Preferences Manager ###############################################*/
         public void CreateAccount(User user)
         {

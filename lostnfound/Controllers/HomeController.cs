@@ -4,6 +4,8 @@ using lostnfound.Models.ViewModel;
 using lostnfound.Models.EntityManager;
 using lostnfound.Security;
 using System.Linq;
+using System.Collections.Generic;
+
 namespace lostnfound.Controllers
 {
     public class HomeController : Controller
@@ -17,7 +19,7 @@ namespace lostnfound.Controllers
         }
 
         //GET: Dashboard
-        public ActionResult Dashboard()
+        public ActionResult Dashboard(string searchby, string search)
         {
             UserManager UM = new UserManager();
 
@@ -25,7 +27,20 @@ namespace lostnfound.Controllers
                         orderby i.ItemID
                         select i;
 
-            return View(items);
+            
+            if (searchby == "Notes")
+            {
+                return View(UM.Search(searchby,search,items));
+            }
+            else if (searchby == "Images")
+            {
+                return View(UM.Search(searchby, search,items));
+            }
+            else
+            {
+                return View(items);
+            }
+            
         }
 
         //GET: Search

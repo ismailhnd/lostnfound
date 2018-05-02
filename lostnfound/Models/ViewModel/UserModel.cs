@@ -25,15 +25,15 @@ namespace lostnfound.Models.ViewModel
     {
         [Key]
         public int ItemID { get; set; }
-        public String Reporter { get; set; }
-        public String CreatedByName { get; set; }
+        public string Reporter { get; set; }
+        public string CreatedByName { get; set; }
         public DateTime CreatedDate { get; set; }
-        public String ItemType { get; set; }
-        public String State { get; set; }
+        public string ItemType { get; set; }
+        public string State { get; set; }
         public DateTime FLDate { get; set; }
-        public String Category { get; set; }
-        public int? Color { get; set; }
-        public String Location { get; set; }
+        public string Category { get; set; }
+        public string Color { get; set; }
+        public string Location { get; set; }
         public string Image { get; set; }
         public string Notes { get; set; }
     }

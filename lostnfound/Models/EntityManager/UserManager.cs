@@ -18,13 +18,21 @@ namespace lostnfound.Models.EntityManager
             using(lostfoundDB db = new lostfoundDB())
             {
 
-                if (searchby == "Images")
+                if (searchby == "Color")
                 {
-                    return items.Where(x => x.Image == search || search == null).ToList();
+                    return items.Where(x => x.Color == search || search == null).ToList();
+                }
+                if (searchby == "Location")
+                {
+                    return items.Where(x => x.Location == search || search == null).ToList();
+                }
+                if (searchby == "Category")
+                {
+                    return items.Where(x => x.Category == search || search == null).ToList();
                 }
                 else
                 {
-                    return items.Where(x => x.Notes.Contains(search)).ToList();
+                    return items.Where(x => x.ItemType == search || search == null).ToList();
                 }
             }
             
@@ -379,7 +387,7 @@ namespace lostnfound.Models.EntityManager
                     temp.State = GetData(item.STATEID,"state");
                     temp.FLDate = item.FLDATE;
                     temp.Category = GetData( item.CATEGORYID, "category");
-                    temp.Color = item.COLORID;
+                    temp.Color = GetData((int) item.COLORID, "color");
                     temp.Location = GetData(item.LOCATIONID, "location");
                     temp.Image = item.IMAGE;
                     temp.Notes = item.NOTES;
@@ -433,20 +441,6 @@ namespace lostnfound.Models.EntityManager
 
             return Utilities.EncryptText(plainText);
         }
-
-
-        /*public string GetColor(int? id)
-        {
-            using (lostfoundDB db = new lostfoundDB())
-            {
-              
-                var color = db.COLORs.Where(o => o.COLORID.Equals(id));
-                if (color.Any())
-                    return color.FirstOrDefault().TITLE;
-                else
-                    return string.Empty;
-            }
-        }*/
 
         private string GetData(int id, string table)
         {

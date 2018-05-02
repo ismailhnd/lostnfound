@@ -7,8 +7,10 @@
 @using (Html.BeginForm("Dashboard", "Home", FormMethod.Get))
 {
     <b>Search by:</b>
-    @Html.RadioButton("searchBy", "Images")<text> Images</text>
-    @Html.RadioButton("searchBy", "Notes")<text>Notes</text>
+    @Html.RadioButton("searchBy", "Color")<text> Color</text>
+    @Html.RadioButton("searchBy", "Category")<text>Category</text>
+    @Html.RadioButton("searchBy", "Location")<text> Location</text>
+    @Html.RadioButton("searchBy", "Type")<text> Type</text>
     <br />
     @Html.TextBox("Search");
     <input type="submit" value="Search" />

@@ -28,13 +28,9 @@ namespace lostnfound.Controllers
                         select i;
 
             
-            if (searchby == "Notes")
+            if (searchby != null )
             {
                 return View(UM.Search(searchby,search,items));
-            }
-            else if (searchby == "Images")
-            {
-                return View(UM.Search(searchby, search,items));
             }
             else
             {

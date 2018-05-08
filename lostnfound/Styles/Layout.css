@@ -25,6 +25,7 @@ table {
 th {
     height: 50px;
 }
+
 .row {
     display: flex;
     width: 100%;
@@ -154,7 +155,7 @@ footer {
     margin-left: 30px;
 }
 
-.searchTitle{
+.searchTitle {
     color: #4C93CE;
     margin: 10px;
 }
@@ -223,8 +224,8 @@ footer {
     text-align: left;
     color: #4C93CE;
     font-size: 20px;
-    margin:5px;
-    padding:5px;
+    margin: 5px;
+    padding: 5px;
 }
 
 .danger {
@@ -257,6 +258,20 @@ footer {
     display: inline-block;
     font-size: 18px;
 }
+
+
+.delete-btn {
+    background-color: #ca1414;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    width: 25%;
+    padding: 7px 50px 7px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
 /*################# Custom Styles ##################*/
 
 .lightWeight {
@@ -267,12 +282,12 @@ footer {
     text-align: center;
 }
 
-.leftAlign{
-    text-align:left;
+.leftAlign {
+    text-align: left;
 }
 
-.rightAlign{
-    text-align:right;
+.rightAlign {
+    text-align: right;
 }
 
 /*################# Special Styles ##################*/
@@ -299,8 +314,8 @@ footer {
     text-align: right;
 }
 
-#createAccount{
-    padding:46px 0px 46px 0px;
+#createAccount {
+    padding: 46px 0px 46px 0px;
 }
 
 .preferencePad {
@@ -309,4 +324,24 @@ footer {
 
 #prefPadding {
     padding: 44px;
+}
+
+.detailLabel {
+    color: #4C93CE;
+    margin: 10px 0px 10px 30px;
+    font-size: 24px;
+}
+
+.detailData {
+    color: #ffffff;
+    margin: 10px 0px 10px 60px;
+    font-size: 18px;
+}
+
+#deleteItem {
+    padding: 0px 0px 7px 0px;
+}
+
+#detailsItem {
+    padding: 0px 0px 55px 0px;
 }

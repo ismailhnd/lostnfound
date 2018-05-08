@@ -144,6 +144,9 @@ namespace lostnfound.Models.ViewModel
         public string ReporterName { get; set; }
 
         [Required(ErrorMessage = "*")]
+        [Display(Name = "Reporter Name")]
+        public string FirstName { get; set; }
+        [Required(ErrorMessage = "*")]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
@@ -154,7 +157,6 @@ namespace lostnfound.Models.ViewModel
         [Required(ErrorMessage = "*")]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
-
         public bool AUB { get; set; }
         public string VerificationDocument { get; set; }
 

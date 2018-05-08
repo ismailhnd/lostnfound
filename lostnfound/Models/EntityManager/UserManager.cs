@@ -161,7 +161,7 @@ namespace lostnfound.Models.EntityManager
                 ITEM item = new ITEM
                 {
                     ITEMID = UniqueID("Item"),
-                    REPORTERID = data.ReporterID,
+                    REPORTERID = reporter.REPORTERID,
                     ITEMTYPEID = data.ItemTypeID,
                     CREATEDDATE = DateTime.Now.Date,
                     STATEID = data.StateID,

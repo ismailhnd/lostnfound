@@ -3,6 +3,11 @@
 
 @{
     ViewBag.Title = "Advanced";
+    ViewBag.leftString = "Preferences";
+    ViewBag.rightString = "Back";
+    ViewBag.leftStringLink = "#";
+    ViewBag.rightStringLink = "/Preferences";
+    ViewBag.SignOut = @Html.ActionLink("Sign Out", "SignOut", "Home");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -18,23 +23,21 @@
 <div class="row subtitle">
     <div class="col-12">
         <h4 class="reset lightWeight">
-            Add a new location to the list of options that can be used while creating a new item.
+            Add a new Location to the list of options that can be used while creating a new item.
         </h4>
     </div>
 </div>
+<div class="preferencePad"></div>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-
-        <div class="form-group">
-            <div class="col-md-10">
+    <div class="row">
+        <div class="row centerText">
+            <div class="col-12">
                 @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "danger" })
             </div>
         </div>
 
@@ -43,5 +46,7 @@
                 <input type="submit" value="Add" class="btn" />
             </div>
         </div>
+
+        <div class="preferencePad"></div>
     </div>
 }

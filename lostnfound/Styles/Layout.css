@@ -18,6 +18,13 @@ a, a:visited, a:hover {
     text-decoration: none;
 }
 
+table {
+    width: 100%;
+}
+
+th {
+    height: 50px;
+}
 .row {
     display: flex;
     width: 100%;
@@ -147,7 +154,15 @@ footer {
     margin-left: 30px;
 }
 
+.searchTitle{
+    color: #4C93CE;
+    margin: 10px;
+}
 
+.searchFields {
+    color: #ffffff;
+    margin: 10px;
+}
 /*############## Unauthorized Styles ###############*/
 
 .unauthorizedPad {
@@ -217,6 +232,31 @@ footer {
     list-style-type: none;
 }
 
+.pref-btn {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    width: 50%;
+    padding: 7px 50px 7px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
+
+.user-btn {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    width: 30%;
+    padding: 7px 50px 7px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
 /*################# Custom Styles ##################*/
 
 .lightWeight {
@@ -261,4 +301,12 @@ footer {
 
 #createAccount{
     padding:46px 0px 46px 0px;
+}
+
+.preferencePad {
+    padding: 42px;
+}
+
+#prefPadding {
+    padding: 44px;
 }

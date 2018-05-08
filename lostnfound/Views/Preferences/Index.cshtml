@@ -1,6 +1,11 @@
 ﻿
 @{
     ViewBag.Title = "Advanced";
+    ViewBag.leftString = "Preferences";
+    ViewBag.rightString = "Back to Dashboard";
+    ViewBag.leftStringLink = "#";
+    ViewBag.rightStringLink = "/Home/Dashboard";
+    ViewBag.SignOut = @Html.ActionLink("Sign Out", "SignOut", "Home");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -21,27 +26,34 @@
     </div>
 </div>
 
+<div id="prefPadding"></div>
 
+
+<div class="row images">
+    <form action="~/Preferences/CreateUser">
+        <input type="submit" value="Create User" class="user-btn" />
+    </form>
+</div>
 <div class="row">
 
     <div class="col-6">
         <div class="row images">
             <form action="~/Preferences/Color">
-                <input type="submit" value="Add Color" class="btn" />
+                <input type="submit" value="Add Color" class="pref-btn"/>
             </form>
         </div>
 
         <div class="row images">
 
             <form action="~/Preferences/Category">
-                <input type="submit" value="Add Category" class="btn" />
+                <input type="submit" value="Add Category" class="pref-btn" />
             </form>
 
         </div>
 
         <div class="row images">
             <form action="~/Preferences/Location">
-                <input type="submit" value="Add Location" class="btn" />
+                <input type="submit" value="Add Location" class="pref-btn" />
             </form>
         </div>
     </div>
@@ -50,33 +62,33 @@
     <div class="col-6">
         <div class="row  images">
             <form action="~/Preferences/State">
-                <input type="submit" value="Add State" class="btn" />
+                <input type="submit" value="Add State" class="pref-btn" />
             </form>
         </div>
 
         <div class="row images">
             <form action="~/Preferences/Role">
-                <input type="submit" value="Add Role" class="btn" />
+                <input type="submit" value="Add Role" class="pref-btn" />
             </form>
         </div>
 
         <div class="row images">
             <form action="~/Preferences/Type">
-                <input type="submit" value="Add Type" class="btn" />
+                <input type="submit" value="Add Type" class="pref-btn" />
             </form>
         </div>
     </div>
 
 </div>
 
+<div id="prefPadding"></div>
 
 
 
-                        
 
-                          
-                         
-                                
+
+
+
 
 
 

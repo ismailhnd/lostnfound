@@ -67,6 +67,13 @@ namespace lostnfound.Controllers
             }
             return View(ULV);
         }
- 
+
+        [Authorize]
+        public ActionResult SignOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

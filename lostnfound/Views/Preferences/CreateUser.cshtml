@@ -3,10 +3,10 @@
 @{
     ViewBag.Title = "Account";
     ViewBag.leftString = "Preferences";
-    ViewBag.rightString = "Save";
+    ViewBag.rightString = "Back";
     ViewBag.leftStringLink = "#";
-    ViewBag.rightStringLink = "#";
-    ViewBag.SignOut = @Html.ActionLink("Sign Out", "SignOut", "Shared");
+    ViewBag.rightStringLink = "/Preferences";
+    ViewBag.SignOut = @Html.ActionLink("Sign Out", "SignOut", "Home");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 

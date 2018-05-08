@@ -2,6 +2,11 @@
 
 @{
     ViewBag.Title = "Advanced";
+    ViewBag.leftString = "Preferences";
+    ViewBag.rightString = "Back";
+    ViewBag.leftStringLink = "#";
+    ViewBag.rightStringLink = "/Preferences";
+    ViewBag.SignOut = @Html.ActionLink("Sign Out", "SignOut", "Home");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -21,17 +26,17 @@
         </h4>
     </div>
 </div>
+<div class="preferencePad"></div>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-
-        <div class="form-group">
-            <div class="col-md-10">
+    <div class="row">
+        <div class="row centerText">
+            <div class="col-12">
                 @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "field" } })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "danger" })
             </div>
         </div>
 
@@ -40,5 +45,7 @@
                 <input type="submit" value="Add" class="btn" />
             </div>
         </div>
+
+        <div class="preferencePad"></div>
     </div>
 }

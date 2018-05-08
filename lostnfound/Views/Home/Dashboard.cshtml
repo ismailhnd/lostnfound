@@ -2,24 +2,64 @@
 
 @{
     ViewBag.Title = "Dashboard";
+    ViewBag.leftString = "Add Item";
+    ViewBag.rightString = "Preferences";
+    ViewBag.leftStringLink = "/Item/Create";
+    ViewBag.rightStringLink = "/Preferences";
+    ViewBag.SignOut = @Html.ActionLink("Sign Out", "SignOut", "Home");
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
+<!-- Header -->
+<!-- Title -->
+<div class="row title">
+    <div class="col-12">
+        <h1 class="reset">Lost and Found Dashboard</h1>
+    </div>
+</div>
+
+<!--  SubTitle -->
+<div class="row subtitle">
+    <div class="col-12">
+        <h4 class="reset lightWeight">
+            The Utimate Items Manager to track lost and found Items in the American University of Beirut.
+        </h4>
+    </div>
+</div>
+
 @using (Html.BeginForm("Dashboard", "Home", FormMethod.Get))
 {
-    <b>Search by:</b>
-    @Html.RadioButton("searchBy", "Color")<text> Color</text>
-    @Html.RadioButton("searchBy", "Category")<text>Category</text>
-    @Html.RadioButton("searchBy", "Location")<text> Location</text>
-    @Html.RadioButton("searchBy", "Type")<text> Type</text>
-    <br />
-    @Html.TextBox("Search");
-    <input type="submit" value="Search" />
-}
-<h2>Dashboard</h2>
+    <div class="row searchTitle">
+        <h3> Search Items: </h3>
+    </div>
+    <div class="row searchFields">
+        <div class="col-3">
+            @Html.RadioButton("searchBy", "Color")<text> Color</text>
+        </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+        <div class="col-3">
+            @Html.RadioButton("searchBy", "Category")<text>Category</text>
+        </div>
+
+        <div class="col-3">
+            @Html.RadioButton("searchBy", "Location")<text>Location</text>
+        </div>
+
+        <div class="col-3">
+            @Html.RadioButton("searchBy", "Type")<text>Type</text>
+        </div>
+
+    </div>
+    
+    <div class="row">
+        <div class="col-12 searchFields">
+            @Html.TextBox("Search")
+            <input type="submit" value="Search" />
+        </div>
+    </div>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -95,7 +135,7 @@
                 @Html.DisplayFor(modelItem => item.Notes)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit","Item", new { id = item.ItemID }) |
+                @Html.ActionLink("Edit", "Edit", "Item", new { id = item.ItemID }) |
                 @Html.ActionLink("Details", "Details", "Item", new { id = item.ItemID }, null) |
                 @Html.ActionLink("Delete", "Delete", "Item", new { id = item.ItemID }, null)
             </td>

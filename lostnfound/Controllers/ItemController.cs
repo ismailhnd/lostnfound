@@ -11,6 +11,7 @@ using System.Web.Security;
 
 namespace lostnfound.Controllers
 {
+    [CustomAuthorize("admin")]
     public class ItemController : Controller
     {
         /*############################################### GET Views ###############################################*/

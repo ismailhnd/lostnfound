@@ -31,29 +31,35 @@ namespace lostnfound.Controllers
             return View();
         }
 
+        [CustomAuthorize("admin")]
         //GET: Add Category
         public ActionResult Category()
         {
             return View();
         }
 
+        [CustomAuthorize("admin")]
         //GET: Add Location
         public ActionResult Location()
         {
             return View();
         }
 
+        [CustomAuthorize("admin")]
         //GET: Add Role
         public ActionResult Role()
         {
             return View();
         }
+
+        [CustomAuthorize("admin")]
         //GET: Add State
         public ActionResult State()
         {
             return View();
         }
 
+        [CustomAuthorize("admin")]
         //GET: Add Type
         public ActionResult Type()
         {

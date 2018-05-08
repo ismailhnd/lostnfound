@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 namespace lostnfound.Controllers
 {
+    
     public class HomeController : Controller
     {
         /*############################################### GET Views ###############################################*/
@@ -17,7 +18,7 @@ namespace lostnfound.Controllers
         {
             return View();
         }
-
+        [CustomAuthorize("admin")]
         //GET: Dashboard
         public ActionResult Dashboard(string searchby, string search)
         {

@@ -39,11 +39,6 @@ namespace lostnfound.Controllers
             
         }
 
-        //GET: Search
-        public ActionResult Search()
-        { return View(); }
-
-
         /*############################################### POST Views ###############################################*/
 
         //POST: Homepage (Login)

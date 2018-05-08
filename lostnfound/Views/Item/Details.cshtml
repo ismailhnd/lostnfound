@@ -12,96 +12,96 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.CREATEDDATE)
+            @Html.DisplayNameFor(model => model.CreatedDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CREATEDDATE)
+            @Html.DisplayFor(model => model.CreatedDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.STATEID)
+            @Html.DisplayNameFor(model => model.UserName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.STATEID)
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReporterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReporterName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FLDATE)
+            @Html.DisplayNameFor(model => model.FLDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FLDATE)
+            @Html.DisplayFor(model => model.FLDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IMAGE)
+            @Html.DisplayNameFor(model => model.Image)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IMAGE)
+            @Html.DisplayFor(model => model.Image)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NOTES)
+            @Html.DisplayNameFor(model => model.Notes)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NOTES)
+            @Html.DisplayFor(model => model.Notes)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CATEGORY.TITLE)
+            @Html.DisplayNameFor(model => model.Category)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CATEGORY.TITLE)
+            @Html.DisplayFor(model => model.Category)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.COLOR.TITLE)
+            @Html.DisplayNameFor(model => model.Color)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.COLOR.TITLE)
+            @Html.DisplayFor(model => model.Color)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ITEMTYPE.TITLE)
+            @Html.DisplayNameFor(model => model.Type)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ITEMTYPE.TITLE)
+            @Html.DisplayFor(model => model.Type)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LOCATION.TITLE)
+            @Html.DisplayNameFor(model => model.Location)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LOCATION.TITLE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.REPORTER.FIRSTNAME)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.REPORTER.FIRSTNAME)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.USER.PASSWORD)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.USER.PASSWORD)
+            @Html.DisplayFor(model => model.Location)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ITEMID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ItemID }) |
+    @Html.ActionLink("Back to List", "Dashboard","Home")
 </p>

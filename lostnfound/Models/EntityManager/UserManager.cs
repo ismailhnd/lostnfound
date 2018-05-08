@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -148,7 +149,7 @@ namespace lostnfound.Models.EntityManager
 
                 REPORTER reporter = new REPORTER
                 {
-                    FIRSTNAME = data.FirstName,
+                    FIRSTNAME = data.ReporterName,
                     LASTNAME = data.LastName,
                     EMAIL = data.Email,
                     PHONENUMBER = data.PhoneNumber,
@@ -178,24 +179,33 @@ namespace lostnfound.Models.EntityManager
 
         public Item getItem(int? id)
         {
-            
 
+            int tempID = (int)id;
             using (lostfoundDB db = new lostfoundDB())
             {
                 Item item = new Item();
                 ITEM temp = db.ITEMs.Find(id);
 
-                temp.ITEMID = (int) id;
-                temp.REPORTERID = item.ReporterID;
-                temp.ITEMTYPEID = item.ItemTypeID;
-                temp.CREATEDDATE = item.CreatedDate;
-                temp.STATEID = item.StateID;
-                temp.FLDATE = item.FLDate;
-                temp.CATEGORYID = item.CategoryID;
-                temp.COLORID = item.ColorID;
-                temp.LOCATIONID = item.LocationID;
-                temp.IMAGE = item.Image;
-                temp.NOTES = item.Notes;
+                item.ItemID = (int) id;
+                  item.ReporterID =  temp.REPORTERID ;
+                  item.ItemTypeID =  temp.ITEMTYPEID ;
+                  item.CreatedDate= temp.CREATEDDATE ;
+                  item.StateID    =     temp.STATEID ;
+                  item.FLDate     =      temp.FLDATE ;
+                  item.CategoryID =  temp.CATEGORYID ;
+                  item.ColorID    =  (int)   temp.COLORID ;
+                  item.LocationID =  temp.LOCATIONID ;
+                  item.Image      =       temp.IMAGE ;
+                  item.Notes = temp.NOTES;
+
+                item.ReporterName = GetData(tempID,"reporter");
+                item.UserName = GetData(tempID, "user");
+                item.Type = GetData(tempID, "type");
+                item.State = GetData(tempID, "state");
+                item.Category = GetData(tempID, "category");
+                item.Color = GetData(tempID, "color");
+                item.Location = GetData(tempID, "location");
+                
                 return item;
             }
                 
@@ -214,7 +224,34 @@ namespace lostnfound.Models.EntityManager
 
         }
 
+        public void Dispose(bool disposing)
+        {
+            using(lostfoundDB db = new lostfoundDB())
+            {
+                if (disposing)
+                {
+                    db.Dispose();
+                }
+            }
+            
+           
+        }
 
+
+        public void Edit(Item item)
+        {
+            using (lostfoundDB db = new lostfoundDB())
+            {
+                 
+            
+                db.Entry(item).State = EntityState.Modified;
+                db.SaveChanges();
+                
+            }
+        }
+
+
+        
 
         /*#############################################################################################################*/
         /*#############################################################################################################*/
@@ -255,7 +292,7 @@ namespace lostnfound.Models.EntityManager
                 {
                     Item temp = new Item();
                     temp.CreatedByID = i.USERID;
-                    temp.fname = i.FIRSTNAME;
+                    temp.UserName = i.FIRSTNAME;
                     userList.Add(temp);
                 }
                 itemView.userinfo = userList;
@@ -313,7 +350,7 @@ namespace lostnfound.Models.EntityManager
             return itemView;
         }
 
-        /*############################################### Helper Methods Manager ###############################################*/
+        /*########################################## Helper Methods Manager ##########################################*/
         public bool IsEmailExist(string email)
         {
             using (lostfoundDB db = new lostfoundDB())

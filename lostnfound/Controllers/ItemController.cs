@@ -23,9 +23,19 @@ namespace lostnfound.Controllers
         }
 
         // GET: Item (Edit Item)
-        public ActionResult Edit()
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            UserManager UM = new UserManager();
+            Item item = UM.getItem(id);
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+            return View(item);
         }
 
         // GET: Item (Item Details)
@@ -66,14 +76,6 @@ namespace lostnfound.Controllers
             return View(item);
         }
 
-
-        //Temperor View: Reporter
-        [CustomAuthorize("admin")]
-        public ActionResult Reporter()
-        {
-            return View();
-        }
-
         /*############################################### POST Views ###############################################*/
 
 
@@ -87,6 +89,21 @@ namespace lostnfound.Controllers
             return View(item);
         }
 
+
+        // POST: Item (Item Details)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Item item)
+        {
+            if (ModelState.IsValid)
+            {
+                UserManager UM = new UserManager();
+                UM.Edit(item);
+                return RedirectToAction("Dashboard","Home");
+            }
+            return View(item);
+        }
+
         // POST: Item (Delete Item)
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -94,7 +111,15 @@ namespace lostnfound.Controllers
         {
             UserManager UM = new UserManager();
             UM.DeleteItem(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("Dashboard","Home");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+
+            UserManager UM = new UserManager();
+            UM.Dispose(disposing);
+            base.Dispose(disposing);
         }
     }
 }

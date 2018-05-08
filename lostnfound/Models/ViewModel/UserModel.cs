@@ -130,15 +130,7 @@ namespace lostnfound.Models.ViewModel
 
     }
     /*############################################### Items Models ###############################################*/
-    public class Reporter
-    {
-        [Key]
-
-        public int ReporterID { get; set; }
-
-        
-    }
-
+    
     public class Item
     {
         [Key]
@@ -148,8 +140,8 @@ namespace lostnfound.Models.ViewModel
         [Display(Name = "Reporter")]
         public int ReporterID { get; set; }
         [Required(ErrorMessage = "*")]
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
+        [Display(Name = "Reporter Name")]
+        public string ReporterName { get; set; }
 
         [Required(ErrorMessage = "*")]
         [Display(Name = "Last Name")]
@@ -163,15 +155,14 @@ namespace lostnfound.Models.ViewModel
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
-
         public bool AUB { get; set; }
         public string VerificationDocument { get; set; }
 
 
         [Required(ErrorMessage = "* required")]
-        [Display(Name = "User")]
+        [Display(Name = "User Name")]
         public int CreatedByID { get; set; }
-        public string fname { get; set; }
+        public string UserName { get; set; }
         public List<Item> userinfo { get; set; }
 
         public DateTime CreatedDate { get; set; }

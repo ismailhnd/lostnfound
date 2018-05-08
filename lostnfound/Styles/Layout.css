@@ -18,12 +18,25 @@ a, a:visited, a:hover {
     text-decoration: none;
 }
 
-table {
-    width: 100%;
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 0.5px solid #a55256;
 }
 
 th {
     height: 50px;
+ 
+    color: #a55256;
+    font-size: 20px;
+  
+}
+
+tr {
+    height: 50px;
+    color: #4C93CE;
+    font-size: 18px;
 }
 
 .row {
@@ -157,12 +170,12 @@ footer {
 
 .searchTitle {
     color: #4C93CE;
-    margin: 10px;
+    margin-left: 35px;
 }
 
 .searchFields {
     color: #ffffff;
-    margin: 10px;
+    margin-left: 90px;
 }
 /*############## Unauthorized Styles ###############*/
 
@@ -344,4 +357,8 @@ footer {
 
 #detailsItem {
     padding: 0px 0px 55px 0px;
+}
+
+.pad10{
+    padding-bottom: 20px;
 }

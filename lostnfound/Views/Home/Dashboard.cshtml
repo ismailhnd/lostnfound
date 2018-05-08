@@ -53,93 +53,59 @@
     </div>
     
     <div class="row">
-        <div class="col-12 searchFields">
-            @Html.TextBox("Search")
-            <input type="submit" value="Search" />
+        <div class="col-12 searchFields images">
+            @Html.TextBox("Search", null, new { @class = "field"})
+            <input type="submit" value="Search" class="btn"/>
         </div>
     </div>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Reporter)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedByName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FLDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Category)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Notes)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reporter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedByName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FLDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", "Item", new { id = item.ItemID }) |
-                @Html.ActionLink("Details", "Details", "Item", new { id = item.ItemID }, null) |
-                @Html.ActionLink("Delete", "Delete", "Item", new { id = item.ItemID }, null)
-            </td>
-        </tr>
-    }
+    <div class="row">
+        <table class="table images">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Reporter)</th>
+                <th>@Html.DisplayNameFor(model => model.ItemType)</th>
+                <th>@Html.DisplayNameFor(model => model.State)</th>
+                <th>@Html.DisplayNameFor(model => model.Category)</th>
+                <th>@Html.DisplayNameFor(model => model.Color)</th>
+                <th>@Html.DisplayNameFor(model => model.Location)</th>
+                <th>@Html.DisplayNameFor(model => model.Notes)</th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reporter)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Item", new { id = item.ItemID }) |
+                    @Html.ActionLink("Details", "Details", "Item", new { id = item.ItemID }, null) |
+                    @Html.ActionLink("Delete", "Delete", "Item", new { id = item.ItemID }, null)
+                </td>
+            </tr>
+            }
+        </table>
+    </div>
 
-</table>
+<div class="pad10"> </div>
+

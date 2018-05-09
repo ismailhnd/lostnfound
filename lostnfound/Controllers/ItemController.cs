@@ -84,10 +84,13 @@ namespace lostnfound.Controllers
         [HttpPost]
         public ActionResult Create(Item item)
         {
-            UserManager UM = new UserManager();
-
-            UM.CreateItem(item);
-            return View(item);
+            
+                UserManager UM = new UserManager();
+                UM.CreateItem(item);
+                return RedirectToAction("Dashboard", "Home");
+            
+            
+           // return View(item);
         }
 
 
@@ -96,13 +99,12 @@ namespace lostnfound.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Item item)
         {
-            if (ModelState.IsValid)
-            {
+            
                 UserManager UM = new UserManager();
                 UM.Edit(item);
                 return RedirectToAction("Dashboard","Home");
-            }
-            return View(item);
+            
+            
         }
 
         // POST: Item (Delete Item)

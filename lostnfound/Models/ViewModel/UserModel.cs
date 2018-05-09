@@ -144,7 +144,7 @@ namespace lostnfound.Models.ViewModel
         public string ReporterName { get; set; }
 
         [Required(ErrorMessage = "*")]
-        [Display(Name = "Reporter Name")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "*")]
         [Display(Name = "Last Name")]
